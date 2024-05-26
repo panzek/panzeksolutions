@@ -13,11 +13,18 @@
         
 		<!-- Navigation -->
 		<div class="container mx-auto">
-			<section class="flex items-center justify-center h-screen">
+			<section class="flex items-center justify-center ">
 				<div class="navbar bg-base-100">
 					<div class="flex-1">
 					  <a class="btn btn-ghost text-xl">Panzek</a>
 					</div>
+					<div class="flex-1">
+						<ul class="flex items-center justify-center mt-3">
+							<li><a>Home</a></li>
+							<li><a>Portfolio</a></li>
+							<li><a>Blog</a></li>
+						</ul>
+					  </div>
 					<div class="flex-none gap-2">
 					  <div class="dropdown dropdown-end">
 						<div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
@@ -42,13 +49,14 @@
 					</div>
 				  </div>
 			</section>
+			<!-- Main -->
+			<main>
+				{% block content %}
+				{% endblock %}
+			</main>
 		</div>
 
-		<!-- Main -->
-		<main>
-			{% block content %}
-			{% endblock %}
-		</main>
+
 
 	</body>
 </html>
