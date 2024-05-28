@@ -12,7 +12,7 @@ module.exports = {
          */
 
         /*  Templates within theme app (<tailwind_app_name>/templates), e.g. base.html. */
-        '../templates/**/*.html',
+        // '../templates/**/*.html',
 
         /*
          * Main templates directory of the project (BASE_DIR/templates).
@@ -33,13 +33,13 @@ module.exports = {
         /* JS 1: Ignore any JavaScript in node_modules folder. */
         // '!../../**/node_modules',
         /* JS 2: Process all JavaScript files in the project. */
-        // '../../**/*.js',
+        '../../**/*.js',
 
         /**
          * Python: If you use Tailwind CSS classes in Python, uncomment the following line
          * and make sure the pattern below matches your project structure.
          */
-        // '../../**/*.py'
+        '../../**/*.py'
     ],
     theme: {
         extend: {},
@@ -53,7 +53,14 @@ module.exports = {
 
         require('@tailwindcss/forms'),
         require('@tailwindcss/typography'),
+        // add daisyUI plugin
         require('daisyui'),
         require('@tailwindcss/aspect-ratio'),
     ],
+    daisyui: {
+        themes: ["light", "dark", "cupcake"],
+        base: true, // applies background color and foreground color for root element by default
+        utils: true, // adds responsive and modifier utility classes
+        styled: true, // include daisyUI colors and design decisions for all components
+    },
 }
