@@ -4,10 +4,25 @@
 
 {% block content %}
 
-<div class="flex justify-center mt-3" data-theme="cupcake">
+<div class="hero bg-base-200">
+  <div class="hero-content flex-col lg:flex-row-reverse">
+    <img src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg" class="max-w-sm rounded-lg shadow-2xl" />
     <div>
-        <h1 class="text-5xl font-bold">My Home Page</h1>
+        <div class="relative flex items-center">
+            <div class="flex-grow border-t border-gray-400"></div>
+            <span class="flex-shrink mx-4 text-5xl font-bold text-gray-400">Panzek</span>
+            <div class="flex-grow border-t border-gray-400"></div><br>
+        </div>
+        <h3 class="text-2xl text-center">- Peter Anny-Nzekwue, PhD</h3>
+        <p class="py-6">Full Stack Software Developer, Scholar, Thinker, Literary critic... 
+            Skilled in modern technologies and tools: JavaScript, Python, Django, jQuery, Flask, ReactJS, 
+            NGINX, PostgreSQL, MySQL, Bootstrap, TailwindCSS, DaisyUI, CSS3, HTML5, Git Version Control and principles of 
+            Agile Development. I have utilised these skills in developing functional responsive websites and 
+            complex web applications, and contributing to Hackathons. A quick learner, passionate about coding 
+            education and community service...</p>
+        <button class="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg btn-accent">Contact me</button>
     </div>
+  </div>
 </div>
 
 {% endblock %}
