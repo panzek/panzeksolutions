@@ -10531,10 +10531,6 @@ html:has(.drawer-open.drawer-open) {
   gap: 1rem;
 }
 
-.gap-2 {
-  gap: 0.5rem;
-}
-
 .space-x-2 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-x-reverse: 0;
   margin-right: calc(0.5rem * var(--tw-space-x-reverse));
@@ -11011,11 +11007,6 @@ html:has(.drawer-open.drawer-open) {
   border-color: rgb(252 165 165 / var(--tw-border-opacity));
 }
 
-.border-base-300 {
-  --tw-border-opacity: 1;
-  border-color: var(--fallback-b3,oklch(var(--b3)/var(--tw-border-opacity)));
-}
-
 .bg-\[rgb\(255\2c 0\2c 0\)\] {
   --tw-bg-opacity: 1;
   background-color: rgb(255 0 0 / var(--tw-bg-opacity));
@@ -11034,11 +11025,6 @@ html:has(.drawer-open.drawer-open) {
 .bg-gray-50 {
   --tw-bg-opacity: 1;
   background-color: rgb(249 250 251 / var(--tw-bg-opacity));
-}
-
-.bg-base-300 {
-  --tw-bg-opacity: 1;
-  background-color: var(--fallback-b3,oklch(var(--b3)/var(--tw-bg-opacity)));
 }
 
 .bg-neutral {
@@ -11164,10 +11150,6 @@ html:has(.drawer-open.drawer-open) {
   padding: 0.25rem;
 }
 
-.p-10 {
-  padding: 2.5rem;
-}
-
 .p-2 {
   padding: 0.5rem;
 }
@@ -11184,16 +11166,6 @@ html:has(.drawer-open.drawer-open) {
 .py-6 {
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
-}
-
-.px-10 {
-  padding-left: 2.5rem;
-  padding-right: 2.5rem;
-}
-
-.py-4 {
-  padding-top: 1rem;
-  padding-bottom: 1rem;
 }
 
 .pl-6 {
@@ -11384,11 +11356,6 @@ html:has(.drawer-open.drawer-open) {
 
 .text-\[\#336699\]\/\[\.35\] {
   color: rgb(51 102 153 / .35);
-}
-
-.text-base-content {
-  --tw-text-opacity: 1;
-  color: var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity)));
 }
 
 .text-blue-500 {
@@ -13922,28 +13889,8 @@ html:has(.drawer-open.drawer-open) {
 }
 
 @media (min-width: 640px) {
-  .sm\:place-self-center {
-    place-self: center;
-  }
-
-  .sm\:justify-self-start {
-    justify-self: start;
-  }
-
-  .sm\:justify-self-end {
-    justify-self: end;
-  }
-
-  .sm\:justify-self-center {
-    justify-self: center;
-  }
-
   .sm\:text-left {
     text-align: left;
-  }
-
-  .sm\:text-right {
-    text-align: right;
   }
 
   .sm\:underline {
@@ -13952,20 +13899,12 @@ html:has(.drawer-open.drawer-open) {
 }
 
 @media (min-width: 768px) {
-  .md\:place-self-center {
-    place-self: center;
-  }
-
   .md\:justify-self-start {
     justify-self: start;
   }
 
   .md\:justify-self-end {
     justify-self: end;
-  }
-
-  .md\:justify-self-center {
-    justify-self: center;
   }
 }
 
