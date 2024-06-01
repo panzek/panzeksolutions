@@ -9997,6 +9997,10 @@ html:has(.drawer-open.drawer-open) {
   width: weird-and-invalid;
 }
 
+.w-48 {
+  width: 12rem;
+}
+
 .max-w-sm {
   max-width: 24rem;
 }
@@ -13745,6 +13749,10 @@ html:has(.drawer-open.drawer-open) {
   }
 }
 
+.hover\:justify-self-end:hover {
+  justify-self: end;
+}
+
 .hover\:font-bold:hover {
   font-weight: 700;
 }
@@ -13901,6 +13909,11 @@ html:has(.drawer-open.drawer-open) {
 }
 
 @media (min-width: 640px) {
+  .sm\:bg-base-200 {
+    --tw-bg-opacity: 1;
+    background-color: var(--fallback-b2,oklch(var(--b2)/var(--tw-bg-opacity)));
+  }
+
   .sm\:text-left {
     text-align: left;
   }
@@ -13927,6 +13940,11 @@ html:has(.drawer-open.drawer-open) {
 @media (min-width: 1024px) {
   .lg\:flex-row-reverse {
     flex-direction: row-reverse;
+  }
+
+  .lg\:bg-base-200 {
+    --tw-bg-opacity: 1;
+    background-color: var(--fallback-b2,oklch(var(--b2)/var(--tw-bg-opacity)));
   }
 }
 
