@@ -9788,10 +9788,6 @@ html:has(.drawer-open.drawer-open) {
   isolation: auto;
 }
 
-.order-first {
-  order: -9999;
-}
-
 .float-start {
   float: inline-start;
 }
@@ -10003,6 +9999,10 @@ html:has(.drawer-open.drawer-open) {
 
 .max-w-sm {
   max-width: 24rem;
+}
+
+.max-w-lg {
+  max-width: 32rem;
 }
 
 .flex-1 {
@@ -10855,6 +10855,10 @@ html:has(.drawer-open.drawer-open) {
   border-radius: var(--rounded-box, 1rem);
 }
 
+.rounded-full {
+  border-radius: 9999px;
+}
+
 .rounded-lg {
   border-radius: 0.5rem;
 }
@@ -11158,12 +11162,12 @@ html:has(.drawer-open.drawer-open) {
   padding: 0.5rem;
 }
 
-.p-4 {
-  padding: 1rem;
-}
-
 .p-3 {
   padding: 0.75rem;
+}
+
+.p-4 {
+  padding: 1rem;
 }
 
 .px-1 {
@@ -13914,13 +13918,13 @@ html:has(.drawer-open.drawer-open) {
   .md\:justify-self-end {
     justify-self: end;
   }
+
+  .md\:rounded-lg {
+    border-radius: 0.5rem;
+  }
 }
 
 @media (min-width: 1024px) {
-  .lg\:order-last {
-    order: 9999;
-  }
-
   .lg\:flex-row-reverse {
     flex-direction: row-reverse;
   }
