@@ -9788,6 +9788,10 @@ html:has(.drawer-open.drawer-open) {
   isolation: auto;
 }
 
+.order-first {
+  order: -9999;
+}
+
 .float-start {
   float: inline-start;
 }
@@ -11022,11 +11026,6 @@ html:has(.drawer-open.drawer-open) {
   background-color: var(--fallback-b2,oklch(var(--b2)/var(--tw-bg-opacity)));
 }
 
-.bg-base-300 {
-  --tw-bg-opacity: 1;
-  background-color: var(--fallback-b3,oklch(var(--b3)/var(--tw-bg-opacity)));
-}
-
 .bg-gray-50 {
   --tw-bg-opacity: 1;
   background-color: rgb(249 250 251 / var(--tw-bg-opacity));
@@ -11161,6 +11160,10 @@ html:has(.drawer-open.drawer-open) {
 
 .p-4 {
   padding: 1rem;
+}
+
+.p-3 {
+  padding: 0.75rem;
 }
 
 .px-1 {
@@ -13914,6 +13917,10 @@ html:has(.drawer-open.drawer-open) {
 }
 
 @media (min-width: 1024px) {
+  .lg\:order-last {
+    order: 9999;
+  }
+
   .lg\:flex-row-reverse {
     flex-direction: row-reverse;
   }
