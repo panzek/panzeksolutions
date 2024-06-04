@@ -5,6 +5,6 @@ from django.shortcuts import render
 def portfolio(request):
     """ A view to render the portfolio page """
 
-    template = 'portfolios/portfolio.html'
+    template = 'portfolio/portfolios.html'
 
     return render(request, template)
