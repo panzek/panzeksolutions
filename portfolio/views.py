@@ -2,7 +2,9 @@ from django.shortcuts import render
 
 # Create your views here.
 
-def index(request):
-    """ A view to render the home page """
+def portfolio(request):
+    """ A view to render the portfolio page """
 
-    return render(request, 'portfolio/portfolios.html')
+    template = 'portfolios/portfolio.html'
+
+    return render(request, template)
