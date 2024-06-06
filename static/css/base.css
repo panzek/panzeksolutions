@@ -9867,16 +9867,16 @@ html:has(.drawer-open.drawer-open) {
   margin-bottom: auto;
 }
 
+.mb-auto {
+  margin-bottom: auto;
+}
+
 .mt-2 {
   margin-top: 0.5rem;
 }
 
 .mt-auto {
   margin-top: auto;
-}
-
-.mb-auto {
-  margin-bottom: auto;
 }
 
 .box-border {
@@ -9988,10 +9988,6 @@ html:has(.drawer-open.drawer-open) {
 
 .h-screen {
   height: 100vh;
-}
-
-.h-2 {
-  height: 0.5rem;
 }
 
 .min-h-full {
@@ -11210,11 +11206,6 @@ html:has(.drawer-open.drawer-open) {
 
 .p-4 {
   padding: 1rem;
-}
-
-.px-1 {
-  padding-left: 0.25rem;
-  padding-right: 0.25rem;
 }
 
 .px-2 {
