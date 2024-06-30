@@ -9788,6 +9788,10 @@ html:has(.drawer-open.drawer-open) {
   isolation: auto;
 }
 
+.z-\[1\] {
+  z-index: 1;
+}
+
 .float-start {
   float: inline-start;
 }
@@ -9873,6 +9877,10 @@ html:has(.drawer-open.drawer-open) {
 
 .mt-2 {
   margin-top: 0.5rem;
+}
+
+.mt-3 {
+  margin-top: 0.75rem;
 }
 
 .mt-auto {
@@ -9982,10 +9990,6 @@ html:has(.drawer-open.drawer-open) {
   display: none;
 }
 
-.h-6 {
-  height: 1.5rem;
-}
-
 .h-screen {
   height: 100vh;
 }
@@ -10006,8 +10010,8 @@ html:has(.drawer-open.drawer-open) {
   width: 9rem;
 }
 
-.w-6 {
-  width: 1.5rem;
+.w-52 {
+  width: 13rem;
 }
 
 .w-80 {
@@ -11163,10 +11167,6 @@ html:has(.drawer-open.drawer-open) {
   fill: currentColor;
 }
 
-.stroke-current {
-  stroke: currentColor;
-}
-
 .object-contain {
   -o-object-fit: contain;
      object-fit: contain;
@@ -11206,6 +11206,10 @@ html:has(.drawer-open.drawer-open) {
 
 .p-4 {
   padding: 1rem;
+}
+
+.p-6 {
+  padding: 1.5rem;
 }
 
 .px-2 {
@@ -13971,8 +13975,8 @@ html:has(.drawer-open.drawer-open) {
 }
 
 @media (min-width: 640px) {
-  .sm\:text-left {
-    text-align: left;
+  .sm\:text-right {
+    text-align: right;
   }
 
   .sm\:underline {
