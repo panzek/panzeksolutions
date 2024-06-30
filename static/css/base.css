@@ -13975,6 +13975,10 @@ html:has(.drawer-open.drawer-open) {
 }
 
 @media (min-width: 640px) {
+  .sm\:text-left {
+    text-align: left;
+  }
+
   .sm\:text-right {
     text-align: right;
   }
