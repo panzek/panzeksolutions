@@ -9875,12 +9875,12 @@ html:has(.drawer-open.drawer-open) {
   margin-bottom: auto;
 }
 
-.mt-2 {
-  margin-top: 0.5rem;
+.mt-1 {
+  margin-top: 0.25rem;
 }
 
-.mt-3 {
-  margin-top: 0.75rem;
+.mt-2 {
+  margin-top: 0.5rem;
 }
 
 .mt-auto {
@@ -10008,14 +10008,6 @@ html:has(.drawer-open.drawer-open) {
 
 .w-36 {
   width: 9rem;
-}
-
-.w-52 {
-  width: 13rem;
-}
-
-.w-80 {
-  width: 20rem;
 }
 
 .w-\[this-is\\\\\] {
@@ -13977,10 +13969,6 @@ html:has(.drawer-open.drawer-open) {
 @media (min-width: 640px) {
   .sm\:text-left {
     text-align: left;
-  }
-
-  .sm\:text-right {
-    text-align: right;
   }
 
   .sm\:underline {
