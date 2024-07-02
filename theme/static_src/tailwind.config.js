@@ -61,7 +61,7 @@ module.exports = {
         require('@tailwindcss/aspect-ratio'),
     ],
     daisyui: {
-        themes: ["light", "dark", "cupcake"],
+        themes: ["emerald", "dark", "cupcake"],
         base: true, // applies background color and foreground color for root element by default
         utils: true, // adds responsive and modifier utility classes
         styled: true, // include daisyUI colors and design decisions for all components
