@@ -13,8 +13,10 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 import os
 import dj_database_url
 from pathlib import Path
+
 from dotenv import load_dotenv
 
+# Load environment variables from .env file if it exists
 if os.path.isfile('.env'):
     load_dotenv() # take environment variables from .env
 
@@ -28,9 +30,25 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = 'DEVELOPMENT' in os.environ
+DEBUG = os.environ.get('DEVELOPMENT', False) == 'True'
 
-ALLOWED_HOSTS = ['ipanzek.com', 'localhost', '127.0.0.1', '67.222.140.61']
+ALLOWED_HOSTS = ['ipanzek.com', 'localhost', '127.0.0.1']
+
+# Session engine
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'
+
+# Session cookie settings
+# SESSION_COOKIE_NAME = 'sessionid'
+# SESSION_COOKIE_AGE = 10  # Default: 1 hour
+# SESSION_COOKIE_PATH = '/'
+# SESSION_COOKIE_SECURE = False  # Set it to True if your site is using HTTPS
+# SESSION_COOKIE_HTTPONLY = True  # Helps prevent XSS attacks
+
+# CSRF_COOKIE_SECURE = True
+# SECURE_SSL_REDIRECT = True
+# SECURE_HSTS_SECONDS = 31536000  # 1 year
+# SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+# SECURE_HSTS_PRELOAD = True
 
 # Application definition
 
@@ -102,7 +120,6 @@ else:
             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         }
     }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
