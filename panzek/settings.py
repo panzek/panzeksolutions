@@ -34,6 +34,10 @@ DEBUG = os.environ.get('DEVELOPMENT', False) == 'True'
 
 ALLOWED_HOSTS = ['ipanzek.com', 'localhost', '127.0.0.1']
 
+CSRF_TRUSTED_ORIGINS = ["https://ipanzek.com"]
+CSRF_ALLOWED_ORIGINS = ["https://ipanzek.com"]
+CORS_ORIGINS_WHITELIST = ["https://ipanzek.com"]
+
 # Session engine
 SESSION_ENGINE = 'django.contrib.sessions.backends.db'
 
@@ -41,7 +45,7 @@ SESSION_ENGINE = 'django.contrib.sessions.backends.db'
 # SESSION_COOKIE_NAME = 'sessionid'
 # SESSION_COOKIE_AGE = 10  # Default: 1 hour
 # SESSION_COOKIE_PATH = '/'
-# SESSION_COOKIE_SECURE = False  # Set it to True if your site is using HTTPS
+# SESSION_COOKIE_SECURE = True  # Set it to True if your site is using HTTPS
 # SESSION_COOKIE_HTTPONLY = True  # Helps prevent XSS attacks
 
 # CSRF_COOKIE_SECURE = True
