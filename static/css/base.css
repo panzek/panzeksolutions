@@ -10889,6 +10889,10 @@ html:has(.drawer-open.drawer-open) {
   border-radius: 0.5rem;
 }
 
+.rounded-md {
+  border-radius: 0.375rem;
+}
+
 .rounded-b {
   border-bottom-right-radius: 0.25rem;
   border-bottom-left-radius: 0.25rem;
@@ -11074,11 +11078,6 @@ html:has(.drawer-open.drawer-open) {
 .bg-neutral {
   --tw-bg-opacity: 1;
   background-color: var(--fallback-n,oklch(var(--n)/var(--tw-bg-opacity)));
-}
-
-.bg-success-content {
-  --tw-bg-opacity: 1;
-  background-color: var(--fallback-suc,oklch(var(--suc)/var(--tw-bg-opacity)));
 }
 
 .decoration-slice {
