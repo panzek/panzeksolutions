@@ -26,14 +26,14 @@ ALLOWED_HOSTS = ['ipanzek.com', 'localhost', '127.0.0.1']
 SESSION_ENGINE = 'django.contrib.sessions.backends.db'
 
 # Session cookie settings
-SESSION_COOKIE_SECURE = True  # Set it to True if your site is using HTTPS
-SESSION_COOKIE_HTTPONLY = True  # Helps prevent XSS attacks
-
-CSRF_COOKIE_SECURE = True
-SECURE_SSL_REDIRECT = True
-SECURE_HSTS_SECONDS = 31536000  # 1 year
-SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-SECURE_HSTS_PRELOAD = True
+# SESSION_COOKIE_SECURE = True  # Set it to True if your site is using HTTPS
+# SESSION_COOKIE_HTTPONLY = True  # Helps prevent XSS attacks
+#
+# CSRF_COOKIE_SECURE = True
+# SECURE_SSL_REDIRECT = True
+# SECURE_HSTS_SECONDS = 31536000  # 1 year
+# SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+# SECURE_HSTS_PRELOAD = True
 
 # Application definition
 
