@@ -17,15 +17,14 @@
         <link rel="icon" type="image/png" sizes="192x192" href="{{ MEDIA_URL }}favicons/android-chrome.png">
         <link rel="icon" type="image/png" sizes="180x180" href="{{ MEDIA_URL }}favicons/apple-touch-icon.png">
         <link rel="icon" type="image/png" sizes="16x16" href="{{ MEDIA_URL }}favicons/favicon.png" />
-
 	</head>
 
-	<body class="flex flex-col min-h-screen bg-base-200 text-center sm:text-left">
+	<body class="flex flex-col bg-base-100 min-h-screen text-center sm:text-left">
 		<div class="drawer">
 			<input id="my-drawer-3" type="checkbox" class="drawer-toggle z-index" /> 
 			<div class="drawer-content flex flex-col">
 				<!-- Navbar -->
-				<div class="w-full navbar bg-base-100 mb-auto">
+				<div class="w-full navbar bg-base-100 mb-auto shadow">
 					<div class="flex-none lg:hidden">
 						<label for="my-drawer-3" aria-label="open sidebar" class="btn btn-circle btn-ghost swap swap-rotate">
 							<svg
@@ -44,30 +43,29 @@
 						</a>
 					</div>
 					<div class="flex-none hidden lg:block">
-					<ul class="menu menu-horizontal">
-						<!-- Navbar menu content -->
-						<li>
-							<a class="tooltip tooltip-bottom tooltip-success" data-tip="Home">Home</a>
-						</li>
-						<li>
-							<a class="tooltip tooltip-bottom tooltip-success" data-tip="Solutions">Our Solutions</a>
-						</li>
-						<li>
-							<a class="tooltip tooltip-bottom tooltip-success" data-tip="Contact">Contact</a>
-						</li>
-						<li>
-							<details>
-								<summary>
-									<span class="tooltip tooltip-bottom tooltip-success" data-tip="About">About</span>
-
-								</summary>
-								<ul class="menu menu-sm p-2 bg-base-100 rounded-t-none w-24">
-								<li><a>Portfolio</a></li>
-								<li><a>Hire Us</a></li>
-								</ul>
-							</details>
-						</li>
-					</ul>
+						<ul class="menu menu-horizontal">
+							<!-- Navbar menu content -->
+							<li>
+								<a class="tooltip tooltip-bottom tooltip-success" data-tip="Home">Home</a>
+							</li>
+							<li>
+								<a class="tooltip tooltip-bottom tooltip-success" data-tip="Solutions">Our Solutions</a>
+							</li>
+							<li>
+								<a class="tooltip tooltip-bottom tooltip-success" data-tip="Contact">Contact</a>
+							</li>
+							<li>
+								<details>
+									<summary>
+										<span class="tooltip tooltip-bottom tooltip-success" data-tip="About">About</span>
+									</summary>
+									<ul class="menu menu-sm p-2 bg-base-100 rounded-t-none w-24">
+									<li><a>Portfolio</a></li>
+									<li><a>Hire Us</a></li>
+									</ul>
+								</details>
+							</li>
+						</ul>
 					</div>
 				</div>
 			  	<!-- Page content here -->

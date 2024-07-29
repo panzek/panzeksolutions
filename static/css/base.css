@@ -9064,11 +9064,11 @@ html:has(.drawer-open.drawer-open) {
   bottom: var(--tooltip-offset);
 }
 
-.tooltip-left:before {
-  transform: translateY(-50%);
-  top: 50%;
-  left: auto;
-  right: var(--tooltip-offset);
+.tooltip-bottom:before {
+  transform: translateX(-50%);
+  top: var(--tooltip-offset);
+  left: 50%;
+  right: auto;
   bottom: auto;
 }
 
@@ -9579,12 +9579,12 @@ html:has(.drawer-open.drawer-open) {
   bottom: var(--tooltip-tail-offset);
 }
 
-.tooltip-left:after {
-  transform: translateY(-50%);
-  border-color: transparent transparent transparent var(--tooltip-color);
-  top: 50%;
-  left: auto;
-  right: calc(var(--tooltip-tail-offset) + 0.0625rem);
+.tooltip-bottom:after {
+  transform: translateX(-50%);
+  border-color: transparent transparent var(--tooltip-color) transparent;
+  top: var(--tooltip-tail-offset);
+  left: 50%;
+  right: auto;
   bottom: auto;
 }
 
@@ -10045,6 +10045,10 @@ html:has(.drawer-open.drawer-open) {
 
 .max-w-screen-lg {
   max-width: 1024px;
+}
+
+.max-w-sm {
+  max-width: 24rem;
 }
 
 .flex-1 {
@@ -11345,6 +11349,10 @@ html:has(.drawer-open.drawer-open) {
 
 .font-medium {
   font-weight: 500;
+}
+
+.font-normal {
+  font-weight: 400;
 }
 
 .uppercase {
@@ -14022,10 +14030,6 @@ html:has(.drawer-open.drawer-open) {
 
   .lg\:flex-row {
     flex-direction: row;
-  }
-
-  .lg\:flex-row-reverse {
-    flex-direction: row-reverse;
   }
 
   .lg\:text-base {
