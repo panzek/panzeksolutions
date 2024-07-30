@@ -61,6 +61,7 @@ INSTALLED_APPS = [
     'theme',
     'storages',
 
+    'contact',
     'home',
     'portfolio',
 ]
