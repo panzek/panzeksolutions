@@ -9,7 +9,7 @@ def contact(request):
     A view to render form in template
     """
 
-    ContactForm(request.POST)
+    # ContactForm(request.POST)
 
     if request.method == 'POST':
         form = ContactForm(request.POST)
@@ -25,6 +25,9 @@ def contact(request):
                 contact_email,  # from email
                 [settings.DEFAULT_FROM_EMAIL],  # to email
             )
+
+            # redirect to a new url
+            return redirect("/thanks/")
 
     else:
         form = ContactForm()
