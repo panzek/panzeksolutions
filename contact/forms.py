@@ -4,7 +4,7 @@ from contact.models import Contact
 
 class ContactForm(forms.ModelForm):
     """
-      Form for users to send company a message
+    Form for users to send company a message
     """
 
     message = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control', 'rows': 3}))
@@ -15,6 +15,7 @@ class ContactForm(forms.ModelForm):
             'firstName',
             'lastName',
             'email',
+            'subject',
             'message',
         )
 
@@ -24,6 +25,7 @@ class ContactForm(forms.ModelForm):
             'firstName': 'Enter your first name',
             'lastName': 'Enter your last name',
             'email': 'Enter your email address',
+            'subject': 'Enter your message subject',
             'message': 'Enter your message',
         }
 
