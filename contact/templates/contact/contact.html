@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Contact Us | Panzek Solutions {% endblock %}
+
+{% block content %}
+
+<div class="hero bg-base-200 min-h-screen">
+  <div class="hero-content flex-col lg:flex-row-reverse">
+    <div class="text-center lg:text-left">
+      <h1 class="text-5xl font-bold">Get in Touch</h1>
+      <p class="py-6">
+        Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem
+        quasi. In deleniti eaque aut repudiandae et a id nisi.
+      </p>
+    </div>
+    <div class="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+      <form action="{% url 'contact' %}" method="POST" class="card-body">
+        <div class="form-control">
+            {% csrf_token %}
+            {{ form.as_p }}
+        </div>
+        <div class="card-actions justify-center">
+            <button class="btn btn-ghost">Cancel</button>
+            <button type="submit" class="btn btn-primary">Send</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
