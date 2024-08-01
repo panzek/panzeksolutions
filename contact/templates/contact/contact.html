@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 {% load static %}
 
+<!--{% load tailwind_filters %}-->
+{% load crispy_forms_tags %}
+
 {% block title %} Contact Us | Panzek Solutions {% endblock %}
 
 {% block content %}
@@ -49,11 +52,12 @@
           <form action="{% url 'contact' %}" method="POST" class="card-body">
             <div class="form-control">
                 {% csrf_token %}
-                {{ form.as_p }}
+
+                {{ form|crispy }}
             </div>
             <div class="card-actions justify-center">
-                <button class="btn btn-ghost">Cancel</button>
                 <button type="submit" class="btn btn-primary">Send</button>
+                <button type="reset" class="btn btn-accent">Cancel</button>
             </div>
           </form>
         </div>
