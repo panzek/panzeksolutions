@@ -38,7 +38,7 @@
 						</label>
 					</div> 
 					<div class="flex-1 px-2 mx-2 text-xl">
-						<a class="mx-auto lg:mx-2">
+						<a href="{% url 'home' %}" class="mx-auto lg:mx-2">
 							<img src="{{ MEDIA_URL }}panzek_logo.webp" alt="Panzek logo">
 						</a>
 					</div>
@@ -46,13 +46,13 @@
 						<ul class="menu menu-horizontal">
 							<!-- Navbar menu content -->
 							<li>
-								<a class="tooltip tooltip-bottom tooltip-primary" data-tip="Home">Home</a>
+								<a href="{% url 'home' %}" class="tooltip tooltip-bottom tooltip-primary" data-tip="Home">Home</a>
 							</li>
 							<li>
 								<a class="tooltip tooltip-bottom tooltip-primary" data-tip="Solutions">Our Solutions</a>
 							</li>
 							<li>
-								<a class="tooltip tooltip-bottom tooltip-primary" data-tip="Contact">Contact</a>
+								<a href="{% url 'contact' %}" class="tooltip tooltip-bottom tooltip-primary" data-tip="Contact">Contact</a>
 							</li>
 							<li>
 								<details>
