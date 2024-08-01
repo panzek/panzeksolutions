@@ -5,28 +5,59 @@
 
 {% block content %}
 
-<div class="hero bg-base-200 min-h-screen">
-  <div class="hero-content flex-col lg:flex-row-reverse">
-    <div class="text-center lg:text-left">
-      <h1 class="text-5xl font-bold">Get in Touch</h1>
-      <p class="py-6">
-        Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem
-        quasi. In deleniti eaque aut repudiandae et a id nisi.
-      </p>
-    </div>
-    <div class="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-      <form action="{% url 'contact' %}" method="POST" class="card-body">
-        <div class="form-control">
-            {% csrf_token %}
-            {{ form.as_p }}
+<div class="hero py-6">
+    <div class="hero-content flex-col py-6 lg:flex-row ">
+        <div class="bg-base-200 py-6 sm:text-left rounded">
+            <div class="flex-shrink bg-base-200 text-1xl text-center">
+                <div>
+                    <h1 class="text-5xl font-bold">Get in Touch</h1>
+                    <p>
+                        Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem
+                    quasi. In deleniti eaque aut repudiandae.
+                    </p>
+                </div>
+                <div class="py-6">
+                    <p >Email Address:</p>
+                    <p class="text-1xl font-bold">info@ipanzek.com</p>
+                </div>
+                <div>
+                    <div class="grid-flow-col gap-4 p-2 place-self-center md:justify-self-end">
+                        <p>Socials:</p>
+                      <a href="https://twitter.com/ipanzek" target="_blank" rel="noopener" aria-label="Go to Panzek's Twitter page (opens new tab on third party site)" title="Twitter">
+                          <span style="font-size: 2em;" class="p-3">
+                              <i class="fa-brands fa-twitter fa-sm" aria-hidden="true"></i>
+                          </span>
+                          <span class="sr-only">Twitter</span>
+                      </a>
+                      <a href="https://linkedin.com/in/panzek/" target="_blank" rel="noopener" aria-label="Go to Panzek's LinkedIn page (opens new tab on third party site)" title="LinkedIn">
+                          <span style="font-size: 2em;" class="p-3">
+                              <i class="fa-brands fa-linkedin fa-sm" aria-hidden="true"></i>
+                          </span>
+                          <span class="sr-only">LinkedIn</span>
+                      </a>
+                      <a href="https://github.com/panzek" target="_blank" rel="noopener" aria-label="Go to Panzek's GitHub page (opens new tab on third party site)" title="GitHub">
+                          <span style="font-size: 2em;" class="p-3">
+                              <i class="fab fa-github-square fa-sm" aria-hidden="true"></i>
+                          </span>
+                          <span class="sr-only">GitHub</span>
+                      </a>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="card-actions justify-center">
-            <button class="btn btn-ghost">Cancel</button>
-            <button type="submit" class="btn btn-primary">Send</button>
+        <div class="card bg-base-200 w-full max-w-md shrink-0 shadow-2xl">
+          <form action="{% url 'contact' %}" method="POST" class="card-body">
+            <div class="form-control">
+                {% csrf_token %}
+                {{ form.as_p }}
+            </div>
+            <div class="card-actions justify-center">
+                <button class="btn btn-ghost">Cancel</button>
+                <button type="submit" class="btn btn-primary">Send</button>
+            </div>
+          </form>
         </div>
-      </form>
     </div>
-  </div>
 </div>
 
 {% endblock %}

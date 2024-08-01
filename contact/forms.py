@@ -11,13 +11,7 @@ class ContactForm(forms.ModelForm):
 
     class Meta:
         model = Contact
-        fields = (
-            'firstName',
-            'lastName',
-            'email',
-            'subject',
-            'message',
-        )
+        fields = '__all__'
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -33,4 +27,4 @@ class ContactForm(forms.ModelForm):
         for field in self.fields:
             placeholder = placeholders[field]
             self.fields[field].widget.attrs['placeholder'] = placeholder
-            self.fields[field].widget.attrs['class'] = 'form-control'
+            self.fields[field].widget.attrs['class'] = 'form-control input-primary rounded w-full max-w-xs'
