@@ -91,6 +91,11 @@ LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
+# Silence MariaDB Unique Constraints for django-allauth in Production
+SILENCED_SYSTEM_CHECKS = [
+    "models.W036",
+]
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
