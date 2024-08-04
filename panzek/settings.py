@@ -84,6 +84,7 @@ if 'DEPLOYMENT' in os.environ:
     NPM_BIN_PATH = r"C:/Program Files/nodejs/npm.cmd"
 else:
     NPM_BIN_PATH = os.environ.get('NPM_BIN_PATH', '~/.nvm/versions/node/v20.12.2/bin/npm')
+    NODE_BIN_PATH = os.environ.get('NODE_BIN_PATH', '~/.nvm/versions/node/v20.12.2/bin/node')
 
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_EMAIL_REQUIRED = True
