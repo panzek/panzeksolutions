@@ -83,8 +83,7 @@ INTERNAL_IPS = [
 if 'DEPLOYMENT' in os.environ:
     NPM_BIN_PATH = r"C:/Program Files/nodejs/npm.cmd"
 else:
-    NPM_BIN_PATH = "$PATH:/root/.nvm/versions/node/v20.16.0/bin/npm"
-    NODE_BIN_PATH = "$PATH:/root/.nvm/versions/node/v20.16.0/bin/node"
+    NPM_BIN_PATH = "/usr/local/bin/npm"
 
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_EMAIL_REQUIRED = True
