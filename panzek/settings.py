@@ -66,6 +66,7 @@ INSTALLED_APPS = [
     'contact',
     'home',
     'portfolio',
+    'solutions',
 ]
 
 SITE_ID = 1
