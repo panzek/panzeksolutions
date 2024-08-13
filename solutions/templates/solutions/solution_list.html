@@ -6,8 +6,6 @@
 
 {% block content %}
 
-
-
 <div class="hero p-6">
     <div class="hero-content flex-col lg:flex-row ">
 
@@ -20,14 +18,17 @@
                 </figure>
             <div class="p-6">
                 <div class="card-actions justify-center">
-                <h2 class="card-title"> Our Solutions </h2>
+                <h2 class="card-title"> {{solution.name }} </h2>
                 <p> {{solution.description }}</p>
             </div>
-            <div class="card-actions justify-center">
-                <h4 class="card-title">Tech Stack</h4>
-                 <div>{{ solution.tech_stack }}</div>
-                <div class="badge badge-outline">Products</div>
-            </div>
+                <div class="card-actions justify-center">
+                    <h4 class="card-title">Tech Stack</h4>
+                    <ul>
+                        {% for tech in solution.tech_stack %}
+                        <li class="badge badge-outline">{{ tech }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
             </div>
              {% endfor %}
         </div>
