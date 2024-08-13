@@ -6,9 +6,11 @@
 
 {% block content %}
 
-<div class="hero p-6">
+<div class="relative flex items-center py-6">
+    <span class="flex-shrink text-5xl font-bold text-gray-400 mx-auto">Our Solutions</span>
+</div>
+<div class="hero pb-6">
     <div class="hero-content flex-col lg:flex-row ">
-
         <div class="card bg-base-200 w-full max-w-md shrink-0 shadow-1xl">
             {% for solution in solution_list %}
             <figure>
@@ -18,14 +20,16 @@
                 </figure>
             <div class="p-6">
                 <div class="card-actions justify-center">
-                <h2 class="card-title"> {{solution.name }} </h2>
-                <p> {{solution.description }}</p>
+                <h2 class="card-title"> {{ solution.name }} </h2>
+                <p> {{ solution.description }}</p>
             </div>
                 <div class="card-actions justify-center">
                     <h4 class="card-title">Tech Stack</h4>
-                    <ul>
+                    <ul class="card-actions justify-center">
                         {% for tech in solution.tech_stack %}
-                        <li class="badge badge-outline">{{ tech }}</li>
+                        <li class="badge badge-primary badge-outline sm:badge-sm md:badge-md lg:badge-lg">
+                            {{ tech }}
+                        </li>
                         {% endfor %}
                     </ul>
                 </div>
