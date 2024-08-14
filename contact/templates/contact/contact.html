@@ -9,9 +9,9 @@
 {% block content %}
 
 <div class="hero py-6">
-    <div class="hero-content flex-col py-6 lg:flex-row ">
-        <div class="bg-base-200 py-6 sm:text-left rounded">
-            <div class="flex-shrink bg-base-200 text-1xl text-center">
+    <div class="hero-content flex-col py-6 lg:flex-row bg-green-500 rounded">
+        <div class="bg-base-200 w-64 py-6 sm:text-left rounded">
+            <div class="flex-shrink bg-green-500 text-1xl text-center">
                 <div>
                     <h1 class="text-5xl font-bold">Get in Touch</h1>
                     <p>
@@ -55,8 +55,8 @@
                 {{ form|crispy }}
             </div>
             <div class="card-actions justify-center">
-                <button type="submit" class="btn btn-primary">Send</button>
-                <button type="reset" class="btn btn-accent">Cancel</button>
+                <button type="submit" class="btn w-24 btn-primary">Send</button>
+                <button type="reset" class="btn w-24 bg-base-600">Cancel</button>
             </div>
           </form>
         </div>

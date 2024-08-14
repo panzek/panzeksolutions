@@ -27,4 +27,4 @@ class ContactForm(forms.ModelForm):
         for field in self.fields:
             placeholder = placeholders[field]
             self.fields[field].widget.attrs['placeholder'] = placeholder
-            self.fields[field].widget.attrs['class'] = 'form-control input-primary rounded w-full max-w-xs'
+            self.fields[field].widget.attrs['class'] = 'form-control input-primary rounded max-w-full'
