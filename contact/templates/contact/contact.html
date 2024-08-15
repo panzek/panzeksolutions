@@ -13,9 +13,9 @@
         <div class="bg-base-200 w-64 py-6 sm:text-left rounded">
             <div class="flex-shrink bg-green-500 text-1xl text-center">
                 <div>
-                    <h1 class="text-5xl font-bold">Get in Touch</h1>
+                    <h1 class="text-3xl font-bold">Get in Touch</h1>
                     <p>
-                        We design bespoke and innovative Solutions.
+                        We design bespoke and innovative Solutions!
                     </p>
                 </div>
                 <div class="py-6">
@@ -23,7 +23,7 @@
                     <p class="text-1xl font-bold">info@ipanzek.com</p>
                 </div>
                 <div>
-                    <div class="grid-flow-col gap-4 p-2 place-self-center md:justify-self-end">
+                    <div class="grid-flow-col gap-4 place-self-center md:justify-self-end">
                         <p>Socials:</p>
                       <a href="https://twitter.com/ipanzek" target="_blank" rel="noopener" aria-label="Go to Panzek's Twitter page (opens new tab on third party site)" title="Twitter">
                           <span style="font-size: 2em;" class="p-3">
@@ -51,12 +51,11 @@
           <form action="{% url 'contact' %}" method="POST" class="card-body">
             <div class="form-control">
                 {% csrf_token %}
-
                 {{ form|crispy }}
             </div>
             <div class="card-actions justify-center">
                 <button type="submit" class="btn w-24 btn-primary">Send</button>
-                <button type="reset" class="btn w-24 bg-base-600">Cancel</button>
+                <button type="reset" class="btn w-24 bg-base-300">Cancel</button>
             </div>
           </form>
         </div>
