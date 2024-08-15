@@ -14,10 +14,8 @@
         <div class="card bg-base-200 w-full max-w-md shrink-0 shadow-1xl">
             {% for solution in solution_list %}
             <figure>
-                <img
-                        src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                        alt="Shoes" />
-                </figure>
+                <img src="{{ solution.image.url }}" alt="{{ solution.name }}">
+            </figure>
             <div class="p-6">
                 <div class="card-actions justify-center">
                 <h2 class="card-title"> {{ solution.name }} </h2>
