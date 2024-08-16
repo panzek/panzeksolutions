@@ -22,7 +22,7 @@
                     </div>
                     <div class="flex-shrink text-1xl font-normal hover:font-bold">
                         <span class="badge badge-xs badge-warning"></span>
-                        eCommerce
+                        eCommerce Store
                     </div>
                     <div class="flex-shrink text-1xl font-normal hover:font-bold">
                         <span class="badge badge-xs badge-secondary"></span>
@@ -50,27 +50,41 @@
     </div>
 </div>
 
+{% comment %} Solution entries column {% endcomment %}
 <div class="container mx-auto">
     <div class="relative flex items-center py-6">
         <div class="flex-grow border-t border-gray-400"></div>
             <span class="flex-shrink mx-4 text-5xl font-bold text-gray-400">Our Solutions</span>
         <div class="flex-grow border-t border-gray-400"></div><br>
     </div>
-      <div class="columns-3 ...">
-          <div class="py-6">Full Stack Software Developer, AI enthusiast, Scholar, Thinker, Literary critic...
-            Skilled in modern technologies and tools: Python, JavaScript, Django, jQuery, ReactJS,
-            NGINX, PostgreSQL, MySQL, Bootstrap, TailwindCSS, DaisyUI, CSS3, HTML5, Git Version Control and principles of
-            Agile Development.
-          </div>
-          <div>
-              I have utilised these skills in developing functional responsive websites and
-            complex web applications, and contributing to Hackathons. A quick learner, passionate about coding
-            education and community service...
-          </div>
-          <div>
-              <button class="glass btn sm:btn-sm md:btn-md lg:btn-lg bg-base-200">Contact me</button>
-          </div>
-      </div>
+    <div class="hero">
+    <div class="hero-content flex-col lg:flex-row items-stretch">
+        {% for solution in solution_list %}
+        <div class="card bg-base-100 w-full max-w-md shadow-2xl">
+            <figure>
+                <img src="{{ solution.image.url }}" alt="{{ solution.name }}">
+            </figure>
+            <div class="p-6 ">
+                <div class="card-actions justify-center">
+                <h2 class="card-title"> {{ solution.name }} </h2>
+                <p> {{ solution.description }}</p>
+                </div>
+                <div class="card-actions justify-center py-6">
+                    <h4 class="card-title">Tech Stack</h4>
+                    <ul class="card-actions justify-center">
+                        {% for tech in solution.tech_stack %}
+                        <li class="badge badge-primary badge-outline sm:badge-sm md:badge-md lg:badge-lg">
+                            {{ tech }}
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
 </div>
 
 {% endblock %}

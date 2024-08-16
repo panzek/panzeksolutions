@@ -1,8 +1,19 @@
 from django.shortcuts import render
+from solutions.models import Solution
 
-# Create your views here.
 
 def index(request):
     """ A view to render the home page """
+    # query all solutions from the database
+    solutions = Solution.objects.all()
 
-    return render(request, 'home/index.html')
+    # process the tech_stack for each solution by splitting the string into a list
+    for solution in solutions:
+        solution.tech_stack = solution.tech_stack.split(", ")
+
+    # passing the processed solution list to a context
+    context = {
+        'solution_list': solutions,
+    }
+
+    return render(request, 'home/index.html', context)
