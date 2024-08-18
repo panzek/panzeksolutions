@@ -20,7 +20,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEVELOPMENT', False) == 'True'
 
-ALLOWED_HOSTS = ['ipanzek.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['panzeksolutions.com', 'localhost', '127.0.0.1']
 
 # Session engine
 SESSION_ENGINE = 'django.contrib.sessions.backends.db'
