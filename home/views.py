@@ -17,3 +17,14 @@ def index(request):
     }
 
     return render(request, 'home/index.html', context)
+
+
+# Thank Your Message
+def thank_you(request):
+    """
+    A view to render Thank Your Message
+    """
+
+    context = {}
+
+    return render(request, 'home/thank_you.html', context)

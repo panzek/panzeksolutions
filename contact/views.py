@@ -27,7 +27,7 @@ def contact(request):
             )
 
             # redirect to a new url
-            return redirect("/thanks/")
+            return redirect("/thank_you")
 
     else:
         form = ContactForm()
