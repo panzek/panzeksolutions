@@ -222,13 +222,17 @@ if 'DEVELOPMENT' in os.environ:
     DEFAULT_FROM_EMAIL = 'panzeksolutions@example.com'
 else:
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-    EMAIL_USE_SSL = True
-    EMAIL_USE_TLS = False
+    EMAIL_USE_TLS = True
     EMAIL_PORT = 465
     EMAIL_HOST = 'mail.panzeksolutions.com'
     EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
     EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
     DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')
+
+# Enable Error Reporting for Email
+ADMINS = [('Panzek', 'panzek@yahoo.co.uk')]
+SERVER_EMAIL = 'info@panzeksolutions.com'
+EMAIL_SUBJECT_PREFIX = '[Django Error] '
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
