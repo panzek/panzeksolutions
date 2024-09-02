@@ -55,7 +55,7 @@
 									</summary>
 									<ul class="menu menu-sm p-2 bg-base-100 rounded-t-none w-24">
 										{% if user.is_superuser %}
-										<li><a href="">Manage Solutions</a></li>
+										<li><a href="{% url 'add_solution' %}">Manage Solutions</a></li>
 										{% endif %}
 									</ul>
 								</details>
