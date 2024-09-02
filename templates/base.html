@@ -49,7 +49,16 @@
 								<a href="{% url 'home' %}" class="tooltip tooltip-bottom tooltip-primary" data-tip="Home">Home</a>
 							</li>
 							<li>
-								<a href="{% url 'solutions' %}" class="tooltip tooltip-bottom tooltip-primary" data-tip="Solutions">Our Solutions</a>
+								<details>
+									<summary>
+										<a href="{% url 'solutions' %}" class="tooltip tooltip-bottom tooltip-primary" data-tip="Solutions">Our Solutions</a>
+									</summary>
+									<ul class="menu menu-sm p-2 bg-base-100 rounded-t-none w-24">
+										{% if user.is_superuser %}
+										<li><a href="">Manage Solutions</a></li>
+										{% endif %}
+									</ul>
+								</details>
 							</li>
 							<li>
 								<a href="{% url 'contact' %}" class="tooltip tooltip-bottom tooltip-primary" data-tip="Contact">Contact</a>
