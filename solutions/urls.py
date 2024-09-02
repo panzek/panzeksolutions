@@ -3,5 +3,5 @@ from . views import SolutionListView, SolutionCreateView
 
 urlpatterns = [
     path('', SolutionListView.as_view(), name='solutions'),
-    path('add/', SolutionCreateView.as_view(), name='solution_create'),
+    path('add/', SolutionCreateView.as_view(), name='add_solution'),
 ]

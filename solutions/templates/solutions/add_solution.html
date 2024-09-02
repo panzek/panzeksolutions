@@ -13,14 +13,14 @@
       <h2 class="mb-4">Solution Management</h2>
       <h5 class="text-muted">Add a Solution</h5>
       <div class="card bg-base-100 w-full max-w-md shrink-0 ">
-        <form class="card-body" action="{% url 'contact' %}" method="POST" enctype="multipart/form-data">
+        <form class="card-body" action="{% url 'add_solution' %}" method="POST" enctype="multipart/form-data">
           <div class="form-control">
               {% csrf_token %}
               {{ form|crispy }}
           </div>
           <div class="card-actions justify-center">
             <a class="btn w-24 bg-base-300" href="{% url 'solutions' %}">Cancel</a>
-            <button type="submit" class="btn w-24 btn-primary">Send</button>
+            <button type="submit" class="btn w-24 btn-primary">Save</button>
           </div>
         </form>
       </div>

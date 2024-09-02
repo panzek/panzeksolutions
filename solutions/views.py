@@ -5,29 +5,6 @@ from django.views import generic
 from .forms import SolutionForm
 
 
-@login_required()
-def add_solution(request):
-    """ A view for store owner to add solution  to the store """
-
-    if not request.user.is_superuser:
-        return redirect(reverse('home'))
-
-    if request.method == 'POST':
-        form = SolutionForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            return redirect(reverse('add_solution'))
-    else:
-        form = SolutionForm()
-
-    template = 'solutions/add_solution.html'
-    context = {
-        'form': form
-    }
-
-    return render(request, template, context)
-
-
 # using class-based view
 class SolutionListView(generic.ListView):
     model = Solution
