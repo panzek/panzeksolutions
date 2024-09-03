@@ -10,6 +10,9 @@ class Solution(models.Model):
     tech_stack = models.TextField(max_length=1500, null=True, blank=True)
     image = models.ImageField(null=True, blank=True)
 
+    class Meta:
+        ordering = ['-id']
+
     def __str__(self):
         return self.name
 
