@@ -12,7 +12,7 @@
     </div>
     <div class="hero">
         <div class="hero-content flex-col lg:flex-row items-stretch">
-            {% for solution in solution_list %}
+
             <div class="card bg-base-100 w-full max-w-md shadow-2xl">
                 <figure>
                     <img src="{{ solution.image.url }}" alt="{{ solution.name }}">
@@ -25,7 +25,7 @@
                     <div class="card-actions justify-center py-6">
                         <h4 class="card-title">Tech Stack</h4>
                         <ul class="card-actions justify-center">
-                            {% for tech in solution.tech_stack %}
+                            {% for tech in tech_stack_list %}
                             <li class="badge badge-primary badge-outline sm:badge-sm md:badge-md lg:badge-lg">
                                 {{ tech }}
                             </li>
@@ -34,7 +34,7 @@
                     </div>
                 </div>
             </div>
-            {% endfor %}
+
         </div>
     </div>
 </div>

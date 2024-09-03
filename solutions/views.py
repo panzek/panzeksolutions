@@ -31,4 +31,8 @@ class SolutionCreateView(generic.edit.CreateView):
 # Detail view
 class SolutionDetailView(generic.DetailView):
     model = Solution
-    fields = '__all__'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['tech_stack_list'] = self.object.tech_stack.split(',')
+        return context
