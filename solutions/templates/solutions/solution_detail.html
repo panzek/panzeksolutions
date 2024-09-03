@@ -2,7 +2,7 @@
 {% load static %}
 
 
-{% block title %} Our Solutions | Panzek Solutions {% endblock %}
+{% block title %} {{ solution.name }} | Panzek Solutions {% endblock %}
 
 {% block content %}
 
@@ -19,8 +19,8 @@
                 </figure>
                 <div class="p-6 ">
                     <div class="card-actions justify-center">
-                    <h2 class="card-title"> {{ solution.name }} </h2>
-                    <p> {{ solution.description }}</p>
+                        <h2 class="card-title"> {{ solution.name }} </h2>
+                        <p> {{ solution.description }}</p>
                     </div>
                     <div class="card-actions justify-center py-6">
                         <h4 class="card-title">Tech Stack</h4>
@@ -33,17 +33,9 @@
                         </ul>
                     </div>
                 </div>
-                <div class="card-actions justify-center">
-                    <a class="btn w-24 btn-primary" href="{% url 'solution_detail' solution.id %}">More</a>
-                </div>
             </div>
-            {% if forloop.counter|divisibleby:3 %}
+            {% endfor %}
         </div>
-    </div>
-    {# Start a new row here #}
-    <div class="hero-content flex-col lg:flex-row items-stretch">
-        {% endif %}
-        {% endfor %}
     </div>
 </div>
 

@@ -22,6 +22,13 @@ class SolutionListView(generic.ListView):
         return context
 
 
+# create view
 class SolutionCreateView(generic.edit.CreateView):
+    model = Solution
+    fields = '__all__'
+
+
+# Detail view
+class SolutionDetailView(generic.DetailView):
     model = Solution
     fields = '__all__'
