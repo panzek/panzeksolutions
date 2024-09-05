@@ -22,12 +22,6 @@ class SolutionListView(generic.ListView):
         return context
 
 
-# create view
-class SolutionCreateView(generic.edit.CreateView):
-    model = Solution
-    fields = '__all__'
-
-
 # Detail view
 class SolutionDetailView(generic.DetailView):
     model = Solution
@@ -36,3 +30,17 @@ class SolutionDetailView(generic.DetailView):
         context = super().get_context_data(**kwargs)
         context['tech_stack_list'] = self.object.tech_stack.split(',')
         return context
+
+
+# create view
+class SolutionCreateView(generic.edit.CreateView):
+    model = Solution
+    fields = '__all__'
+
+
+# Update view
+class SolutionUpdateView(generic.edit.UpdateView):
+    model = Solution
+    fields = '__all__'
+    template_name_suffix = '_update_form'
+
