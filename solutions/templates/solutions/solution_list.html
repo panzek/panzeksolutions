@@ -42,7 +42,7 @@
                     <a href="{% url 'solution_edit' solution.id %}" class="text-1xl text-green-800 hover:text-green-500">Edit</a>
                     |
                     <!-- Delete Solutions -->
-                    <a href="{{ solution.id }}" class="text-bold text-1xl text-red-500">
+                    <a href="{% url 'solution_delete' solution.id %}" class="text-bold text-1xl text-red-500">
                         Delete
                     </a>
                     {% endif %}
