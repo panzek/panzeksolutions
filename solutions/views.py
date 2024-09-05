@@ -43,6 +43,7 @@ class SolutionUpdateView(generic.edit.UpdateView):
     model = Solution
     fields = '__all__'
     template_name_suffix = '_update_form'
+    success_url = reverse_lazy('solutions')
 
 
 # Delete Solution view

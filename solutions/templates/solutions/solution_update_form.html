@@ -8,21 +8,20 @@
 
 {% block content %}
 
-<div class="hero py-6">
-    <div class="hero-content w-full flex-col py-6 lg:flex-row bg-base-100 rounded-lg">
-        <div class="card bg-base-100 w-full max-w-md shrink-0 shadow-2xl">
-            <div class="card-title py-6 mx-auto text-2xl">Edit Solution</div>
-            <hr/>
-            <form class="card-body" action="{% url 'solution_edit' %}" method="POST" enctype="multipart/form-data">
-                <div class="form-control">
-                    {% csrf_token %}
-                    {{ form|crispy }}
-                </div>
-                <div class="card-actions justify-center">
-                    <a class="btn w-24 bg-base-300" href="{% url 'solutions' %}">Cancel</a>
-                    <button type="submit" class="btn w-24 btn-primary">Update Solution</button>
-                </div>
-            </form>
-        </div>
+<div class="hero w-full py-6">
+    <div class="card bg-base-100 w-80 py-6 shadow-2xl">
+        <div class="card-title mx-auto text-2xl">Edit {{ solution.name }}</div>
+        <form class="card-body" action="{% url 'solution_edit' solution.id %}" method="POST" enctype="multipart/form-data">
+            <div class="form-control">
+                {% csrf_token %}
+                {{ form|crispy }}
+            </div>
+            <div class="card-actions justify-center">
+                <a class="btn w-24 bg-base-300 sm:btn-sm md:btn-md" href="{% url 'solutions' %}">Cancel</a>
+                <button type="submit" class="btn w-24 btn-primary">Update Solution</button>
+            </div>
+        </form>
     </div>
 </div>
+
+{% endblock %}
