@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, redirect, reverse_lazy
 from django.contrib.auth.decorators import login_required
 from solutions.models import Solution
 from django.views import generic
@@ -44,3 +44,8 @@ class SolutionUpdateView(generic.edit.UpdateView):
     fields = '__all__'
     template_name_suffix = '_update_form'
 
+
+# Delete Solution view
+class SolutionDeleteView(generic.edit.DeleteView):
+    model = Solution
+    success_url = reverse_lazy('solutions')
