@@ -30,7 +30,7 @@ class ContactForm(forms.ModelForm):
             'email': 'Enter your email address',
             'subject': 'Enter your message subject',
             'message': 'Enter your message',
-            'captcha': 'checkbox',
+            'captcha': 'captcha',
         }
 
         self.fields['firstName'].widget.attrs['autofocus'] = True
