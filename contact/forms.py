@@ -1,5 +1,6 @@
 from django import forms
 from contact.models import Contact
+from django_recaptcha.fields import ReCaptchaField
 
 
 class ContactForm(forms.ModelForm):
@@ -9,9 +10,17 @@ class ContactForm(forms.ModelForm):
 
     message = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control', 'rows': 3}))
 
+    captcha = ReCaptchaField()
+
     class Meta:
         model = Contact
-        fields = '__all__'
+        fields = ('firstName',
+                  'lastName',
+                  'email',
+                  'subject',
+                  'message',
+                  'captcha',
+                  )
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -21,6 +30,7 @@ class ContactForm(forms.ModelForm):
             'email': 'Enter your email address',
             'subject': 'Enter your message subject',
             'message': 'Enter your message',
+            'captcha': 'checkbox',
         }
 
         self.fields['firstName'].widget.attrs['autofocus'] = True
