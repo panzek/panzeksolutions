@@ -20,7 +20,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEVELOPMENT', False) == 'True'
 
-ALLOWED_HOSTS = ['panzeksolutions.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['panzeksolutions.com', 'www.panzeksolutions.com', 'localhost', '127.0.0.1']
 
 # Session engine
 SESSION_ENGINE = 'django.contrib.sessions.backends.db'
@@ -37,13 +37,11 @@ SESSION_ENGINE = 'django.contrib.sessions.backends.db'
 
 # Application definition
 AUTHENTICATION_BACKENDS = [
-
     # Needed to login by username in Django admin, regardless of `allauth`
     'django.contrib.auth.backends.ModelBackend',
 
     # `allauth` specific authentication methods, such as login by email
     'allauth.account.auth_backends.AuthenticationBackend',
-
 ]
 
 INSTALLED_APPS = [
@@ -62,6 +60,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'crispy_tailwind',
     'storages',
+    'django_recaptcha',
 
     'contact',
     'home',
@@ -229,6 +228,10 @@ else:
     EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
     EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
     DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')
+
+# Google reCAPTCHA set up
+RECAPTCHA_PUBLIC_KEY = os.environ.get('RECAPTCHA_PUBLIC_KEY')
+RECAPTCHA_PRIVATE_KEY = os.environ.get('RECAPTCHA_PRIVATE_KEY')
 
 # Enable Error Reporting for Email
 ADMINS = [('Panzek', 'panzek@yahoo.co.uk')]
