@@ -1,12 +1,13 @@
 from django.urls import reverse_lazy
-from django.contrib.auth.decorators import login_required
 from solutions.models import Solution
-from django.views import generic
-from .forms import SolutionForm
+from django.views.generic.list import ListView
+from django.views.generic.detail import DetailView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 
-# using class-based view
-class SolutionListView(generic.ListView):
+# 1. Generic Display Views
+# List View
+class SolutionListView(ListView):
     model = Solution
     # queryset = Solution.objects.all()
     template_name = 'solution_list.html'
@@ -23,7 +24,7 @@ class SolutionListView(generic.ListView):
 
 
 # Detail view
-class SolutionDetailView(generic.DetailView):
+class SolutionDetailView(DetailView):
     model = Solution
 
     def get_context_data(self, **kwargs):
@@ -32,21 +33,22 @@ class SolutionDetailView(generic.DetailView):
         return context
 
 
+# 2. Generic Edit Views
 # create view
-class SolutionCreateView(generic.edit.CreateView):
+class SolutionCreateView(CreateView):
     model = Solution
     fields = '__all__'
 
 
 # Update view
-class SolutionUpdateView(generic.edit.UpdateView):
+class SolutionUpdateView(UpdateView):
     model = Solution
     fields = '__all__'
     template_name_suffix = '_update_form'
     success_url = reverse_lazy('solutions')
 
 
-# Delete Solution view
-class SolutionDeleteView(generic.edit.DeleteView):
+# Delete view
+class SolutionDeleteView(DeleteView):
     model = Solution
     success_url = reverse_lazy('solutions')
