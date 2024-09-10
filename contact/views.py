@@ -29,6 +29,14 @@ def contact(request):
             # redirect to a new url
             return redirect("/thank_you")
 
+        else:
+            # if form is not valid, re-render the form with errors
+            template = 'contact/contact.html'
+            context = {
+                'form': form,
+            }
+            return render(request, template, context)
+
     else:
         form = ContactForm()
 
