@@ -48,16 +48,16 @@
             </div>
         </div>
         <div class="card bg-base-100 w-full max-w-md shrink-0 ">
-          <form action="{% url 'contact' %}" method="POST" class="card-body">
-            <div class="form-control">
-                {% csrf_token %}
-                {{ form|crispy }}
-            </div>
-            <div class="card-actions justify-center">
-                <button type="reset" class="btn w-24 bg-base-300">Cancel</button>
-                <button type="submit" class="btn w-24 btn-primary">Send</button>
-            </div>
-          </form>
+            <form action="{% url 'contact' %}" method="POST" class="card-body">
+               <div class="form-control">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <div class="card-actions justify-center">
+                        <button type="reset" class="btn w-24 bg-base-300">Cancel</button>
+                        <button type="submit" name="submit_my_form" class="btn w-24 btn-primary">Send</button>
+                    </div>
+               </div>
+            </form>
         </div>
     </div>
 </div>
