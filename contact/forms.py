@@ -12,8 +12,8 @@ class ContactForm(forms.ModelForm):
 
     class Meta:
         model = Contact
-        fields = ('firstName',
-                  'lastName',
+        fields = ('first_name',
+                  'last_name',
                   'email',
                   'subject',
                   'message',
@@ -23,14 +23,14 @@ class ContactForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         placeholders = {
-            'firstName': 'Enter your first name',
-            'lastName': 'Enter your last name',
+            'first_name': 'Enter your first name',
+            'last_name': 'Enter your last name',
             'email': 'Enter your email address',
             'subject': 'Enter your message subject',
             'message': 'Enter your message',
         }
 
-        self.fields['firstName'].widget.attrs['autofocus'] = True
+        self.fields['first_name'].widget.attrs['autofocus'] = True
         for field in self.fields:
             if field in placeholders:  # only set placeholder if the field is in a dictionary
                 self.fields[field].widget.attrs['placeholder'] = placeholders[field]

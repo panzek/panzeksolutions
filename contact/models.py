@@ -11,18 +11,18 @@ class Contact(models.Model):
         ('CMS', 'CMS Integration'),
         ('eComm', 'eCommerce Web Design'),
         ('SEO', 'Site Optimization (SEO)'),
-        ('wDev', 'Web Development'),
-        ('wHost', 'Web Hosting'),
+        ('webDev', 'Web Development'),
+        ('webHost', 'Web Hosting'),
         ('Other', 'Other'),
     ]
-    firstName = models.CharField(max_length=100, null=False, blank=False)
-    lastName = models.CharField(max_length=200, null=False, blank=False)
+    first_name = models.CharField(max_length=100, null=False, blank=False)
+    last_name = models.CharField(max_length=200, null=False, blank=False)
     email = models.EmailField(max_length=100, null=False, blank=False)
-    subject = models.CharField(max_length=5, choices=SUBJECT_CHOICES, null=False, blank=False)
+    subject = models.CharField(max_length=7, choices=SUBJECT_CHOICES, null=False, blank=False)
     message = models.TextField(max_length=500, null=False, blank=False)
 
     def __str__(self):
-        return f"{self.firstName} {self.lastName}"  # using f-strings
+        return f"{self.first_name} {self.last_name}"  # using f-strings
 
 
 
