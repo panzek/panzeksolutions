@@ -48,7 +48,7 @@
             </div>
         </div>
         <div class="card bg-base-100 w-full max-w-md shrink-0 ">
-            <form action="{% url 'contact' %}" method="POST" class="card-body">
+            <form action="{% url 'contact' %}" method="POST" class="card-body" novalidate>
                <div class="form-control">
                     {% csrf_token %}
                     {{ form|crispy }}
