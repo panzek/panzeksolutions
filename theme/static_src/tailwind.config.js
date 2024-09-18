@@ -59,6 +59,7 @@ module.exports = {
         // add daisyUI plugin
         require('daisyui'),
         require('@tailwindcss/aspect-ratio'),
+        require('@tailwindcss/line-clamp'),
     ],
     daisyui: {
         themes: ["emerald", "dark", "cupcake"],
