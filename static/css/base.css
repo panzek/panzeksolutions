@@ -10074,6 +10074,10 @@ html:has(.drawer-open.drawer-open) {
   height: 100vh;
 }
 
+.h-48 {
+  height: 12rem;
+}
+
 .min-h-full {
   min-height: 100%;
 }
@@ -10116,6 +10120,10 @@ html:has(.drawer-open.drawer-open) {
 
 .w-full {
   width: 100%;
+}
+
+.w-48 {
+  width: 12rem;
 }
 
 .max-w-full {
@@ -12553,6 +12561,34 @@ html:has(.drawer-open.drawer-open) {
     --tw-bg-opacity: 1;
     background-color: var(--fallback-b3,oklch(var(--b3)/var(--tw-bg-opacity)));
   }
+}
+
+.hover\:link:hover {
+  cursor: pointer;
+  text-decoration-line: underline;
+}
+
+.hover\:link-primary:hover {
+  --tw-text-opacity: 1;
+  color: var(--fallback-p,oklch(var(--p)/var(--tw-text-opacity)));
+}
+
+@supports (color:color-mix(in oklab,black,black)) {
+  @media (hover:hover) {
+    .hover\:link-primary:hover:hover {
+      color: color-mix(in oklab,var(--fallback-p,oklch(var(--p)/1)) 80%,black);
+    }
+  }
+}
+
+.hover\:link:hover:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+.hover\:link:hover:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
 }
 
 .hover\:focus:hover:where(.menu li:not(.menu-title, .disabled) > *:not(ul, details, .menu-title)):not(summary, .active, .btn),.hover\:focus:hover :where(.menu li:not(.menu-title, .disabled) > details > summary:not(.menu-title)):not(summary, .active, .btn) {
