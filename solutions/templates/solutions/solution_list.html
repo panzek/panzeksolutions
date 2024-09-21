@@ -25,9 +25,14 @@
                         <div class="link-secondary">
                             <a href="{% url 'solution_detail' solution.id %}" class="font-medium text-blue-600 hover:link-primary">View More</a>
                         </div>
-                    <div class="line-clamp-4">
-                        {{ solution.description }}
-                    </div>
+                        <div>
+                            <p class="line-clamp-3">
+                                {{ solution.description | truncatewords:22 }}
+                                <a href="{% url 'solution_detail' solution.id %}" class="font-medium link text-green-800 hover:text-green-500">
+                                    View More
+                                </a>
+                            </p>
+                        </div>
                     </div>
                     <div class="card-actions justify-center py-6">
                         <h4 class="card-title">Tech Stack</h4>

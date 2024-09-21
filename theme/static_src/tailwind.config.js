@@ -34,6 +34,7 @@ module.exports = {
         // '!../../**/node_modules',
         /* JS 2: Process all JavaScript files in the project. */
         '../../**/*.js',
+        './static_src/**/*.js',
 
         /**
          * Python: If you use Tailwind CSS classes in Python, uncomment the following line
@@ -43,6 +44,7 @@ module.exports = {
 
         /** static files */
         // './src/css/base.css'
+        // '../../static/css/base.css'
     ],
     theme: {
         extend: {},
