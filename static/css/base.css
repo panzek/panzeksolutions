@@ -9960,13 +9960,6 @@ html:has(.drawer-open.drawer-open) {
   -webkit-line-clamp: 2;
 }
 
-.line-clamp-4 {
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 4;
-}
-
 .line-clamp-3 {
   overflow: hidden;
   display: -webkit-box;
@@ -12076,13 +12069,6 @@ html:has(.drawer-open.drawer-open) {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
-}
-
-.line-clamp-4 {
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 4;
 }
 
 .line-clamp-3 {
@@ -14340,13 +14326,6 @@ html:has(.drawer-open.drawer-open) {
 }
 
 @media (min-width: 768px) {
-  .md\:line-clamp-3 {
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;
-  }
-
   .md\:justify-self-start {
     justify-self: start;
   }
@@ -14354,26 +14333,12 @@ html:has(.drawer-open.drawer-open) {
   .md\:justify-self-end {
     justify-self: end;
   }
-
-  .md\:line-clamp-3 {
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;
-  }
 }
 
 @media (min-width: 1024px) {
   .lg\:mx-2 {
     margin-left: 0.5rem;
     margin-right: 0.5rem;
-  }
-
-  .lg\:line-clamp-4 {
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 4;
   }
 
   .lg\:block {
@@ -14391,13 +14356,6 @@ html:has(.drawer-open.drawer-open) {
   .lg\:text-base {
     font-size: 1rem;
     line-height: 1.5rem;
-  }
-
-  .lg\:line-clamp-4 {
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 4;
   }
 }
 
