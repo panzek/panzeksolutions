@@ -6,7 +6,6 @@ class Contact(models.Model):
       Contact model for users to contact the company
     """
     SUBJECT_CHOICES = [
-        ('', 'Please select one'),
         ('API', 'API Integration'),
         ('CMS', 'CMS Integration'),
         ('eComm', 'eCommerce Web Design'),

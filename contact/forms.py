@@ -9,7 +9,7 @@ class ContactForm(forms.ModelForm):
     """
     Form for users to send company a message
     """
-    captcha = ReCaptchaField()
+    recaptcha = ReCaptchaField()
     message = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control', 'rows': 3}))
 
     class Meta:
@@ -19,7 +19,7 @@ class ContactForm(forms.ModelForm):
                   'email',
                   'subject',
                   'message',
-                  'captcha',
+                  'recaptcha',
                   )
 
     def __init__(self, *args, **kwargs):
@@ -37,6 +37,11 @@ class ContactForm(forms.ModelForm):
             if field in placeholders:  # only set placeholder if the field is in a dictionary
                 self.fields[field].widget.attrs['placeholder'] = placeholders[field]
                 self.fields[field].widget.attrs['class'] = 'form-control input-primary rounded max-w-full'
+
+        original_choices = list(self.fields['subject'].choices)
+        self.fields['subject'].choices = [
+                                             ('', 'Please select a subject'),
+                                         ] + original_choices[1:]
 
     def clean_first_name(self):
         first_name = self.cleaned_data.get('first_name')

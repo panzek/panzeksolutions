@@ -9,15 +9,13 @@ def contact(request):
     A view to render form in template
     """
 
-    # ContactForm(request.POST)
-
     if request.method == 'POST':
         form = ContactForm(request.POST)
         if form.is_valid():
-            customer_message = form.save()
-            contact_email = customer_message.email
-            contact_subject = customer_message.subject
-            contact_message = customer_message.message
+            customer = form.save()
+            contact_email = customer.email
+            contact_subject = customer.subject
+            contact_message = customer.message
 
             send_mail(
                 contact_subject,  # subject
