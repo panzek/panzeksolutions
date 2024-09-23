@@ -1,6 +1,5 @@
 from django.shortcuts import render
 from solutions.models import Solution
-from datetime import datetime
 
 
 def index(request):
@@ -11,13 +10,10 @@ def index(request):
     # process the tech_stack for each solution by splitting the string into a list
     for solution in solutions:
         solution.tech_stack = solution.tech_stack.split(", ")
-    # Get the current year
-    current_year = datetime.now().year
 
     # passing the processed solution list to a context
     context = {
         'solution_list': solutions,
-        'current_year': current_year,
     }
 
     return render(request, 'home/index.html', context)
