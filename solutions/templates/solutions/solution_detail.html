@@ -6,33 +6,32 @@
 
 {% block content %}
 
-<div class="container mx-auto">
+<div class="container mx-auto py-6">
     <div class="relative flex items-center py-6">
         <span class="flex-shrink text-5xl font-bold text-gray-400 mx-auto">{{ solution.name }}</span>
     </div>
     <div class="hero">
-        <div class="hero-content flex-col lg:flex-row items-stretch">
-            <div class="card bg-base-100 w-full max-w-md shadow-2xl">
+        <div class="hero-content flex-col w-full max-w-screen-lg shadow-2xl">
+            <div class="hero-content ">
                 <figure>
                     <img src="{{ solution.image.url }}" alt="{{ solution.name }}">
                 </figure>
-                <div class="p-6 ">
-                    <div class="card-actions justify-center">
-                        <p> {{ solution.description }}</p>
-                    </div>
-                    <div class="card-actions justify-center py-6">
-                        <h4 class="card-title">Tech Stack</h4>
-                        <ul class="card-actions justify-center">
-                            {% for tech in tech_stack_list %}
-                            <li class="badge badge-primary badge-outline sm:badge-sm md:badge-md lg:badge-lg">
-                                {{ tech }}
-                            </li>
-                            {% endfor %}
-                        </ul>
-                    </div>
+            </div>
+            <div class="p-6 ">
+                <div class="card-actions justify-center">
+                    <p> {{ solution.description }}</p>
+                </div>
+                <div class="card-actions justify-center py-6">
+                    <h4 class="card-title">Tech Stack</h4>
+                    <ul class="card-actions justify-center">
+                        {% for tech in tech_stack_list %}
+                        <li class="badge badge-primary badge-outline sm:badge-sm md:badge-md lg:badge-lg">
+                            {{ tech }}
+                        </li>
+                        {% endfor %}
+                    </ul>
                 </div>
             </div>
-
         </div>
     </div>
 </div>

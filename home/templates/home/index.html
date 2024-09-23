@@ -73,9 +73,20 @@
                     <img src="{{ solution.image.url }}" alt="{{ solution.name }}">
                 </figure>
                 <div class="p-6 ">
-                    <div class="card-actions justify-center">
-                    <h2 class="card-title"> {{ solution.name }} </h2>
-                    <p> {{ solution.description }}</p>
+                    <div class="card-actions flex justify-between">
+                        <div class="card-title text-green-800 hover:text-green-500">
+                            {{ solution.name }}
+                        </div>
+                        <div class="link-secondary">
+                            <a href="{% url 'solution_detail' solution.id %}" class="font-medium text-sm text-blue-600 hover:link-primary">
+                                View More
+                            </a>
+                        </div>
+                        <div>
+                            <p>
+                                {{ solution.description | truncatewords:22 }}
+                            </p>
+                        </div>
                     </div>
                     <div class="card-actions justify-center py-6">
                         <h4 class="card-title">Tech Stack</h4>
