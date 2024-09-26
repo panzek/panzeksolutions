@@ -1,47 +1,79 @@
-<ul class="menu w-full min-h-full bg-base-200">
+<div class="menu w-full min-h-full bg-base-100">
     <!-- Sidebar content here -->
-    <li class="max-w-sm mx-auto">
-        <a href="{% url 'home' %}">
-            <img src="{{ MEDIA_URL }}panzek_logo.webp" alt="Panzek logo">
-        </a>
-    </li>
-    <label for="my-drawer-3" aria-label="close sidebar" class="btn btn-circle btn-primary hover:bg-green-800 mx-auto">
-        <!-- close icon -->
-        <svg
-          class="swap-off fill-current"
-          xmlns="http://www.w3.org/2000/svg"
-          width="32"
-          height="32"
-          viewBox="0 0 512 512">
-          <polygon
-            points="400 145.49 366.51 112 256 222.51 145.49 112 112 145.49 222.51 256 112 366.51 145.49 400 256 289.49 366.51 400 400 366.51 289.49 256 400 145.49" />
-        </svg>
-    </label>
-    <li><a href="{% url 'home' %}">Home</a></li>
-    <li>
-        <details>
-            <summary>
-                <a href="{% url 'solutions' %}" class="tooltip tooltip-bottom tooltip-primary" data-tip="Solutions">Our Solutions</a>
-            </summary>
-            <ul class="menu menu-sm p-2 bg-base-100 rounded-t-none w-24">
-                {% if user.is_superuser %}
-                <li><a href="{% url 'add_solution' %}">Manage Solutions</a></li>
-                {% endif %}
-            </ul>
-        </details>
-    </li>
-    <li><a href="{% url 'contact' %}">Contact</a></li>
-    <li>
-        <details>
-            <summary>
-                About
-            </summary>
-                <ul class="menu menu-sm p-1 bg-base-200 rounded-box z-[1] mt-1 w-75 shadow">
-                    <li><a>Portfolio</a></li>
-                    <li class="flex-grow border-t border-gray-400"></li>
-                    <li><a>Hire Us</a></li>
+    <div class="flex justify-center">
+        <div class="max-w-sm">
+            <a href="{% url 'home' %}">
+                <img src="{{ MEDIA_URL }}panzek_logo.webp" alt="Panzek logo">
+            </a>
+        </div>
+        <div>
+            <label for="my-drawer-3" aria-label="close sidebar" class="btn btn-circle btn-primary hover:bg-green-600">
+                <!-- close icon -->
+                <svg
+                  class="swap-off fill-current"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="32"
+                  height="32"
+                  viewBox="0 0 512 512">
+                  <polygon
+                    points="400 145.49 366.51 112 256 222.51 145.49 112 112 145.49 222.51 256 112 366.51 145.49 400 256 289.49 366.51 400 400 366.51 289.49 256 400 145.49" />
+                </svg>
+            </label>
+        </div>
+    </div>
+    <!-- end sidebar -->
+
+    <ul class="menu w-full min-h-full bg-base-100">
+        <li><a href="{% url 'home' %}"><i class="fa-solid fa-house" aria-hidden="true"></i>Home</a></li>
+        <li>
+            <details>
+                <summary>
+                    <i class="fa-solid fa-suitcase" aria-hidden="true"></i><a href="{% url 'solutions' %}">Our Solutions</a>
+                </summary>
+                <ul class="menu menu-sm p-2 bg-base-100 rounded-t-none w-24">
+                    {% if user.is_superuser %}
+                    <li><a href="{% url 'add_solution' %}">Manage Solutions</a></li>
+                    {% endif %}
                 </ul>
-        </details>
-    </li>
-</ul>
+            </details>
+        </li>
+        <li><a href="{% url 'contact' %}"><i class="fa-solid fa-wifi" aria-hidden="true"></i>Contact</a></li>
+        <li>
+            <details>
+                <summary>
+                    <i class="fa-solid fa-spa" aria-hidden="true"></i>About
+                </summary>
+                    <ul class="menu menu-sm p-1 bg-base-200 rounded-box z-[1] mt-1 w-75 shadow">
+                        <li><a>Portfolio</a></li>
+                        <li class="flex-grow border-t border-gray-400"></li>
+                        <li><a>Hire Us</a></li>
+                    </ul>
+            </details>
+        </li>
+    </ul>
+    <div class="divider"></div>
+
+    <div class="grid-flow-col place-self-center">
+        <p>Socials:</p>
+        <a href="https://twitter.com/ipanzek" target="_blank" rel="noopener" aria-label="Go to Panzek's Twitter page (opens new tab on third party site)" title="Twitter">
+            <span style="font-size: 2em;" class="p-3">
+                <i class="fa-brands fa-twitter fa-sm" aria-hidden="true"></i>
+            </span>
+            <span class="sr-only">Twitter</span>
+        </a>
+        <a href="https://linkedin.com/in/panzek/" target="_blank" rel="noopener" aria-label="Go to Panzek's LinkedIn page (opens new tab on third party site)" title="LinkedIn">
+            <span style="font-size: 2em;" class="p-3">
+                <i class="fa-brands fa-linkedin fa-sm" aria-hidden="true"></i>
+            </span>
+            <span class="sr-only">LinkedIn</span>
+        </a>
+        <a href="https://github.com/panzek" target="_blank" rel="noopener" aria-label="Go to Panzek's GitHub page (opens new tab on third party site)" title="GitHub">
+            <span style="font-size: 2em;" class="p-3">
+                <i class="fab fa-github-square fa-sm" aria-hidden="true"></i>
+            </span>
+            <span class="sr-only">GitHub</span>
+        </a>
+    </div>
+
+</div>
 

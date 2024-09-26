@@ -6257,6 +6257,13 @@ html:has(.drawer-open.drawer-open) {
   margin-top: auto;
 }
 
+.line-clamp-2 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
 .line-clamp-3 {
   overflow: hidden;
   display: -webkit-box;
@@ -6269,13 +6276,6 @@ html:has(.drawer-open.drawer-open) {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 4;
-}
-
-.line-clamp-2 {
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
 }
 
 .block {
@@ -6398,6 +6398,10 @@ html:has(.drawer-open.drawer-open) {
   width: 1.5rem;
 }
 
+.w-64 {
+  width: 16rem;
+}
+
 .w-80 {
   width: 20rem;
 }
@@ -6406,12 +6410,12 @@ html:has(.drawer-open.drawer-open) {
   width: 100%;
 }
 
-.w-64 {
-  width: 16rem;
-}
-
 .max-w-full {
   max-width: 100%;
+}
+
+.max-w-lg {
+  max-width: 32rem;
 }
 
 .max-w-md {
@@ -6422,16 +6426,12 @@ html:has(.drawer-open.drawer-open) {
   max-width: 1024px;
 }
 
-.max-w-sm {
-  max-width: 24rem;
-}
-
 .max-w-screen-sm {
   max-width: 640px;
 }
 
-.max-w-lg {
-  max-width: 32rem;
+.max-w-sm {
+  max-width: 24rem;
 }
 
 .flex-1 {
@@ -6695,6 +6695,10 @@ html:has(.drawer-open.drawer-open) {
   fill: currentColor;
 }
 
+.p-0 {
+  padding: 0px;
+}
+
 .p-1 {
   padding: 0.25rem;
 }
@@ -6713,10 +6717,6 @@ html:has(.drawer-open.drawer-open) {
 
 .p-6 {
   padding: 1.5rem;
-}
-
-.p-0 {
-  padding: 0px;
 }
 
 .px-2 {
@@ -6988,6 +6988,13 @@ html:has(.drawer-open.drawer-open) {
   transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
 }
 
+.line-clamp-2 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
 .line-clamp-3 {
   overflow: hidden;
   display: -webkit-box;
@@ -7000,13 +7007,6 @@ html:has(.drawer-open.drawer-open) {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 4;
-}
-
-.line-clamp-2 {
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
 }
 
 .\[-2\:space\] {
@@ -7403,14 +7403,14 @@ html:has(.drawer-open.drawer-open) {
   background-color: rgb(74 222 128 / var(--tw-bg-opacity));
 }
 
+.hover\:bg-green-600:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(22 163 74 / var(--tw-bg-opacity));
+}
+
 .hover\:bg-green-700:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(21 128 61 / var(--tw-bg-opacity));
-}
-
-.hover\:bg-green-800:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(22 101 52 / var(--tw-bg-opacity));
 }
 
 .hover\:bg-red-700:hover {
