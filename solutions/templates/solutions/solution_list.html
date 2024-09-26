@@ -15,7 +15,7 @@
             {% for solution in solution_list %}
             <div class="card bg-base-100 w-full max-w-md shadow-2xl">
                 <figure>
-                    <img src="{{ solution.image.url }}" alt="{{ solution.name }}" class="w-48 h-48">
+                    <img src="{{ solution.image.url }}" alt="{{ solution.name }}" class="w-full h-48">
                 </figure>
                 <div class="p-6 ">
                     <div class="card-actions flex justify-between">
@@ -27,7 +27,7 @@
                         </div>
                         <div>
                             <p class="line-clamp-3">
-                                {{ solution.description | truncatewords:22 }}
+                                {{ solution.description }}
                                 <a href="{% url 'solution_detail' solution.id %}" class="font-medium link text-green-800 hover:text-green-500">
                                     View More
                                 </a>

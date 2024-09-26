@@ -19,19 +19,22 @@ module.exports = {
          * Adjust the following line to match your project structure.
          */
         '../../templates/**/*.html',
+        // './templates/**/*.html',
+        // './static_src/**/*.html',
 
         /*
          * Templates in other django apps (BASE_DIR/<any_app_name>/templates).
          * Adjust the following line to match your project structure.
          */
         '../../**/templates/**/*.html',
+        // './**/templates/**/*.html',
 
         /**
          * JS: If you use Tailwind CSS in JavaScript, uncomment the following lines and make sure
          * patterns match your project structure.
          */
         /* JS 1: Ignore any JavaScript in node_modules folder. */
-        // '!../../**/node_modules',
+        '!../../**/node_modules',
         /* JS 2: Process all JavaScript files in the project. */
         '../../**/*.js',
         './static_src/**/*.js',
@@ -44,7 +47,7 @@ module.exports = {
 
         /** static files */
         // './src/css/base.css'
-        // '../../static/css/base.css'
+        '../../static/css/base.css'
     ],
     theme: {
         extend: {},

@@ -54,7 +54,7 @@
                 </div>
                 <button class="btn sm:btn-sm md:btn-md lg:btn-lg bg-green-500 hover:bg-green-400">Get Started</button>
         </div>
-        <img src="{{ MEDIA_URL }}panzek_hero.webp" alt="Hero Image">
+        <img src="{{ MEDIA_URL }}panzek_hero.webp" alt="Hero Image" class="w-full">
     </div>
 </div>
 
@@ -70,7 +70,7 @@
             {% for solution in solution_list %}
             <div class="card bg-base-100 w-full max-w-md shadow-2xl">
                 <figure>
-                    <img src="{{ solution.image.url }}" alt="{{ solution.name }}">
+                    <img src="{{ solution.image.url }}" alt="{{ solution.name }}" class="w-full h-48">
                 </figure>
                 <div class="p-6 ">
                     <div class="card-actions flex justify-between">
@@ -83,8 +83,8 @@
                             </a>
                         </div>
                         <div>
-                            <p>
-                                {{ solution.description | truncatewords:22 }}
+                            <p class="line-clamp-3 text-left">
+                                {{ solution.description }}
                             </p>
                         </div>
                     </div>
