@@ -1,6 +1,6 @@
-<div class="menu w-full min-h-full bg-base-100">
+<div class="menu w-full min-h-full bg-base-100 p-6">
     <!-- Sidebar content here -->
-    <div class="flex justify-center">
+        <div class="flex justify-between items-center">
         <div class="max-w-sm">
             <a href="{% url 'home' %}">
                 <img src="{{ MEDIA_URL }}panzek_logo.webp" alt="Panzek logo">
@@ -21,9 +21,7 @@
             </label>
         </div>
     </div>
-    <!-- end sidebar -->
-
-    <ul class="menu w-full min-h-full bg-base-100">
+     <ul class="menu w-full min-h-full bg-base-100">
         <li><a href="{% url 'home' %}"><i class="fa-solid fa-house" aria-hidden="true"></i>Home</a></li>
         <li>
             <details>
@@ -54,7 +52,7 @@
     <div class="divider"></div>
 
     <div class="grid-flow-col place-self-center">
-        <p>Socials:</p>
+        <p class="p-2">Socials:</p>
         <a href="https://twitter.com/ipanzek" target="_blank" rel="noopener" aria-label="Go to Panzek's Twitter page (opens new tab on third party site)" title="Twitter">
             <span style="font-size: 2em;" class="p-3">
                 <i class="fa-brands fa-twitter fa-sm" aria-hidden="true"></i>
