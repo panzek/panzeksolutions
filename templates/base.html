@@ -2,16 +2,26 @@
 <!DOCTYPE html>
 <html data-theme="emerald" lang="en">
 	<head>
-    	<title>{% block title %} {% endblock %}</title>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<!-- Required meta tags -->
+    	{% block meta %}
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0 shrink-to-fit=no" />
+		<meta name="description" content="Panzek Solutions - Bespoke and Innovative" />
+		<meta name="keywords" content="Panzek Solutions, web development, eCommerce, site optimization, server management, CMS integration" />
+		<meta name="theme-color" content="66cc8a" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="66cc8a" />
+		{% endblock %}
+		<title>{% block title %} {% endblock %}</title>
+
+		{% block extra_meta %} {% endblock %}
+
 		{% tailwind_css %}
 		<link href="{% static 'css/base.css' %}" rel="stylesheet">
 		<!-- JavaScript -->
 		{% block corejs %}
         <script src="https://kit.fontawesome.com/57e22c6356.js" crossorigin="anonymous"></script>
-    	{% endblock %}
 
 		<!-- Favicon  -->
         <link rel="icon" type="image/png" sizes="192x192" href="{{ MEDIA_URL }}favicons/android-chrome.png">
