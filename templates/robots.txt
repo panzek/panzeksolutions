@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /admin/
+Sitemap: https://panzeksolutions.com/sitemap.xml
+
+User-agent: GPTBot
+Disallow: /
