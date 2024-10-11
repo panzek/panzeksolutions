@@ -1,15 +1,14 @@
 from django.contrib.sitemaps import Sitemap
 from django.urls import reverse
-from contact.models import Contact
 from solutions.models import Solution
 
 
-class StaticViewSitemap(Sitemap):  # for static pages
+class StaticViewSitemap(Sitemap):  # for static pages ("home", "contact", "about", etc)
     priority = 0.5
     changefreq = "daily"
 
     def items(self):
-        return ["home", "about"]
+        return ["home", 'contact']
 
     def location(self, item):
         return reverse(item)
@@ -22,14 +21,6 @@ class SolutionSitemap(Sitemap):  # sitemap to include all the links to individua
     def items(self):
         return Solution.objects.all()
 
-    def location(self, obj):
-        return obj.website_full_url
+    def location(self, item):
+        return reverse('solution_detail', kwargs={'pk': item.pk})
 
-
-class ContactSitemap(Sitemap):
-
-    def items(self):
-        return Contact.objects.all()
-
-    def location(self, obj):
-        return obj.website_full_url
