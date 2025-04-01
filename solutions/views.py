@@ -38,6 +38,7 @@ class SolutionDetailView(DetailView):
 class SolutionCreateView(CreateView):
     model = Solution
     fields = '__all__'
+    success_url = reverse_lazy('solutions')
 
 
 # Update view
