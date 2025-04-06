@@ -21,12 +21,12 @@
                 <div class="card-actions justify-center">
                     <p> {{ solution.description }}</p>
                 </div>
-                <div class="card-actions justify-center py-6">
+                <div class="card-actions flex flex-col items-center py-6">
                     <h4 class="card-title">Tech Stack</h4>
-                    <ul class="card-actions justify-center">
+                    <ul class="card-actions flex flex-wrap justify-center">
                         {% for tech in tech_stack_list %}
-                        <li class="badge badge-primary badge-outline sm:badge-sm md:badge-md lg:badge-lg">
-                            {{ tech }}
+                        <li class="card mr-1 px-3 py-1 rounded-lg bg-white bordered">
+                            {{ tech | title }}
                         </li>
                         {% endfor %}
                     </ul>
