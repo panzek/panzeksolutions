@@ -18,14 +18,15 @@
                 </figure>
             </div>
             <div class="p-6">
-                <div class="card-actions justify-center">
+                <div class="card-actions rounded-box shadow justify-center">
+                <!-- <div class="prose prose-lg p-6 rounded-box shadow justify-center"> -->
                     <p> {{ solution.description }}</p>
                 </div>
                 <div class="card-actions flex flex-col items-center py-6">
                     <h4 class="card-title">Tech Stack</h4>
                     <ul class="card-actions flex flex-wrap justify-center">
                         {% for tech in tech_stack_list %}
-                        <li class="card mr-1 px-3 py-1 rounded-lg bg-white bordered">
+                        <li class="badge badge-ghost rounded-lg bordered px-2 py-3">
                             {{ tech | title }}
                         </li>
                         {% endfor %}

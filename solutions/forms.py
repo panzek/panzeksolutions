@@ -1,5 +1,6 @@
 from django import forms
 from solutions.models import Solution
+from django_ckeditor_5.widgets import CKEditor5Widget
 
 
 class SolutionForm(forms.ModelForm):
@@ -7,11 +8,16 @@ class SolutionForm(forms.ModelForm):
     Form for superuser to add, update, and delete Solutions
     """
 
-    description = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control', 'rows': 3}))
+    # description = forms.CharField(widget=CKEditor5Widget(config_name='default'))
 
     class Meta:
         model = Solution
         fields = '__all__'
+        widgets = {
+              "description": CKEditor5Widget(
+                  attrs={"class": "django_ckeditor_5"}, config_name="default"
+              )
+          }
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -22,7 +28,13 @@ class SolutionForm(forms.ModelForm):
         }
 
         self.fields['name'].widget.attrs['autofocus'] = True
+
         for field in self.fields:
-            placeholder = placeholders[field]
+            placeholder = placeholders.get(field, '')
             self.fields[field].widget.attrs['placeholder'] = placeholder
-            self.fields[field].widget.attrs['class'] = 'form-control border-secondary input-primary rounded max-w-full'
+
+            # Only apply Tailwind/DaisyUi  styling to none-CKEditor fields
+            if field != 'description':
+                self.fields[field].widget.attrs['class'] = (
+                    'form-control border-secondary input-primary rounded max-w-full'
+                )

@@ -63,6 +63,7 @@ INSTALLED_APPS = [
     'crispy_tailwind',
     'storages',
     'django_recaptcha',
+    'django_ckeditor_5',
 
     'contact',
     'home',
@@ -253,3 +254,16 @@ EMAIL_SUBJECT_PREFIX = '[Django Error] '
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Define CKEditor toolbar presets
+CKEDITOR_5_CONFIGS = {
+    'default': {
+        'toolbar': [
+            'heading', '|',
+            'bold', 'italic', 'link', 'underline', 'strikethrough', '|',
+            'bulletedList', 'numberedList', 'blockQuote', '|',
+            'insertTable', 'imageUpload', '|',
+            'undo', 'redo'
+        ],
+    }
+}

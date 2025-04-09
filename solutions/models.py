@@ -1,5 +1,6 @@
 from django.db import models
 from django_resized import ResizedImageField
+from django_ckeditor_5.fields import CKEditor5Field
 
 
 class Solution(models.Model):
@@ -7,7 +8,7 @@ class Solution(models.Model):
     Define the attributes of individual solutions
     """
     name = models.CharField(max_length=200, null=False, blank=False)
-    description = models.TextField(null=True, blank=True)
+    description = CKEditor5Field('Description', config_name='default', null=True, blank=True)
     tech_stack = models.TextField(null=True, blank=True)
     image = ResizedImageField(
         size=[800, 400],
