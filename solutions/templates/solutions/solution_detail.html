@@ -20,7 +20,7 @@
             <div class="p-6">
                 <div class="card-actions rounded-box shadow justify-center">
                 <!-- <div class="prose prose-lg p-6 rounded-box shadow justify-center"> -->
-                    <p> {{ solution.description }}</p>
+                    <p> {{ solution.description | safe }}</p>
                 </div>
                 <div class="card-actions flex flex-col items-center py-6">
                     <h4 class="card-title">Tech Stack</h4>

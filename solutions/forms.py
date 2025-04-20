@@ -8,17 +8,12 @@ class SolutionForm(forms.ModelForm):
     Form for superuser to add, update, and delete Solutions
     """
 
-    # description = forms.CharField(widget=CKEditor5Widget(config_name='default'))
+    description = forms.CharField(widget=CKEditor5Widget(config_name='default'))
 
     class Meta:
         model = Solution
         fields = '__all__'
-        widgets = {
-              "description": CKEditor5Widget(
-                  attrs={"class": "django_ckeditor_5"}, config_name="default"
-              )
-          }
-
+    
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         placeholders = {

@@ -13,6 +13,8 @@
         <div class="card bg-base-100 w-full max-w-md shrink-0 shadow-2xl">
             <div class="card-title py-6 mx-auto text-2xl">Solution Management</div>
             <hr/>
+            <!-- Required for styling/js to make ckeditor5 work -->
+            {{ form.media }} 
             <form class="card-body" action="{% url 'add_solution' %}" method="POST" enctype="multipart/form-data">
                 <div class="form-control">
                     {% csrf_token %}

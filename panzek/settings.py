@@ -262,7 +262,6 @@ CKEDITOR_5_CONFIGS = {
             'heading', '|',
             'bold', 'italic', 'link', 'underline', 'strikethrough', '|',
             'bulletedList', 'numberedList', 'blockQuote', '|',
-            'insertTable', 'imageUpload', '|',
             'undo', 'redo'
         ],
     }
