@@ -6731,6 +6731,10 @@ html:has(.drawer-open.drawer-open) {
   width: 100%;
 }
 
+.w-20 {
+  width: 5rem;
+}
+
 .max-w-64 {
   max-width: 16rem;
 }
@@ -6757,6 +6761,22 @@ html:has(.drawer-open.drawer-open) {
 
 .max-w-sm {
   max-width: 24rem;
+}
+
+.max-w-4xl {
+  max-width: 56rem;
+}
+
+.max-w-2xl {
+  max-width: 42rem;
+}
+
+.max-w-3xl {
+  max-width: 48rem;
+}
+
+.max-w-xl {
+  max-width: 36rem;
 }
 
 .flex-1 {
@@ -7195,6 +7215,11 @@ html:has(.drawer-open.drawer-open) {
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
+}
+
+.text-lg {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
 }
 
 .font-bold {

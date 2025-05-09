@@ -8,7 +8,7 @@ class SolutionForm(forms.ModelForm):
     Form for superuser to add, update, and delete Solutions
     """
 
-    description = forms.CharField(widget=CKEditor5Widget(config_name='default'))
+    description = forms.CharField(widget=CKEditor5Widget(config_name='extends'))
 
     class Meta:
         model = Solution

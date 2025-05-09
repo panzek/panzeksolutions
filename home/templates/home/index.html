@@ -79,14 +79,9 @@
                     {% endif %}
                 </figure>
                 <div class="p-6 ">
-                    <div class="card-actions flex justify-between">
+                    <div class="card-actions flex justify-center">
                         <div class="card-title text-green-800 hover:text-green-500">
                             {{ solution.name }}
-                        </div>
-                        <div class="link-secondary">
-                            <a href="{% url 'solution_detail' solution.id %}" class="font-medium text-sm text-blue-600 hover:link-primary">
-                                View More
-                            </a>
                         </div>
                         <div>
                             <div class="line-clamp-5" style="display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden;">

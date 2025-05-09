@@ -8,20 +8,26 @@
 
 {% block content %}
 
-<div class="card bg-base-100 w-full max-w-lg py-6 mt-3 mb-3 mx-auto shadow-2xl">
-    <div class="card-title mx-auto text-2xl">Edit {{ solution.name }}</div>
-    <!-- Required for styling/js to make ckeditor5 work -->
-    {{ form.media }} 
-    <form class="card-body" action="{% url 'solution_edit' solution.id %}" method="POST" enctype="multipart/form-data">
-        <div class="form-control">
-            {% csrf_token %}
-            {{ form|crispy }}
+
+<div class="hero py-6">
+    <div class="hero-content w-full flex-col py-6 lg:flex-row bg-base-100 rounded-lg">
+        <div class="card bg-base-100 w-full max-w-xl shrink-0 shadow-2xl">
+            <div class="card-title py-6 mx-auto text-2xl">Edit {{ solution.name }}</div>
+            <hr/>
+            <!-- Required for styling/js to make ckeditor5 work -->
+            {{ form.media }} 
+            <form class="card-body" action="{% url 'solution_edit' solution.id %}" method="POST" enctype="multipart/form-data">
+                <div class="form-control">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                </div>
+                <div class="card-actions justify-center">
+                    <a class="btn w-24 bg-base-300 sm:btn-sm md:btn-md" href="{% url 'solutions' %}">Cancel</a>
+                    <button type="submit" class="btn w-24 btn-primary">Update Solution</button>
+                </div>
+            </form>
         </div>
-        <div class="card-actions justify-center">
-            <a class="btn w-24 bg-base-300 sm:btn-sm md:btn-md" href="{% url 'solutions' %}">Cancel</a>
-            <button type="submit" class="btn w-24 btn-primary">Update Solution</button>
-        </div>
-    </form>
+    </div>
 </div>
 
 {% endblock %}
