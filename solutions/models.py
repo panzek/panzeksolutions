@@ -2,6 +2,9 @@ from django.db import models
 from django_resized import ResizedImageField
 from django_ckeditor_5.fields import CKEditor5Field
 
+from django.utils.html import strip_tags
+from django.utils.text import Truncator
+
 
 class Solution(models.Model):
     """
@@ -22,6 +25,14 @@ class Solution(models.Model):
 
     class Meta:
         ordering = ['-id']
+    
+    def get_truncated_description(self, word_limit=42):
+
+        # Strip HTML tags from description
+        clean_text = strip_tags(self.description)
+        # Truncate to specified number of words
+        truncated_text = Truncator(clean_text).words(word_limit, html=False)
+        return truncated_text
 
     def __str__(self):
         return self.name

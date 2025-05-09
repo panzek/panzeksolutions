@@ -6567,6 +6567,13 @@ html:has(.drawer-open.drawer-open) {
   -webkit-line-clamp: 4;
 }
 
+.line-clamp-5 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
+}
+
 .block {
   display: block;
 }
@@ -7403,6 +7410,13 @@ html:has(.drawer-open.drawer-open) {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 4;
+}
+
+.line-clamp-5 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
 }
 
 .\[-2\:space\] {
