@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} About Us | Panzek Solutions {% endblock %}
+
+{% block content %}
+
+<div class="container mx-auto py-6">
+    <div class="relative flex items-center py-6">
+        <div class="flex-grow border-t border-gray-400"></div>
+            <span class="flex-shrink mx-4 text-5xl font-bold text-gray-400">About Us</span>
+        <div class="flex-grow border-t border-gray-400"></div><br>
+    </div>
+    <div class="hero mb-5">
+        <div class="flex flex-col max-w-3xl rounded-box shadow">
+            <div class="card bg-base-100 image-full">
+                <figure>
+                    <img src="{{ MEDIA_URL }}panzek_hero.webp" alt="Hero Image" class="w-full">
+                </figure>
+                <div class="card-body">
+                    <h1 class="card-title mb-0">Panzek Solutions</h1>
+                    <span>Building Bespoke and Innovative Solutions</span>
+                </div>
+            </div>
+            <div class="p-2">
+                <article class="card-actions mx-auto text-lg px-6">
+                    <p class="mb-2">
+                        At <span class="font-bold">Panzek Solutions</span>, we help businesses turn ideas into powerful 
+                        digital solutions. As a <span class="font-bold">full stack development company</span>, we specialize in 
+                        building <span class="font-bold">secure, scalable, and user-friendly applications</span> that 
+                        solve real-world problems and drive business growth.
+                    </p>
+                    <p class="mb-2">
+                        Our team combines deep technical expertise in <span class="font-bold">Python, JavaScript, Django, 
+                        jQuery</span>, and <span class="font-bold">modern front-end technologies</span> to deliver seamless web and mobile 
+                        experiences. On the back end, we design <span class="font-bold">high-performance systems</span> using 
+                        <span class="font-bold">MySQL, PostgreSQL</span>, and <span class="font-bold">Linux</span>, supported by 
+                        <span class="font-bold">cloud-based infrastructure on Amazon AWS</span>.
+                    </p>
+                    <p class="mb-2">
+                        Understanding the need for agility in today's market, we also offer <span class="font-bold">Generative 
+                        AI solutions</span>, including <span class="font-bold">AI-powered chatbots, intelligent automation, 
+                        and personalised recommendation systems</span>, to help clients streamline operations, enhance 
+                        customer engagement, and unlock new opportunities.
+                    </p>
+                    <p class="mb-2">
+                        From integrating <span class="font-bold">Payment Systems (Apple Pay, Google Pay, 
+                        Credit cards, Revolut)</span>, to deploying custom-built platforms tailored to your needs, 
+                        Panzek Solutions provides <span class="font-bold">end-to-end development</span>, from 
+                        planning and development to launch and beyond.
+                    </p>
+                    <p class="mb-2">
+                        Whether you're building a new product or optimizing an existing one, we're 
+                        your <span class="font-bold">long-term technology partner</span>, delivering solutions 
+                        that are <span class="font-bold">innovative, reliable, and tailored to your needs</span>.
+                    </p>
+                </article>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+

@@ -13,7 +13,7 @@
     <div class="hero">
         <div class="hero-content flex-col lg:flex-row items-stretch">
             {% for solution in solution_list %}
-            <div class="card bg-base-100 w-full max-w-md shadow-2xl">
+            <div class="card bg-base-100 w-full max-w-md shadow">
                 <figure>
                     {% if solution.image %}
                         <img src="{{ solution.image.url }}" alt="{{ solution.name }}" class="w-full h-48">
@@ -23,22 +23,34 @@
                         </div>
                     {% endif %}
                 </figure>
-                <div class="p-6">
-                    <div class="card-actions flex justify-center">
+                <div class="p-3">
+                    <div class="card-actions px-1">
                         <div class="card-title text-green-800 hover:text-green-500">
                             {{ solution.name }}
                         </div>
-                        <div>
+                        <div class="mb-5">
                             <div class="line-clamp-5" style="display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden;">
                                 {{ solution.get_truncated_description | safe }} 
-                                <a href="{% url 'solution_detail' solution.id %}" class="font-medium text-blue-600 hover:link-primary">
-                                    Read more
-                                </a>
                             </div>
-                        </div>                      
+                                <a href="{% url 'solution_detail' solution.id %}" class="font-medium text-green-800 hover:text-green-500">
+                                    <i class="fa-solid fa-plus fa-xs" style="color: #ff0000;"></i> Learn More
+                                </a>
+                        </div>  
+                        <div class="card-actions max-w-sm flex flex-col items-center mx-auto py-2 mb-1 px-6">
+                            <h4 class="card-title">Tech Stack</h4>
+                            <div>
+                                <ul class="card-actions flex flex-wrap justify-center">
+                                    {% for tech in solution.tech_stack %}
+                                    <li class="badge badge-ghost rounded-lg bordered px-2 py-3">
+                                        {{ tech | title }}
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>                   
                     </div>
                 </div>
-                <div class="card-actions justify-center py-6">
+                <div class="card-actions justify-center py-1">
                     {% if request.user.is_superuser %}
                     <hr>
                     <!-- Edit Solutions  -->
@@ -55,9 +67,11 @@
         </div>
     </div>
     {# Start a new row here #}
-    <div class="hero-content flex-col lg:flex-row items-stretch">
-        {% endif %}
-        {% endfor %}
+    <div class="hero">
+        <div class="hero-content flex-col lg:flex-row items-stretch">
+            {% endif %}
+            {% endfor %}
+        </div>
     </div>
 </div>
 

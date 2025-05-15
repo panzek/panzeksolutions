@@ -42,24 +42,26 @@
                     </div>
                     <div class="flex-shrink text-1xl font-normal hover:font-bold">
                         <span class="badge badge-xs badge-neutral"></span>
-                        Email Configuration
+                        Web Hosting 
                     </div>
                     <div class="flex-shrink text-1xl font-normal hover:font-bold">
                         <span class="badge badge-xs badge-error"></span>
-                        Web Hosting
+                        Chatbot
                     </div>
                     <p class="font-bold">
                         Let's build your awesome product with Panzek Solutions...
                     </p>
-                </div>
-                <button class="btn sm:btn-sm md:btn-md lg:btn-lg bg-green-500 hover:bg-green-400">Get Started</button>
+                </div> 
+                <button class="btn btn-outline btn-success btn-xs sm:btn-sm md:btn-md lg:btn-lg xl:btn-xl text-1xl font-bold text-green-800 hover:text-green-500">
+                    <i class="fa-solid fa-plus fa-lg"></i> Learn More
+                </button>     
         </div>
         <img src="{{ MEDIA_URL }}panzek_hero.webp" alt="Hero Image" class="w-full">
     </div>
 </div>
 
 {% comment %} Solution entries column {% endcomment %}
-<div class="container mx-auto">
+<div class="container mx-auto py-6">
     <div class="relative flex items-center py-6">
         <div class="flex-grow border-t border-gray-400"></div>
             <span class="flex-shrink mx-4 text-5xl font-bold text-gray-400">Our Solutions</span>
@@ -68,7 +70,7 @@
     <div class="hero">
         <div class="hero-content flex-col lg:flex-row items-stretch">
             {% for solution in solution_list %}
-            <div class="card bg-base-100 w-full max-w-md shadow-2xl">
+            <div class="card bg-base-100 w-full max-w-md shadow md:shadow-2xl lg:shadow-xl">
                 <figure>
                     {% if solution.image %}
                         <img src="{{ solution.image.url }}" alt="{{ solution.name }}" class="w-full h-48">
@@ -79,17 +81,17 @@
                     {% endif %}
                 </figure>
                 <div class="p-6 ">
-                    <div class="card-actions flex justify-center">
+                    <div class="card-actions">
                         <div class="card-title text-green-800 hover:text-green-500">
                             {{ solution.name }}
                         </div>
                         <div>
                             <div class="line-clamp-5" style="display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden;">
                                 {{ solution.get_truncated_description | safe }} 
-                                <a href="{% url 'solution_detail' solution.id %}" class="font-medium text-blue-600 hover:link-primary">
-                                    Read more
-                                </a>
                             </div>
+                            <a href="{% url 'solution_detail' solution.id %}" class="font-medium text-blue-600 hover:link-primary">
+                                <i class="fa-solid fa-plus fa-sm" style="color: #ff0000;"></i> Learn More
+                            </a>
                         </div>      
                     </div>
                 </div>
@@ -98,9 +100,64 @@
         </div>
     </div>
     {# Start a new row here #}
-    <div class="hero-content flex-col lg:flex-row items-stretch">
-        {% endif %}
-        {% endfor %}
+    <div class="hero">
+        <div class="hero-content flex-col lg:flex-row items-stretch">
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+    <div class="hero mx-auto">
+        <button class="btn btn-outline btn-success btn-xs sm:btn-sm md:btn-md lg:btn-lg xl:btn-xl text-1xl text-green-800 hover:text-green-500">
+            View All Solutions >
+        </button>
+    </div>
+    <div class="container mx-auto py-6">
+        <div class="relative flex items-center py-6">
+            <div class="flex-grow border-t border-gray-400"></div>
+                <span class="flex-shrink mx-4 text-5xl font-bold text-gray-400">Our Numbers Count...</span>
+            <div class="flex-grow border-t border-gray-400"></div><br>
+        </div>
+        <div class="relative flex items-center py-6">
+            <div class="card bg-base-100 max-w-3xl">
+                <div class="card-actions">
+                    <article>
+                        <p>
+                        At <span class="font-bold">Panzek Solutions</span>, we help businesses turn ideas into powerful 
+                        digital solutions. As a <span class="font-bold">full stack development company</span>, we specialize in 
+                        building <span class="font-bold">secure, scalable, and user-friendly applications</span> that 
+                        solve real-world problems and drive business growth.
+                    </p>
+                    </article> 
+                </div>
+            </div>
+        </div>
+        <div class="hero mx-auto justify-end py-6">
+            <div class="card bg-base-100 max-w-sm">
+                <span class="flex-shrink text-xl font-bold">About Panzek Solutions</span>
+                <div class="card-actions line-clamp-3">
+                    <article>
+                        <p>
+                        At <span class="font-bold">Panzek Solutions</span>, we help businesses turn ideas into powerful 
+                        digital solutions. As a <span class="font-bold">full stack development company</span>, we specialize in 
+                        building <span class="font-bold">secure, scalable, and user-friendly applications</span> that 
+                        solve real-world problems and drive business growth.
+                    </p>
+                    <p>
+                        Our team combines deep technical expertise in <span class="font-bold">Python, JavaScript, Django, 
+                        jQuery</span>, and <span class="font-bold">modern front-end technologies</span> to deliver seamless web and mobile 
+                        experiences. On the back end, we design <span class="font-bold">high-performance systems</span> using 
+                        <span class="font-bold">MySQL, PostgreSQL</span>, and <span class="font-bold">Linux</span>, supported by 
+                        <span class="font-bold">cloud-based infrastructure on Amazon AWS</span>.
+                    </p>
+                    </article> 
+                </div>
+                <div class="flex justify-end">
+                    <a href="{% url 'about' %}" class="font-medium text-blue-600 hover:link-primary">
+                        <i class="fa-solid fa-plus fa-sm" style="color: #ff0000;"></i> Learn More
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 

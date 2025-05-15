@@ -18,6 +18,15 @@ def index(request):
 
     return render(request, 'home/index.html', context)
 
+# About Us
+def about(request):
+    """
+    A view to render About Us page
+    """
+
+    context = {}
+
+    return render(request, 'home/about.html', context)
 
 # Thank Your Message
 def thank_you(request):
