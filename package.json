@@ -3,5 +3,9 @@
     "@tailwindcss/line-clamp": "^0.4.4",
     "cross-env": "^7.0.3",
     "daisyui": "^4.11.1"
+  },
+  "dependencies": {
+    "alpinejs": "^3.14.9",
+    "gsap": "^3.13.0"
   }
 }

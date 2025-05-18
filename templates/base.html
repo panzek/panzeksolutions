@@ -10,7 +10,7 @@
 		<meta name="description" content="Panzek Solutions - Bespoke and Innovative" />
 		<meta name="keywords" content="Panzek Solutions, web development, eCommerce, site optimization, server management, CMS integration" />
 		<meta name="theme-color" content="66cc8a" />
-		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="66cc8a" />
 		<meta name="google-site-verification" content="O67R-Z1bUBAae68VWIst0mGHpl0uhoE5ZjYifPUhLxA" />
 		{% endblock %}
@@ -23,6 +23,7 @@
 		<!-- JavaScript -->
 		{% block corejs %}
         <script src="https://kit.fontawesome.com/57e22c6356.js" crossorigin="anonymous"></script>
+        <script src="{% static 'js/gsap.min.js' %}"></script>
 		{% endblock %}
 
 		<!-- Favicon  -->
@@ -97,5 +98,8 @@
 
 	<!-- Footer -->
 	{% include 'includes/footer.html' %} 
+
+	<!-- Custom animations -->
+	 <script src="{% static 'js/animations.js' %}"></script>
 	</body>
 </html>

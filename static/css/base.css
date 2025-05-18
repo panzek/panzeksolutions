@@ -6990,16 +6990,16 @@ html:has(.drawer-open.drawer-open) {
   z-index: 1;
 }
 
+.m-2 {
+  margin: 0.5rem;
+}
+
 .m-5 {
   margin: 1.25rem;
 }
 
 .m-6 {
   margin: 1.5rem;
-}
-
-.m-2 {
-  margin: 0.5rem;
 }
 
 .mx-2 {
@@ -7030,6 +7030,14 @@ html:has(.drawer-open.drawer-open) {
 .my-auto {
   margin-top: auto;
   margin-bottom: auto;
+}
+
+.-mt-2 {
+  margin-top: -0.5rem;
+}
+
+.mb-0 {
+  margin-bottom: 0px;
 }
 
 .mb-1 {
@@ -7072,6 +7080,10 @@ html:has(.drawer-open.drawer-open) {
   margin-right: 0.75rem;
 }
 
+.mt-0 {
+  margin-top: 0px;
+}
+
 .mt-1 {
   margin-top: 0.25rem;
 }
@@ -7094,18 +7106,6 @@ html:has(.drawer-open.drawer-open) {
 
 .mt-auto {
   margin-top: auto;
-}
-
-.mt-0 {
-  margin-top: 0px;
-}
-
-.mb-0 {
-  margin-bottom: 0px;
-}
-
-.-mt-2 {
-  margin-top: -0.5rem;
 }
 
 .line-clamp-1 {
@@ -7492,16 +7492,16 @@ html:has(.drawer-open.drawer-open) {
   margin-bottom: calc(1rem * var(--tw-space-y-reverse));
 }
 
-.space-y-8 > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-y-reverse: 0;
-  margin-top: calc(2rem * calc(1 - var(--tw-space-y-reverse)));
-  margin-bottom: calc(2rem * var(--tw-space-y-reverse));
-}
-
 .space-y-64 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-y-reverse: 0;
   margin-top: calc(16rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(16rem * var(--tw-space-y-reverse));
+}
+
+.space-y-8 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(2rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(2rem * var(--tw-space-y-reverse));
 }
 
 .place-self-center {

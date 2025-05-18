@@ -70,7 +70,7 @@
     <div class="hero">
         <div class="hero-content flex-col lg:flex-row items-stretch">
             {% for solution in solution_list %}
-            <div class="card bg-base-100 w-full max-w-md shadow md:shadow-2xl lg:shadow-xl">
+            <div class="card bg-base-100 w-full max-w-md shadow md:shadow-2xl lg:shadow-xl solutioncard" data-animate="fade-up" data-animate-delay="0.5">
                 <figure>
                     {% if solution.image %}
                         <img src="{{ solution.image.url }}" alt="{{ solution.name }}" class="w-full h-48">
