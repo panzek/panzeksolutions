@@ -1,11 +1,6 @@
-import Alpine from 'alpinejs';
-import { gsap } from 'gsap';
+// No imports needed
 
-window.Alpine = Alpine;
-Alpine.start();
-
-// Example GSAP animation
-
+// GSAP animation
 const fadeIn = (solutioncard, delay = 0) => {
     gsap.from(solutioncard, { 
         opacity: 0,
@@ -13,7 +8,7 @@ const fadeIn = (solutioncard, delay = 0) => {
         duration: 0.8,
         delay,
         ease: "power2.out",
-    });
+    }); // gsap is global
 };
 
 window.fadeIn = fadeIn;
