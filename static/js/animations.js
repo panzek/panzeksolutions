@@ -1,15 +1,22 @@
-// No imports needed
+document.addEventListener("alpine:init", () => {
+    Alpine.data("gsapCounters", () => ({
+        yearsInBusiness: 0,
+        solutionsDelivered: 0,
+        teamMembers: 0,
 
-// GSAP animation
-const fadeIn = (solutioncard, delay = 0) => {
-    gsap.from(solutioncard, { 
-        opacity: 0,
-        y: 20, 
-        duration: 0.8,
-        delay,
-        ease: "power2.out",
-    }); // gsap is global
-};
-
-window.fadeIn = fadeIn;
-
+        animateCounters() {
+            gsap.to(this, {
+                duration: 2,
+                yearsInBusiness: 4,
+                solutionsDelivered: 30,
+                teamMembers: 4,
+                ease: "power1.out",
+                onUpdate: () => {
+                    this.yearsInBusiness = Math.floor(this.yearsInBusiness);
+                    this.solutionsDelivered = Math.floor(this.solutionsDelivered);
+                    this.teamMembers = Math.floor(this.teamMembers);
+                }
+            });
+        }
+    }));
+});

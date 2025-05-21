@@ -100,7 +100,8 @@
 	{% include 'includes/footer.html' %} 
 
 	<!-- Custom animations -->
-	 <script src="{% static 'js/gsap.min.js' %}" type="module"></script>
+	 <script src="{% static 'vendor/alpine.min.js' defer %}"></script>
+	 <script src="{% static 'vendor/gsap.min.js' %}"></script>
 	 <script src="{% static 'js/animations.js' %}" type="module"></script>
 	</body>
 </html>
