@@ -8681,27 +8681,6 @@ html:has(.drawer-open.drawer-open) {
     -o-object-fit: cover;
        object-fit: cover;
   }
-
-  .lg\:stats-horizontal {
-    grid-auto-flow: column;
-  }
-
-  .lg\:stats-horizontal > :not([hidden]) ~ :not([hidden]) {
-    --tw-divide-x-reverse: 0;
-    border-right-width: calc(1px * var(--tw-divide-x-reverse));
-    border-left-width: calc(1px * calc(1 - var(--tw-divide-x-reverse)));
-    --tw-divide-y-reverse: 0;
-    border-top-width: calc(0px * calc(1 - var(--tw-divide-y-reverse)));
-    border-bottom-width: calc(0px * var(--tw-divide-y-reverse));
-  }
-
-  .lg\:stats-horizontal {
-    overflow-x: auto;
-  }
-
-  .lg\:stats-horizontal:where([dir="rtl"], [dir="rtl"] *) {
-    --tw-divide-x-reverse: 1;
-  }
 }
 
 .hover\:bg-blue-700:hover {
@@ -8745,10 +8724,6 @@ html:has(.drawer-open.drawer-open) {
 @media (min-width: 640px) {
   .sm\:inline {
     display: inline;
-  }
-
-  .sm\:grid-cols-3 {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .sm\:text-left {

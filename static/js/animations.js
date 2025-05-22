@@ -1,21 +1,49 @@
-document.addEventListener("alpine:init", () => {
-    Alpine.data("gsapCounters", () => ({
+document.addEventListener('alpine:init', () => {
+    Alpine.data('gsapCounters', () => ({
         yearsInBusiness: 0,
         solutionsDelivered: 0,
         teamMembers: 0,
+        hasAnimated: false,
 
+        init() {
+            // Safety check
+            if (typeof ScrollTrigger === 'undefined') {
+                console.error('ScrollTrigger not loaded!');
+                return;
+            }
+
+        // Register plugin
+        gsap.registerPlugin(ScrollTrigger);
+
+            this.$nextTick(() => {
+                ScrollTrigger.create({
+                    trigger: this.$el,
+                    start: window.innerHeight < 768 ? "top 85%" : "top 90%",
+                    onEnter: () => {
+                        if (!this.hasAnimated) this.animateCounters();
+                    }
+                });
+            });
+        },
+        
         animateCounters() {
-            gsap.to(this, {
-                duration: 2,
+            this.hasAnimated = true;
+            const targets = {
                 yearsInBusiness: 4,
                 solutionsDelivered: 30,
-                teamMembers: 4,
-                ease: "power1.out",
-                onUpdate: () => {
-                    this.yearsInBusiness = Math.floor(this.yearsInBusiness);
-                    this.solutionsDelivered = Math.floor(this.solutionsDelivered);
-                    this.teamMembers = Math.floor(this.teamMembers);
-                }
+                teamMembers: 4
+            };
+            
+            Object.entries(targets).forEach(([key, value], i) => {
+                gsap.to(this, {
+                    duration: 1.5,
+                    [key]: value,
+                    delay: i * 0.3,
+                    ease: "power1.out",
+                    onUpdate: () => {
+                        this[key] = Math.floor(this[key]);
+                    }
+                });
             });
         }
     }));

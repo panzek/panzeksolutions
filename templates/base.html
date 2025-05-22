@@ -23,7 +23,9 @@
 		<!-- JavaScript -->
 		{% block corejs %}
         <script src="https://kit.fontawesome.com/57e22c6356.js" crossorigin="anonymous"></script>
-        <script src="{% static 'js/gsap.min.js' %}"></script>
+        <!-- Load GSAP & ScrollTrigger -->
+        <script src="{% static 'vendor/gsap.min.js' %}"></script>
+        <script src="{% static 'vendor/ScrollTrigger.min.js' %}"></script>
 		{% endblock %}
 
 		<!-- Favicon  -->
@@ -95,13 +97,10 @@
 				{% include 'includes/mobile_nav.html' %}
 			</div>
 		</div>
-
+	<!-- Load Alpine and Custom scripts -->
+	<script src="{% static 'vendor/alpine.min.js' %}" defer></script>
+    <script src="{% static 'js/animations.js' %}"></script>
 	<!-- Footer -->
-	{% include 'includes/footer.html' %} 
-
-	<!-- Custom animations -->
-	 <script src="{% static 'vendor/alpine.min.js' defer %}"></script>
-	 <script src="{% static 'vendor/gsap.min.js' %}"></script>
-	 <script src="{% static 'js/animations.js' %}" type="module"></script>
+	{% include 'includes/footer.html' %}
 	</body>
 </html>
