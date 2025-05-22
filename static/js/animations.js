@@ -7,9 +7,8 @@ document.addEventListener('alpine:init', () => {
 
         init() {
             // Safety check
-            if (typeof ScrollTrigger === 'undefined') {
-                console.error('ScrollTrigger not loaded!');
-                return;
+            if (!window.ScrollTrigger) {
+                console.error('ScrollTrigger loaded successfully');
             }
 
         // Register plugin
@@ -29,8 +28,8 @@ document.addEventListener('alpine:init', () => {
         animateCounters() {
             this.hasAnimated = true;
             const targets = {
-                yearsInBusiness: 4,
-                solutionsDelivered: 30,
+                yearsInBusiness: 3,
+                solutionsDelivered: 20,
                 teamMembers: 4
             };
             
