@@ -62,12 +62,18 @@
 						<ul class="menu menu-horizontal">
 							<!-- Navbar menu content -->
 							<li>
-								<a href="{% url 'home' %}" class="tooltip tooltip-bottom tooltip-primary" data-tip="Home">Home</a>
+								<a href="{% url 'home' %}" class="tooltip tooltip-bottom tooltip-primary text-xl" data-tip="Home">
+									<i class="fa-solid fa-house" aria-hidden="true"></i>
+									Home
+								</a>
 							</li>
 							<li>
 								<details>
 									<summary>
-										<a href="{% url 'solutions' %}" class="tooltip tooltip-bottom tooltip-primary" data-tip="Solutions">Our Solutions</a>
+										<a href="{% url 'solutions' %}" class="tooltip tooltip-bottom tooltip-primary text-xl" data-tip="Solutions">
+											<i class="fa-solid fa-suitcase" aria-hidden="true"></i>
+											Our Solutions
+										</a>
 									</summary>
 									<ul class="menu menu-sm p-2 bg-base-100 rounded-t-none w-24">
 										{% if user.is_superuser %}
@@ -77,10 +83,16 @@
 								</details>
 							</li>
 							<li>
-								<a href="{% url 'contact' %}" class="tooltip tooltip-bottom tooltip-primary" data-tip="Contact">Contact</a>
+								<a href="{% url 'contact' %}" class="tooltip tooltip-bottom tooltip-primary text-xl" data-tip="Contact">
+									<i class="fa-solid fa-wifi" aria-hidden="true"></i>
+									Contact
+								</a>
 							</li>
 							<li>
-								<a href="{% url 'about' %}" class="tooltip tooltip-bottom tooltip-primary" data-tip="About">About</a>
+								<a href="{% url 'about' %}" class="tooltip tooltip-bottom tooltip-primary text-xl" data-tip="About">
+									<i class="fa-solid fa-spa" aria-hidden="true"></i>
+									About
+								</a>
 							</li>
 						</ul>
 					</div>
