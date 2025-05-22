@@ -52,8 +52,8 @@
                         Let's build your awesome product with Panzek Solutions...
                     </p>
                 </div> 
-                <button class="btn btn-outline btn-success btn-xs sm:btn-sm md:btn-md lg:btn-lg xl:btn-xl text-1xl font-bold text-green-800 hover:text-green-500">
-                    <i class="fa-solid fa-plus fa-lg"></i> Learn More
+                <button class="btn btn-outline btn-success sm:btn-sm md:btn-md text-1xl font-bold text-green-800 hover:text-green-500">
+                    <i class="fa-solid fa-plus fa-lg"></i>Learn More
                 </button>     
         </div>
         <img src="{{ MEDIA_URL }}panzek_hero.webp" alt="Hero Image" class="w-full">
@@ -64,7 +64,7 @@
 <div class="container mx-auto py-6">
     <div class="relative flex items-center py-6">
         <div class="flex-grow border-t border-gray-400"></div>
-            <span class="flex-shrink mx-4 text-5xl font-bold text-gray-400">Our Solutions</span>
+            <span class="flex-shrink mx-4 text-3xl font-bold text-gray-400">Our Solutions</span>
         <div class="flex-grow border-t border-gray-400"></div><br>
     </div>
     <div class="hero">
@@ -107,35 +107,38 @@
         </div>
     </div>
     <div class="hero mx-auto">
-        <button class="btn btn-outline btn-success btn-xs sm:btn-sm md:btn-md lg:btn-lg xl:btn-xl text-1xl text-green-800 hover:text-green-500">
-            View All Solutions >
+        <button class="btn btn-outline btn-success sm:btn-sm md:btn-md text-green-800 hover:text-green-500">
+            <span class="inline-flex items-baseline gap-2">
+                <span class="leading-none">View All Solutions</span>
+                <i class="fa-solid fa-arrow-right text-[0.85em] ml-1.5 relative-top-[1px]" aria-hidden="true"></i>
+            </span>
         </button>
     </div>
     <div class="relative flex items-center mt-5 py-6">
         <div class="flex-grow border-t border-gray-400"></div>
-            <span class="flex-shrink mx-4 text-5xl font-bold text-gray-400">Our Numbers Count...</span>
-        <div class="flex-grow border-t border-gray-400"></div><br>
+            <span class="flex-shrink mx-4 text-3xl font-bold text-gray-400">Our Numbers Count...</span>
+        <div class="flex-grow border-t border-gray-400"></div>
     </div>
 
     <!-- Stats -->
     <div x-data="gsapCounters()" class="hero-content flex-col lg:flex-row justify-around items-center text-center mx-auto py-6 bg-gray-50">
         <div>
             <div class="text-4xl font-bold text-green-800 hover:text-green-500">
-                <span x-text="yearsInBusiness"></span>+
+                <span x-text="yearsInBusiness"></span>+ 
             </div>
-            <div class="text-md text-gray-600 mt-2">Years in Business</div>
+            <div class="text-md text-gray-600 mt-2 font-semibold">Years in Business</div>
             <div class="text-sm text-gray-600 mt-2">Creating successful path</div>
         </div>
         <div>
             <div class="text-4xl font-bold text-green-800 hover:text-green-500">
                 <span x-text="solutionsDelivered"></span>+
             </div>
-            <div class="text-md text-gray-600 mt-2">Solutions Delivered</div>
+            <div class="text-md text-gray-600 mt-2 font-semibold">Solutions Delivered</div>
             <div class="text-sm text-gray-600 mt-2">...and still counting</div>
         </div>
         <div>
             <div class="text-4xl font-bold text-green-800 hover:text-green-500" x-text="teamMembers"></div>
-            <div class="text-md text-gray-600 mt-2">Team Members</div>
+            <div class="text-md text-gray-600 mt-2 font-semibold">Team Members</div>
             <div class="text-sm text-gray-600 mt-2">Building your bespoke Solutions</div>
         </div>
     </div>
