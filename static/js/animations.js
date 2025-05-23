@@ -2,6 +2,7 @@ document.addEventListener('alpine:init', () => {
     Alpine.data('gsapCounters', () => ({
         yearsInBusiness: 0,
         solutionsDelivered: 0,
+        customerSuccess: 0,
         teamMembers: 0,
         hasAnimated: false,
 
@@ -30,6 +31,7 @@ document.addEventListener('alpine:init', () => {
             const targets = {
                 yearsInBusiness: 3,
                 solutionsDelivered: 20,
+                customerSuccess: 98,
                 teamMembers: 4
             };
             
