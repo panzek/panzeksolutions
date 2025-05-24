@@ -3540,6 +3540,11 @@ html {
   align-items: center;
 }
 
+.navbar-start {
+  width: 50%;
+  justify-content: flex-start;
+}
+
 .progress {
   position: relative;
   width: 100%;
@@ -7324,12 +7329,28 @@ html:has(.drawer-open.drawer-open) {
   height: 3rem;
 }
 
+.h-16 {
+  height: 4rem;
+}
+
 .h-2 {
   height: 0.5rem;
 }
 
+.h-3 {
+  height: 0.75rem;
+}
+
+.h-32 {
+  height: 8rem;
+}
+
 .h-4 {
   height: 1rem;
+}
+
+.h-40 {
+  height: 10rem;
 }
 
 .h-48 {
@@ -7340,8 +7361,20 @@ html:has(.drawer-open.drawer-open) {
   height: 1.5rem;
 }
 
+.h-8 {
+  height: 2rem;
+}
+
+.h-full {
+  height: 100%;
+}
+
 .h-screen {
   height: 100vh;
+}
+
+.max-h-3 {
+  max-height: 0.75rem;
 }
 
 .min-h-full {
@@ -7356,6 +7389,10 @@ html:has(.drawer-open.drawer-open) {
   width: 3rem;
 }
 
+.w-16 {
+  width: 4rem;
+}
+
 .w-2 {
   width: 0.5rem;
 }
@@ -7368,6 +7405,10 @@ html:has(.drawer-open.drawer-open) {
   width: 6rem;
 }
 
+.w-32 {
+  width: 8rem;
+}
+
 .w-36 {
   width: 9rem;
 }
@@ -7376,12 +7417,20 @@ html:has(.drawer-open.drawer-open) {
   width: 1rem;
 }
 
+.w-48 {
+  width: 12rem;
+}
+
 .w-6 {
   width: 1.5rem;
 }
 
 .w-64 {
   width: 16rem;
+}
+
+.w-8 {
+  width: 2rem;
 }
 
 .w-80 {
@@ -8748,6 +8797,10 @@ html:has(.drawer-open.drawer-open) {
 }
 
 @media (min-width: 768px) {
+  .md\:h-48 {
+    height: 12rem;
+  }
+
   .md\:justify-self-start {
     justify-self: start;
   }

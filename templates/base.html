@@ -20,6 +20,8 @@
 
 		{% tailwind_css %}
 		<link href="{% static 'css/base.css' %}" rel="stylesheet">
+		<link rel="preload" href="{% static 'fonts/M_Ponderosa.woff' %}" as="font" type="font/woff" crossorigin>
+
 		<!-- JavaScript -->
 		{% block corejs %}
         <script src="https://kit.fontawesome.com/57e22c6356.js" crossorigin="anonymous"></script>
@@ -53,9 +55,10 @@
 							</svg>
 						</label>
 					</div> 
-					<div class="flex-1 px-2 mx-2 text-xl">
-						<a href="{% url 'home' %}" class="mx-auto lg:mx-2">
-							<img src="{{ MEDIA_URL }}panzeksolutions_logo.webp" alt="Panzek Solutions logo">
+					<div class="flex-1 px-2 mx-2 text-3xl font-ponderosa">
+						<a href="{% url 'home' %}" class="mx-auto lg:mx-2 flex items-center gap-1">
+							<img class="md:h-48" src="{{ MEDIA_URL }}panzeksolutions_logo.png" alt="Panzek Solutions logo"> 
+							<span>Panzek Solutions</span>
 						</a>
 					</div>
 					<div class="flex-none hidden lg:block">

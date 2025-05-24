@@ -1,9 +1,10 @@
 <div class="menu w-full min-h-full bg-base-100 p-6">
     <!-- Sidebar content here -->
-        <div class="flex justify-between items-center">
-        <div class="max-w-sm">
-            <a href="{% url 'home' %}">
-                <img src="{{ MEDIA_URL }}panzeksolutions_logo.webp" alt="Panzek Solutions logo">
+    <div class="flex justify-between items-center">
+        <div class="max-w-sm font-ponderosa text-2xl">
+            <a href="{% url 'home' %}" class="flex items-center gap-1">
+                <img src="{{ MEDIA_URL }}panzeksolutions_logo.png" alt="Panzek Solutions logo">
+                <span>Panzek Solutions</span>
             </a>
         </div>
         <div>
@@ -63,4 +64,3 @@
     </div>
 
 </div>
-
