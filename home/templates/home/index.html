@@ -11,11 +11,13 @@
         <div>
             <div class="relative flex items-center">
                 <div class="flex-grow border-t border-gray-400"></div>
-                    <span class="flex-shrink text-3xl font-bold">Panzek Solutions</span>
-                <div class="flex-grow border-t border-gray-400"></div><br>
+                    <span class="flex-shrink text-xl font-bold">Panzek Solutions</span>
+                <div class="flex-grow border-t border-gray-400"></div>
             </div>
-            <div class="flex-shrink text-1xl font-bold text-green-800 hover:text-green-500">Web.Integration.Hosting</div>
-                <div class="py-6 text-left">
+            <div class="flex-shrink text-md text-center font-bold text-green-500 hover:text-green-800">
+                Web.Integration.Hosting
+            </div>
+                <div class="py-3 text-left">
                     <div class="flex-shrink text-1xl font-normal hover:font-bold">
                         <span class="badge badge-xs badge-primary"></span>
                         Web Development
@@ -53,44 +55,44 @@
                     </p>
                 </div> 
                 <button class="btn btn-outline btn-success sm:btn-sm md:btn-md text-1xl font-bold text-green-800 hover:text-green-500">
-                    <i class="fa-solid fa-plus fa-lg"></i>Learn More
+                    <i class="fa-solid fa-plus fa-lg" aria-hidden="true"></i>Learn More
                 </button>     
         </div>
-        <img src="{{ MEDIA_URL }}panzek_hero.webp" alt="Hero Image" class="w-full">
+        <img src="{{ MEDIA_URL }}panzek_hero.webp" alt="Hero Image" class="w-full max-w-5xl">
     </div>
 </div>
 
 {% comment %} Solution entries column {% endcomment %}
 <div class="container mx-auto py-6">
-    <div class="relative flex items-center py-6">
+    <div class="relative flex items-center py-2 mx-auto">
         <div class="flex-grow border-t border-gray-400"></div>
-            <span class="flex-shrink mx-4 text-4xl font-bold text-gray-400">Our Solutions</span>
-        <div class="flex-grow border-t border-gray-400"></div><br>
+            <span class="flex-shrink mx-4 text-2xl font-semibold sm:text-sm md:text-md lg:text-lg border-gray-400">Our Solutions</span>
+        <div class="flex-grow border-t border-gray-400"></div>
     </div>
     <div class="hero">
-        <div class="hero-content flex-col lg:flex-row items-stretch">
+        <div class="hero-content flex-col lg:flex-row items-stretch gap-8">
             {% for solution in solution_list %}
-            <div class="card bg-base-100 w-full max-w-md shadow md:shadow-2xl lg:shadow-xl solutioncard" data-animate="fade-up" data-animate-delay="0.5">
+            <div class="card bg-base-100 w-full max-w-md shadow">
                 <figure>
                     {% if solution.image %}
-                        <img src="{{ solution.image.url }}" alt="{{ solution.name }}" class="w-full h-48">
+                        <img src="{{ solution.image.url }}" alt="{{ solution.name }}" class="flex w-full h-48 object-cover">
                     {% else %}
                         <div class="w-full h-48 bg-base-200 flex items-center justify-center text-sm text-gray-400">
                             No image
                         </div>
                     {% endif %}
                 </figure>
-                <div class="p-6 ">
+                <div class="p-6">
                     <div class="card-actions">
                         <div class="card-title text-green-800 hover:text-green-500">
                             {{ solution.name }}
                         </div>
-                        <div>
+                        <div class="text-md md:text-lg lg:text-lg text-left">
                             <div class="line-clamp-5" style="display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden;">
                                 {{ solution.get_truncated_description | safe }} 
                             </div>
                             <a href="{% url 'solution_detail' solution.id %}" class="font-medium text-blue-600 hover:link-primary">
-                                <i class="fa-solid fa-plus fa-sm" style="color: #ff0000;"></i> Learn More
+                                <i class="fa-solid fa-plus fa-sm" aria-hidden="true" style="color: #ff0000;"></i> Learn More
                             </a>
                         </div>      
                     </div>
@@ -114,14 +116,14 @@
             </span>
         </button>
     </div>
-    <div class="relative flex items-center mt-5 py-6">
+    <div class="relative flex items-center mt-5 py-6 mx-auto">
         <div class="flex-grow border-t border-gray-400"></div>
-            <span class="flex-shrink mx-4 text-4xl text-gray-400 font-bold">Our Numbers Count...</span>
+            <span class="flex-shrink mx-4 text-2xl font-semibold sm:text-sm md:text-md lg:text-lg border-gray-400">Our Numbers Count...</span>
         <div class="flex-grow border-t border-gray-400"></div>
     </div>
 
     <!-- Stats -->
-    <div x-data="gsapCounters()" class="hero-content flex-col lg:flex-row justify-around items-center text-center mx-auto py-6 bg-gray-50">
+    <div x-data="gsapCounters()" class="hero-content flex-col lg:flex-row justify-around items-center text-center mx-auto bg-gray-50">
         <div>
             <div class="text-4xl font-bold text-green-800 hover:text-green-500">
                 <span x-text="yearsInBusiness"></span>+ 
@@ -172,7 +174,7 @@
         </div>
         <div class="flex justify-end">
             <a href="{% url 'about' %}" class="font-medium text-blue-600 hover:link-primary">
-                <i class="fa-solid fa-plus fa-sm" style="color: #ff0000;"></i> Learn More
+                <i class="fa-solid fa-plus fa-sm" aria-hidden="true" style="color: #ff0000;"></i> Learn More
             </a>
         </div>
     </div>

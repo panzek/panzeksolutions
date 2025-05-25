@@ -8,10 +8,10 @@
 
 <div class="container mx-auto py-6">
     <div class="relative flex items-center py-6">
-        <span class="flex-shrink text-5xl font-bold text-gray-400 mx-auto">{{ solution.name }}</span>
+        <span class="flex-shrink text-4xl font-bold text-gray-400 mx-auto">{{ solution.name }}</span>
     </div>
     <div class="hero">
-        <div class="flex flex-col max-w-4xl rounded-box shadow">
+        <div class="flex flex-col max-w-3xl rounded-box shadow">
             <div class="justify-center mx-auto">
                 <figure>
                     {% if solution.image %}
@@ -23,15 +23,13 @@
                     {% endif %}
                 </figure>
             </div>
-            <div class="p-2">
-                <article class="card-actions mx-auto text-xl px-6">
-                <!-- <article class="prose prose-lg mx-auto"> -->
-                    <p> {{ solution.description | safe }}</p>
-                <!-- </article> -->
+            <div class="p-2 mb-2">
+                <article class="card-actions mx-auto text-lg px-2 text-left">
+                    <p class="mb-2"> {{ solution.description | safe }}</p>
                 </article>
             </div>
             <div class="card-actions max-w-sm flex flex-col items-center mx-auto py-6 mb-3">
-                <h4 class="card-title"><i class="fa-solid fa-code fa-xl" style="color: #63E6BE;"></i>Technologies Used</h4>
+                <h4 class="card-title text-green-800 hover:text-green-500"><i class="fa-solid fa-code fa-xl" style="color: #63E6BE;"></i>Built with ...</h4>
                 <div>
                     <ul class="card-actions flex flex-wrap justify-center">
                         {% for tech in tech_stack_list %}
