@@ -7473,6 +7473,10 @@ html:has(.drawer-open.drawer-open) {
   max-width: 72rem;
 }
 
+.max-w-7xl {
+  max-width: 80rem;
+}
+
 .max-w-full {
   max-width: 100%;
 }
@@ -7507,10 +7511,6 @@ html:has(.drawer-open.drawer-open) {
 
 .max-w-xl {
   max-width: 36rem;
-}
-
-.max-w-7xl {
-  max-width: 80rem;
 }
 
 .flex-1 {
@@ -8092,6 +8092,10 @@ html:has(.drawer-open.drawer-open) {
 
 .align-middle {
   vertical-align: middle;
+}
+
+.font-ponderosa {
+  font-family: M Ponderosa, sans-serif;
 }
 
 .font-serif {
@@ -8880,10 +8884,6 @@ html:has(.drawer-open.drawer-open) {
 }
 
 @media (min-width: 768px) {
-  .md\:h-48 {
-    height: 12rem;
-  }
-
   .md\:justify-self-start {
     justify-self: start;
   }

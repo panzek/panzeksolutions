@@ -50,8 +50,13 @@ module.exports = {
         '../../static/css/base.css'
     ],
     theme: {
-        extend: {},
+        extend: {
+            fontFamily: {
+                ponderosa: ['M Ponderosa', 'sans-serif'],
+            },
+        },
     },
+
     plugins: [
         /**
          * '@tailwindcss/forms' is the forms plugin that provides a minimal styling
