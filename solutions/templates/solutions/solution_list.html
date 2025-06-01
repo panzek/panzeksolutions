@@ -29,7 +29,7 @@
                             {{ solution.name }}
                         </div>
                         <div class="mb-5">
-                            <div class="line-clamp-5" style="display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden;">
+                            <div class="line-clamp-5 text-md md:text-md lg:text-lg text-left" style="display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden;">
                                 {{ solution.get_truncated_description | safe }} 
                             </div>
                                 <a href="{% url 'solution_detail' solution.id %}" class="font-medium text-green-800 hover:text-green-500">
