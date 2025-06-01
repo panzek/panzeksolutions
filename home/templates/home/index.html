@@ -24,7 +24,11 @@
                     </div>
                     <div class="flex-shrink text-1xl font-normal hover:font-bold">
                         <span class="badge badge-xs badge-warning"></span>
-                        eCommerce Store
+                        eCommerce Website
+                    </div>
+                    <div class="flex-shrink text-1xl font-normal hover:font-bold">
+                        <span class="badge badge-xs badge-secondary"></span>
+                        Website Maintenance
                     </div>
                     <div class="flex-shrink text-1xl font-normal hover:font-bold">
                         <span class="badge badge-xs badge-secondary"></span>
@@ -54,7 +58,7 @@
                         Let's build your awesome product with Panzek Solutions...
                     </p>
                 </div> 
-                <button class="btn btn-outline btn-success sm:btn-sm md:btn-md text-1xl font-bold text-green-800 hover:text-green-500">
+                <button class="btn btn-outline btn-success sm:btn-sm md:btn-md text-1xl font-bold text-green-500">
                     <i class="fa-solid fa-plus fa-lg" aria-hidden="true"></i>Learn More
                 </button>     
         </div>
@@ -66,7 +70,7 @@
 <div class="container mx-auto py-6">
     <div class="relative flex items-center py-2 mx-auto">
         <div class="flex-grow border-t border-gray-400"></div>
-            <span class="flex-shrink mx-4 text-2xl font-semibold sm:text-sm md:text-md lg:text-lg border-gray-400">Our Solutions</span>
+            <span class="flex-shrink mx-4 text-2xl font-semibold sm:text-sm md:text-md lg:text-lg text-primary">Our Solutions</span>
         <div class="flex-grow border-t border-gray-400"></div>
     </div>
     <div class="hero">
@@ -82,12 +86,12 @@
                         </div>
                     {% endif %}
                 </figure>
-                <div class="p-6">
+                <div class="p-2">
                     <div class="card-actions">
                         <div class="card-title text-green-800 hover:text-green-500">
                             {{ solution.name }}
                         </div>
-                        <div class="text-md md:text-lg lg:text-lg text-left">
+                        <div class="text-md md:text-md lg:text-lg text-left">
                             <div class="line-clamp-5" style="display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden;">
                                 {{ solution.get_truncated_description | safe }} 
                             </div>
@@ -111,14 +115,14 @@
     <div class="hero mx-auto">
         <button class="btn btn-outline btn-success sm:btn-sm md:btn-md text-green-800 hover:text-green-500">
             <span class="inline-flex items-baseline gap-2">
-                <span class="leading-none">View All Solutions</span>
+                <a href="{% url 'solutions' %}">View All Solutions</a>
                 <i class="fa-solid fa-arrow-right text-[0.85em] ml-1.5 relative-top-[1px]" aria-hidden="true"></i>
             </span>
         </button>
     </div>
     <div class="relative flex items-center mt-5 py-6 mx-auto">
         <div class="flex-grow border-t border-gray-400"></div>
-            <span class="flex-shrink mx-4 text-2xl font-semibold sm:text-sm md:text-md lg:text-lg border-gray-400">Our Numbers Count...</span>
+            <span class="flex-shrink mx-4 text-2xl font-semibold sm:text-sm md:text-md lg:text-lg text-primary">Our Numbers Count...</span>
         <div class="flex-grow border-t border-gray-400"></div>
     </div>
 

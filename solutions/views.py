@@ -12,7 +12,6 @@ class SolutionListView(ListView):
     # queryset = Solution.objects.all()
     template_name = 'solution_list.html'
     context_object_name = 'solution_list'
-    paginate_by = 4
 
     # Method to split tech_stack string into a list
     def get_context_data(self, **kwargs):

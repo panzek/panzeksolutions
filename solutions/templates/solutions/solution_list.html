@@ -35,19 +35,7 @@
                                 <a href="{% url 'solution_detail' solution.id %}" class="font-medium text-green-800 hover:text-green-500">
                                     <i class="fa-solid fa-plus fa-xs" style="color: #ff0000;"></i> Learn More
                                 </a>
-                        </div>  
-                        <div class="card-actions max-w-sm flex flex-col items-center mx-auto py-2 mb-1 px-6">
-                            <h4 class="card-title">Tech Stack</h4>
-                            <div>
-                                <ul class="card-actions flex flex-wrap justify-center">
-                                    {% for tech in solution.tech_stack %}
-                                    <li class="badge badge-ghost rounded-lg bordered px-2 py-3">
-                                        {{ tech | title }}
-                                    </li>
-                                    {% endfor %}
-                                </ul>
-                            </div>
-                        </div>                   
+                        </div>               
                     </div>
                 </div>
                 <div class="card-actions justify-center py-1">

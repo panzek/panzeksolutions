@@ -5,7 +5,7 @@ from solutions.models import Solution
 def index(request):
     """ A view to render the home page """
     # query all solutions from the database
-    solutions = Solution.objects.all()
+    solutions = Solution.objects.all()[:3] # fetch only the first 3 solutions from the database
 
     # process the tech_stack for each solution by splitting the string into a list
     for solution in solutions:
