@@ -8666,6 +8666,10 @@ html:has(.drawer-open.drawer-open) {
   r_start: r stop;
 }
 
+.\[seq_start\:pos\] {
+  seq_start: pos;
+}
+
 .\[server\:main\] {
   server: main;
 }
