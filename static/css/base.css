@@ -8502,6 +8502,10 @@ html:has(.drawer-open.drawer-open) {
   a-z-a--z0-9: .;
 }
 
+.\[a-zA-Z\:_\] {
+  a-z-a--z: ;
+}
+
 .\[b\:e\] {
   b: e;
 }
@@ -8516,6 +8520,10 @@ html:has(.drawer-open.drawer-open) {
 
 .\[cur\:space\] {
   cur: space;
+}
+
+.\[current_position\:start_position\] {
+  current_position: start position;
 }
 
 .\[cursor\:length\] {
@@ -8876,11 +8884,6 @@ html:has(.drawer-open.drawer-open) {
   .sm\:text-left {
     text-align: left;
   }
-
-  .sm\:text-sm {
-    font-size: 0.875rem;
-    line-height: 1.25rem;
-  }
 }
 
 @media (min-width: 768px) {
@@ -8921,16 +8924,6 @@ html:has(.drawer-open.drawer-open) {
     flex-direction: row;
   }
 
-  .lg\:text-base {
-    font-size: 1rem;
-    line-height: 1.5rem;
-  }
-
-  .lg\:text-lg {
-    font-size: 1.125rem;
-    line-height: 1.75rem;
-  }
-
   .lg\:text-4xl {
     font-size: 2.25rem;
     line-height: 2.5rem;
@@ -8939,5 +8932,15 @@ html:has(.drawer-open.drawer-open) {
   .lg\:text-5xl {
     font-size: 3rem;
     line-height: 1;
+  }
+
+  .lg\:text-base {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+
+  .lg\:text-lg {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
   }
 }

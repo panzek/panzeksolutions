@@ -69,6 +69,7 @@ INSTALLED_APPS = [
     'home',
     'portfolio',
     'solutions',
+    'chatbot',
 ]
 
 SITE_ID = 1
@@ -239,6 +240,8 @@ else:
     EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
     DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')
 
+# DeepSeek 
+DEEPSEEK_API_KEY = os.environ.get('DEEPSEEK_API_KEY')
 # Google reCAPTCHA set up
 RECAPTCHA_PUBLIC_KEY = os.environ.get('RECAPTCHA_PUBLIC_KEY')
 RECAPTCHA_PRIVATE_KEY = os.environ.get('RECAPTCHA_PRIVATE_KEY')
@@ -254,18 +257,6 @@ EMAIL_SUBJECT_PREFIX = '[Django Error] '
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-# Define CKEditor toolbar presets
-# CKEDITOR_5_CONFIGS = {
-#     'default': {
-#         'toolbar': [
-#             'heading', '|',
-#             'bold', 'italic', 'link', 'underline', 'strikethrough', '|',
-#             'bulletedList', 'numberedList', 'blockQuote', '|',
-#             'undo', 'redo'
-#         ],
-#     }
-# }
 
 # Define CKEditor toolbar presets
 customColorPalette = [
