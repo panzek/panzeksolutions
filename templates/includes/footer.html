@@ -1,10 +1,19 @@
 <!-- Footer -->
-<div class="mt-auto">
+<div class="flex flex-col mt-auto">
   <footer class="footer items-center p-4 bg-neutral text-neutral-content"> 
     <!-- Copyrights -->
     <aside class="items-center place-self-center md:justify-self-start grid-flow-col">
       <p> &copy; {{ current_year }} Panzek Solutions. All Rights Reserved.</p>
     </aside> 
+    <!-- Office Address -->
+    <nav class="flex flex-col p-2 place-self-center items-center text-center"> 
+      <div class="text-sm md:text-md lg:text-lg font-bold">Office Address</div>
+      <address class="mb-5 not-italic">
+        <p>51 Bracken Road, Sandyford</p>
+        <p>Dublin D18 CV48</p>
+        <a href="mailto:info@panzeksolutions.com">info@panzeksolutions.com</a>
+      </address>
+    </nav>
     <!-- Social Networks  -->
     <nav class="grid-flow-col gap-4 p-2 place-self-center md:justify-self-end"> 
       <a href="https://twitter.com/ipanzek" target="_blank" rel="noopener" aria-label="Go to Panzek's Twitter page (opens new tab on third party site)" title="Twitter">

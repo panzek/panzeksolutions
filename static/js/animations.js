@@ -29,7 +29,7 @@ document.addEventListener('alpine:init', () => {
         animateCounters() {
             this.hasAnimated = true;
             const targets = {
-                yearsInBusiness: 3,
+                yearsInBusiness: 4,
                 solutionsDelivered: 20,
                 customerSuccess: 98,
                 teamMembers: 4

@@ -120,14 +120,14 @@
             </span>
         </button>
     </div>
-    <div class="relative flex items-center mt-5 py-6 mx-auto">
+    <div class="relative flex items-center mt-6 py-6 mx-auto">
         <div class="flex-grow border-t border-gray-400"></div>
             <span class="flex-shrink mx-4 text-2xl md:text-3xl lg:text-4xl font-semibold">Our Numbers Count...</span>
         <div class="flex-grow border-t border-gray-400"></div>
     </div>
 
     <!-- Stats -->
-    <div x-data="gsapCounters()" class="hero-content flex-col lg:flex-row justify-around items-center text-center mx-auto bg-gray-50">
+    <div x-data="gsapCounters()" class="hero-content flex-col lg:flex-row justify-around items-center text-center mx-auto">
         <div>
             <div class="text-4xl font-bold text-green-800 hover:text-green-500">
                 <span x-text="yearsInBusiness"></span>+ 
@@ -156,32 +156,38 @@
         </div>
     </div>
 
-    <!-- About Us brief -->
-    <div class="card hero-content max-w-md bg-base-100 mx-auto justify-end mt-5">
-        <span class="flex-shrink text-xl font-bold">About Panzek Solutions</span>
-        <div class="card-actions line-clamp-3">
-            <article>
+    <!-- About Us clamped -->
+    <div class="flex-col lg:flex-row w-full max-w-8xl justify-around items-center text-center mx-auto bg-gray-50 rounded-box shadow md:shadow-md mt-6">
+        <div class="card-actions px-4 w-full max-w-3xl flex flex-col items-center mx-auto py-6">
+            <div class="card-title text-green-800 hover:text-green-500 text-md md:text-3xl py-2">About Panzek Solutions ...</div>
+            <div class="card-actions line-clamp-3 text-lg text-left mt-6">
+                <article>
+                    <p>
+                    At <span class="font-bold">Panzek Solutions</span>, we help businesses turn ideas into powerful 
+                    digital solutions. As a <span class="font-bold">full stack development company</span>, we specialize in 
+                    building <span class="font-bold">secure, scalable, and user-friendly applications</span> that 
+                    solve real-world problems and drive business growth.
+                </p>
                 <p>
-                At <span class="font-bold">Panzek Solutions</span>, we help businesses turn ideas into powerful 
-                digital solutions. As a <span class="font-bold">full stack development company</span>, we specialize in 
-                building <span class="font-bold">secure, scalable, and user-friendly applications</span> that 
-                solve real-world problems and drive business growth.
-            </p>
-            <p>
-                Our team combines deep technical expertise in <span class="font-bold">Python, JavaScript, Django, 
-                jQuery</span>, and <span class="font-bold">modern front-end technologies</span> to deliver seamless web and mobile 
-                experiences. On the back end, we design <span class="font-bold">high-performance systems</span> using 
-                <span class="font-bold">MySQL, PostgreSQL</span>, and <span class="font-bold">Linux</span>, supported by 
-                <span class="font-bold">cloud-based infrastructure on Amazon AWS</span>.
-            </p>
-            </article> 
-        </div>
-        <div class="flex justify-end">
-            <a href="{% url 'about' %}" class="font-medium text-blue-600 hover:link-primary">
-                <i class="fa-solid fa-plus fa-sm" aria-hidden="true" style="color: #ff0000;"></i> Learn More
-            </a>
+                    Our team combines deep technical expertise in <span class="font-bold">Python, JavaScript, Django, 
+                    jQuery</span>, and <span class="font-bold">modern front-end technologies</span> to deliver seamless web and mobile 
+                    experiences. On the back end, we design <span class="font-bold">high-performance systems</span> using 
+                    <span class="font-bold">MySQL, PostgreSQL</span>, and <span class="font-bold">Linux</span>, supported by 
+                    <span class="font-bold">cloud-based infrastructure on Amazon AWS</span>.
+                </p>
+                </article> 
+            </div>
+            <div class="flex flex-row gap-2 sm:gap-4 mt-6 py-6 px-4 w-full sm:px-0 max-w-lg mx-auto">
+                <div class="btn btn-outline btn-primary hover:text-white sm:btn-sm md:btn-md text-md font-bold flex-1 min-w-0">
+                    <a href="{% url 'about' %}" class="w-full text-center">... ABOUT US</a>   
+                </div>
+                <div class="btn btn-primary sm:btn-sm md:btn-md text-md font-bold text-white flex-1 min-w-0">
+                    <a href="{% url 'contact' %}" class="w-full text-center">CONTACT US</a>
+                </div>      
+            </div>
         </div>
     </div>
+
 </div>
 
 {% endblock %}
