@@ -7093,6 +7093,14 @@ html:has(.drawer-open.drawer-open) {
   margin: 1.5rem;
 }
 
+.m-1 {
+  margin: 0.25rem;
+}
+
+.m-7 {
+  margin: 1.75rem;
+}
+
 .mx-2 {
   margin-left: 0.5rem;
   margin-right: 0.5rem;
@@ -7349,6 +7357,11 @@ html:has(.drawer-open.drawer-open) {
 .size-2 {
   width: 0.5rem;
   height: 0.5rem;
+}
+
+.size-1 {
+  width: 0.25rem;
+  height: 0.25rem;
 }
 
 .h-12 {
@@ -8568,6 +8581,10 @@ html:has(.drawer-open.drawer-open) {
   -webkit-line-clamp: 5;
 }
 
+.\[-10\:-1\] {
+  -10: -1;
+}
+
 .\[-2\:space\] {
   -2: space;
 }
@@ -8594,6 +8611,14 @@ html:has(.drawer-open.drawer-open) {
 
 .\[a-zA-Z\:_\] {
   a-z-a--z: ;
+}
+
+.\[aq\:at\+1\] {
+  aq: at+1;
+}
+
+.\[ar\:as1\+1\] {
+  ar: as1+1;
 }
 
 .\[b\:e\] {
@@ -8628,6 +8653,10 @@ html:has(.drawer-open.drawer-open) {
   end: next;
 }
 
+.\[expand_pos_lower_index\:expand_pos_upper_index\] {
+  expand_pos_lower_index: expand pos upper index;
+}
+
 .\[first\:last\] {
   first: last;
 }
@@ -8638,6 +8667,10 @@ html:has(.drawer-open.drawer-open) {
 
 .\[i\:j\] {
   i: j;
+}
+
+.\[iframe\:\<src\>\] {
+  iframe: <src>;
 }
 
 .\[index-2\:index\] {
@@ -8658,6 +8691,10 @@ html:has(.drawer-open.drawer-open) {
 
 .\[j\:chunk_end\] {
   j: chunk end;
+}
+
+.\[k0\:k\] {
+  k0: k;
 }
 
 .\[labelStart\:labelEnd\] {
@@ -8706,6 +8743,14 @@ html:has(.drawer-open.drawer-open) {
 
 .\[month-1\:month\+1\] {
   month-1: month+1;
+}
+
+.\[n\:len\(self\)\] {
+  n: len(self);
+}
+
+.\[offset\:end\] {
+  offset: end;
 }
 
 .\[offset\:next_offset\] {
@@ -8776,16 +8821,92 @@ html:has(.drawer-open.drawer-open) {
   start: pos;
 }
 
+.\[start\:start\+length\] {
+  start: start+length;
+}
+
 .\[start\:stop\] {
   start: stop;
+}
+
+.\[start_idx\:cur_idx\] {
+  start_idx: cur idx;
 }
 
 .\[start_idx\:end_idx\] {
   start_idx: end idx;
 }
 
+.\[start_index\:end_index\] {
+  start_index: end index;
+}
+
 .\[start_pos\:pos\] {
   start_pos: pos;
+}
+
+.\[ticket\:10782\] {
+  ticket: 10782;
+}
+
+.\[ticket\:1523\] {
+  ticket: 1523;
+}
+
+.\[ticket\:1570\] {
+  ticket: 1570;
+}
+
+.\[ticket\:1892\] {
+  ticket: 1892;
+}
+
+.\[ticket\:2229\] {
+  ticket: 2229;
+}
+
+.\[ticket\:2362\] {
+  ticket: 2362;
+}
+
+.\[ticket\:2406\] {
+  ticket: 2406;
+}
+
+.\[ticket\:2619\] {
+  ticket: 2619;
+}
+
+.\[ticket\:3208\] {
+  ticket: 3208;
+}
+
+.\[ticket\:3633\] {
+  ticket: 3633;
+}
+
+.\[ticket\:3725\] {
+  ticket: 3725;
+}
+
+.\[ticket\:3801\] {
+  ticket: 3801;
+}
+
+.\[ticket\:3989\] {
+  ticket: 3989;
+}
+
+.\[ticket\:4457\] {
+  ticket: 4457;
+}
+
+.\[ticket\:4730\] {
+  ticket: 4730;
+}
+
+.\[ticket\:489\] {
+  ticket: 489;
 }
 
 .\[top\:bottom\] {
