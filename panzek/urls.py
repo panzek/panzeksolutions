@@ -30,3 +30,11 @@ urlpatterns = [
         {'sitemaps': sitemaps},
     )
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+# Django Debug toolbar setup
+if settings.DEBUG:
+    import debug_toolbar
+
+    urlpatterns += [
+        path('__debug__/', include(debug_toolbar.urls))
+    ]

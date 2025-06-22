@@ -20,7 +20,20 @@
 
 		{% tailwind_css %}
 		<link rel="preload" href="{% static 'fonts/M_Ponderosa.woff2' %}" as="font" type="font/woff2" crossorigin>
-		<link rel="preload" href="{% static 'fonts/M_Ponderosa.tff' %}" as="font" type="font/truetype" crossorigin>
+		<link rel="preload" href="{% static 'fonts/M_Ponderosa.tff' %}" as="font" type="font/ttf" crossorigin>
+
+		<style>
+			@font-face {
+				font-family: 'M Ponderosa';
+				src: url("{% static 'fonts/M_Ponderosa.woff2' %}") format('woff2'), 
+					url("{% static 'fonts/M_Ponderosa.ttf' %}") format('truetype');
+				font-display: swap;
+			}
+			body {
+				font-family: 'M Ponderosa', sans-serif;
+			}
+		</style>
+
 		<link href="{% static 'css/base.css' %}" rel="stylesheet">
 		
 		<!-- JavaScript -->

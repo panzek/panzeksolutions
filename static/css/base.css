@@ -2733,6 +2733,29 @@ html {
   min-height: fit-content;
 }
 
+:root .countdown {
+  line-height: 1em;
+}
+
+.countdown {
+  display: inline-flex;
+}
+
+.countdown > * {
+  height: 1em;
+  display: inline-block;
+  overflow-y: hidden;
+}
+
+.countdown > *:before {
+  position: relative;
+  content: "00\A 01\A 02\A 03\A 04\A 05\A 06\A 07\A 08\A 09\A 10\A 11\A 12\A 13\A 14\A 15\A 16\A 17\A 18\A 19\A 20\A 21\A 22\A 23\A 24\A 25\A 26\A 27\A 28\A 29\A 30\A 31\A 32\A 33\A 34\A 35\A 36\A 37\A 38\A 39\A 40\A 41\A 42\A 43\A 44\A 45\A 46\A 47\A 48\A 49\A 50\A 51\A 52\A 53\A 54\A 55\A 56\A 57\A 58\A 59\A 60\A 61\A 62\A 63\A 64\A 65\A 66\A 67\A 68\A 69\A 70\A 71\A 72\A 73\A 74\A 75\A 76\A 77\A 78\A 79\A 80\A 81\A 82\A 83\A 84\A 85\A 86\A 87\A 88\A 89\A 90\A 91\A 92\A 93\A 94\A 95\A 96\A 97\A 98\A 99\A";
+  white-space: pre;
+  top: calc(var(--value) * -1em);
+  text-align: center;
+  transition: all 1s cubic-bezier(1, 0, 0, 1);
+}
+
 .diff {
   position: relative;
   display: grid;
@@ -7057,6 +7080,10 @@ html:has(.drawer-open.drawer-open) {
   bottom: 0px;
 }
 
+.end-1 {
+  inset-inline-end: 0.25rem;
+}
+
 .right-0 {
   right: 0px;
 }
@@ -7073,12 +7100,40 @@ html:has(.drawer-open.drawer-open) {
   top: 0.25rem;
 }
 
+.top-2 {
+  top: 0.5rem;
+}
+
 .top-px {
   top: 1px;
 }
 
 .isolate {
   isolation: isolate;
+}
+
+.z-0 {
+  z-index: 0;
+}
+
+.order-1 {
+  order: 1;
+}
+
+.order-2 {
+  order: 2;
+}
+
+.order-3 {
+  order: 3;
+}
+
+.-m-1 {
+  margin: -0.25rem;
+}
+
+.m-1 {
+  margin: 0.25rem;
 }
 
 .m-2 {
@@ -7091,10 +7146,6 @@ html:has(.drawer-open.drawer-open) {
 
 .m-6 {
   margin: 1.5rem;
-}
-
-.m-1 {
-  margin: 0.25rem;
 }
 
 .m-7 {
@@ -7354,13 +7405,27 @@ html:has(.drawer-open.drawer-open) {
   display: none;
 }
 
+.size-0 {
+  width: 0px;
+  height: 0px;
+}
+
+.size-1 {
+  width: 0.25rem;
+  height: 0.25rem;
+}
+
 .size-2 {
   width: 0.5rem;
   height: 0.5rem;
 }
 
-.size-1 {
-  width: 0.25rem;
+.size-8 {
+  width: 2rem;
+  height: 2rem;
+}
+
+.h-1 {
   height: 0.25rem;
 }
 
@@ -7430,6 +7495,10 @@ html:has(.drawer-open.drawer-open) {
 
 .min-h-screen {
   min-height: 100vh;
+}
+
+.w-1 {
+  width: 0.25rem;
 }
 
 .w-12 {
@@ -8080,6 +8149,10 @@ html:has(.drawer-open.drawer-open) {
   padding: 1.5rem;
 }
 
+.p-8 {
+  padding: 2rem;
+}
+
 .px-0 {
   padding-left: 0px;
   padding-right: 0px;
@@ -8427,6 +8500,11 @@ html:has(.drawer-open.drawer-open) {
   text-decoration-line: line-through;
 }
 
+.antialiased {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 .shadow {
   --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
@@ -8585,8 +8663,40 @@ html:has(.drawer-open.drawer-open) {
   -10: -1;
 }
 
+.\[-2\:-1\] {
+  -2: -1;
+}
+
+.\[-2\:2\] {
+  -2: 2;
+}
+
 .\[-2\:space\] {
   -2: space;
+}
+
+.\[-3\:-1\] {
+  -3: -1;
+}
+
+.\[-4\:-1\] {
+  -4: -1;
+}
+
+.\[-4\:-3\] {
+  -4: -3;
+}
+
+.\[-5\:-3\] {
+  -5: -3;
+}
+
+.\[-6\:-5\] {
+  -6: -5;
+}
+
+.\[-8\:-2\] {
+  -8: -2;
 }
 
 .\[-\:\\w\] {
@@ -8601,8 +8711,16 @@ html:has(.drawer-open.drawer-open) {
   -: |;
 }
 
+.\[-n-tb\:len\(raz\)-tb\] {
+  -n-tb: len(raz)-tb;
+}
+
 .\[_\:\.\] {
   _: .;
+}
+
+.\[_start\:_end\] {
+  _start: end;
 }
 
 .\[a-zA-Z0-9\:\.\] {
@@ -8621,20 +8739,92 @@ html:has(.drawer-open.drawer-open) {
   ar: as1+1;
 }
 
+.\[axis\:axis\+2\] {
+  axis: axis+2;
+}
+
 .\[b\:e\] {
   b: e;
+}
+
+.\[beg_idx\:end_idx\] {
+  beg_idx: end idx;
+}
+
+.\[begin\:begin\+self\._recs\*self\._recsize\] {
+  begin: begin+self. recs*self. recsize;
+}
+
+.\[begin\:end\] {
+  begin: end;
+}
+
+.\[begin_\:begin_\+a_size\] {
+  begin_: begin +a size;
+}
+
+.\[begin_index\:end_index\] {
+  begin_index: end index;
+}
+
+.\[block_len\:-block_len\] {
+  block_len: -block len;
+}
+
+.\[block_length\:-block_length\] {
+  block_length: -block length;
 }
 
 .\[bottom\:top\] {
   bottom: top;
 }
 
+.\[bucket_offset\:param_index\] {
+  bucket_offset: param index;
+}
+
+.\[chunk_start_idx\:chunk_end_idx\] {
+  chunk_start_idx: chunk end idx;
+}
+
 .\[cols_start\:cols_end\] {
   cols_start: cols end;
 }
 
+.\[corpus_start_idx\:corpus_end_idx\] {
+  corpus_start_idx: corpus end idx;
+}
+
+.\[counter\:counter\+rank\] {
+  counter: counter+rank;
+}
+
+.\[cur\:end_str\] {
+  cur: end str;
+}
+
+.\[cur\:i\] {
+  cur: i;
+}
+
+.\[cur\:next_open_brace\] {
+  cur: next open brace;
+}
+
 .\[cur\:space\] {
   cur: space;
+}
+
+.\[cur\:split_char_position\] {
+  cur: split char position;
+}
+
+.\[curr_pos\:end\] {
+  curr_pos: end;
+}
+
+.\[current_patch_index\:end_patch_index\] {
+  current_patch_index: end patch index;
 }
 
 .\[current_position\:start_position\] {
@@ -8647,6 +8837,14 @@ html:has(.drawer-open.drawer-open) {
 
 .\[cursor\:start\] {
   cursor: start;
+}
+
+.\[data_start\:data_end\] {
+  data_start: data end;
+}
+
+.\[end\:end\+l-1\] {
+  end: end+l-1;
 }
 
 .\[end\:next\] {
@@ -8665,12 +8863,68 @@ html:has(.drawer-open.drawer-open) {
   first_non_space: last non space;
 }
 
+.\[first_zero\:-first_zero\] {
+  first_zero: -first zero;
+}
+
+.\[flat_start\:flat_end\] {
+  flat_start: flat end;
+}
+
+.\[halflen\:-halflen\] {
+  halflen: -halflen;
+}
+
+.\[i-l\:i\] {
+  i-l: i;
+}
+
+.\[i0\:i1\] {
+  i0: i1;
+}
+
+.\[i1\:i2\] {
+  i1: i2;
+}
+
+.\[i\:\2c j\] {
+  i: ,j;
+}
+
+.\[i\:i\+2\] {
+  i: i+2;
+}
+
+.\[i\:i\+j\] {
+  i: i+j;
+}
+
+.\[i\:i\+k\+2\] {
+  i: i+k+2;
+}
+
+.\[i\:i\+l\] {
+  i: i+l;
+}
+
 .\[i\:j\] {
   i: j;
 }
 
+.\[i\:k\] {
+  i: k;
+}
+
 .\[iframe\:\<src\>\] {
   iframe: <src>;
+}
+
+.\[ii\:jj\] {
+  ii: jj;
+}
+
+.\[ind1\:ind2\+1\] {
+  ind1: ind2+1;
 }
 
 .\[index-2\:index\] {
@@ -8681,20 +8935,92 @@ html:has(.drawer-open.drawer-open) {
   index: index;
 }
 
+.\[index_ndim\:tmp_ndim\] {
+  index_ndim: tmp ndim;
+}
+
 .\[indicator_start\:indicator_end\] {
   indicator_start: indicator end;
+}
+
+.\[indptr_3\:indptr_4\] {
+  indptr_3: indptr 4;
 }
 
 .\[inherit_ndx\:inherit_ndx\+1\] {
   inherit_ndx: inherit ndx+1;
 }
 
+.\[insert_pos\:insert_pos\] {
+  insert_pos: insert pos;
+}
+
+.\[j-2\:j\+3\] {
+  j-2: j+3;
+}
+
+.\[j\:-j\] {
+  j: -j;
+}
+
 .\[j\:chunk_end\] {
   j: chunk end;
 }
 
+.\[j\:j\+block_size\] {
+  j: j+block size;
+}
+
+.\[j\:j\+chunksize\] {
+  j: j+chunksize;
+}
+
+.\[js\:je\] {
+  js: je;
+}
+
 .\[k0\:k\] {
   k0: k;
+}
+
+.\[k1\:k2\] {
+  k1: k2;
+}
+
+.\[k2\:-k2\] {
+  k2: -k2;
+}
+
+.\[k\:-k\] {
+  k: -k;
+}
+
+.\[k\:N\] {
+  k: N;
+}
+
+.\[k\:k\+l\] {
+  k: k+l;
+}
+
+.\[k\:n\+1\] {
+  k: n+1;
+}
+
+.\[k\:n-k-1\] {
+  k: n-k-1;
+}
+
+.\[k_lo\:k_hi\] {
+  k_lo: k hi;
+}
+
+.\[l\:l2\] {
+  l: l2;
+}
+
+.\[l\:r\] {
+  l: r;
 }
 
 .\[labelStart\:labelEnd\] {
@@ -8713,8 +9039,24 @@ html:has(.drawer-open.drawer-open) {
   last-pos: pos;
 }
 
+.\[last_pos\:position\] {
+  last_pos: position;
+}
+
+.\[last_slice\:current_slice\] {
+  last_slice: current slice;
+}
+
 .\[left\:right\] {
   left: right;
+}
+
+.\[left_lim\:-right_lim\] {
+  left_lim: -right lim;
+}
+
+.\[left_start\:left_stop\] {
+  left_start: left stop;
 }
 
 .\[length_byte_size\:bytes_end\] {
@@ -8725,16 +9067,52 @@ html:has(.drawer-open.drawer-open) {
   line_offset: end line;
 }
 
+.\[lo\:hi\+1\] {
+  lo: hi+1;
+}
+
 .\[lower_bound\:lineno\] {
   lower_bound: lineno;
+}
+
+.\[lower_bound\:upper_bound\] {
+  lower_bound: upper bound;
 }
 
 .\[lpos_start\:lpos_end\] {
   lpos_start: lpos end;
 }
 
+.\[lst_i\:i\] {
+  lst_i: i;
+}
+
+.\[m\:2\*m\] {
+  m: 2*m;
+}
+
+.\[m\:n\] {
+  m: n;
+}
+
+.\[m_start\:m_stop\] {
+  m_start: m stop;
+}
+
+.\[m_stop\:n_start\] {
+  m_stop: n start;
+}
+
 .\[mem\:pos\] {
   mem: pos;
+}
+
+.\[message_set_item_start\:pos\] {
+  message_set_item_start: pos;
+}
+
+.\[message_start\:message_end\] {
+  message_start: message end;
 }
 
 .\[model_fields_start\:model_fields_end\] {
@@ -8745,8 +9123,64 @@ html:has(.drawer-open.drawer-open) {
   month-1: month+1;
 }
 
+.\[n-p-2\:end\] {
+  n-p-2: end;
+}
+
+.\[n\:2\*n\] {
+  n: 2*n;
+}
+
 .\[n\:len\(self\)\] {
   n: len(self);
+}
+
+.\[n\:m\+n\] {
+  n: m+n;
+}
+
+.\[n\:n\+1\] {
+  n: n+1;
+}
+
+.\[n\:n\+m\] {
+  n: n+m;
+}
+
+.\[n_start\:n_stop\] {
+  n_start: n stop;
+}
+
+.\[n_ub\:n_ub\+n_free\] {
+  n_ub: n ub+n free;
+}
+
+.\[ndim\:2\*ndim\] {
+  ndim: 2*ndim;
+}
+
+.\[new_pos\:pos\] {
+  new_pos: pos;
+}
+
+.\[next_open_brace\:i\] {
+  next_open_brace: i;
+}
+
+.\[nk1-1\:-1\] {
+  nk1-1: -1;
+}
+
+.\[npad\:-npad\] {
+  npad: -npad;
+}
+
+.\[num_tokens\:end\] {
+  num_tokens: end;
+}
+
+.\[nx\:nx\+ny\] {
+  nx: nx+ny;
 }
 
 .\[offset\:end\] {
@@ -8755,6 +9189,70 @@ html:has(.drawer-open.drawer-open) {
 
 .\[offset\:next_offset\] {
   offset: next offset;
+}
+
+.\[offset\:offset\+N\*d\.nbytes\] {
+  offset: offset+N*d.nbytes;
+}
+
+.\[offset\:offset\+size\+1\] {
+  offset: offset+size+1;
+}
+
+.\[offset\:offset_next\] {
+  offset: offset next;
+}
+
+.\[offset\:s\] {
+  offset: s;
+}
+
+.\[old_pos\:new_pos\] {
+  old_pos: new pos;
+}
+
+.\[operator_start\:operator_end\] {
+  operator_start: operator end;
+}
+
+.\[outer_batch_dims\:-1\] {
+  outer_batch_dims: -1;
+}
+
+.\[p\:p\+11\] {
+  p: p+11;
+}
+
+.\[p\:p\+1\] {
+  p: p+1;
+}
+
+.\[p\:p\+21\] {
+  p: p+21;
+}
+
+.\[p\:q\] {
+  p: q;
+}
+
+.\[pair_idx\:pair_idx\] {
+  pair_idx: pair idx;
+}
+
+.\[point\:pm\] {
+  point: pm;
+}
+
+.\[pos\:-1\] {
+  pos: -1;
+}
+
+.\[pos\:e\] {
+  pos: e;
+}
+
+.\[pos\:end\] {
+  pos: end;
 }
 
 .\[pos\:end_pos\] {
@@ -8777,6 +9275,22 @@ html:has(.drawer-open.drawer-open) {
   pos: pos+1;
 }
 
+.\[pos\:pos\+ext_rank\] {
+  pos: pos+ext rank;
+}
+
+.\[pos\:pos\+size\] {
+  pos: pos+size;
+}
+
+.\[pos\:pos_next\] {
+  pos: pos next;
+}
+
+.\[position\:item\.start\(\)\] {
+  position: item.start();
+}
+
 .\[position\:offset\] {
   position: offset;
 }
@@ -8789,16 +9303,68 @@ html:has(.drawer-open.drawer-open) {
   prev: curr;
 }
 
+.\[prev\:k\] {
+  prev: k;
+}
+
+.\[prev_end\:offset\] {
+  prev_end: offset;
+}
+
 .\[prev_end\:start\] {
   prev_end: start;
+}
+
+.\[prev_pos\:ind_pos\] {
+  prev_pos: ind pos;
 }
 
 .\[previous_end\:start\] {
   previous_end: start;
 }
 
+.\[previous_index\:index\] {
+  previous_index: index;
+}
+
+.\[r0\:r1\] {
+  r0: r1;
+}
+
 .\[r_start\:r_stop\] {
   r_start: r stop;
+}
+
+.\[rank\:n_features\] {
+  rank: n features;
+}
+
+.\[reaction_index\:rotation_index\] {
+  reaction_index: rotation index;
+}
+
+.\[right_start\:right_stop\] {
+  right_start: right stop;
+}
+
+.\[row-m\:row\] {
+  row-m: row;
+}
+
+.\[row\:row\+2\] {
+  row: row+2;
+}
+
+.\[s\:e\] {
+  s: e;
+}
+
+.\[s\:f\] {
+  s: f;
+}
+
+.\[sentence_start\:sentence_end\] {
+  sentence_start: sentence end;
 }
 
 .\[seq_start\:pos\] {
@@ -8809,8 +9375,40 @@ html:has(.drawer-open.drawer-open) {
   server: main;
 }
 
+.\[sidx\:eidx\] {
+  sidx: eidx;
+}
+
+.\[sstart\:send\] {
+  sstart: send;
+}
+
+.\[st\:end\] {
+  st: end;
+}
+
+.\[start0\:end0\] {
+  start0: end0;
+}
+
+.\[start1\:stop1\] {
+  start1: stop1;
+}
+
+.\[start2\:stop2\] {
+  start2: stop2;
+}
+
 .\[start\:end\] {
   start: end;
+}
+
+.\[start\:i\+1\] {
+  start: i+1;
+}
+
+.\[start\:i\] {
+  start: i;
 }
 
 .\[start\:match\.end\(\)\] {
@@ -8829,20 +9427,100 @@ html:has(.drawer-open.drawer-open) {
   start: stop;
 }
 
+.\[start_dim\:end_dim\] {
+  start_dim: end dim;
+}
+
+.\[start_dim\:max_dim\] {
+  start_dim: max dim;
+}
+
 .\[start_idx\:cur_idx\] {
   start_idx: cur idx;
+}
+
+.\[start_idx\:cur_len\] {
+  start_idx: cur len;
 }
 
 .\[start_idx\:end_idx\] {
   start_idx: end idx;
 }
 
+.\[start_idx\:line_idx\] {
+  start_idx: line idx;
+}
+
+.\[start_ind\:end_ind\] {
+  start_ind: end ind;
+}
+
 .\[start_index\:end_index\] {
   start_index: end index;
 }
 
+.\[start_len\:end_len\] {
+  start_len: end len;
+}
+
+.\[start_level\:end_level\] {
+  start_level: end level;
+}
+
+.\[start_offset\:arrow_pos\] {
+  start_offset: arrow pos;
+}
+
+.\[start_offset\:end_offset\] {
+  start_offset: end offset;
+}
+
+.\[start_pos\:end_pos\] {
+  start_pos: end pos;
+}
+
 .\[start_pos\:pos\] {
   start_pos: pos;
+}
+
+.\[start_ptr\:end_ptr\] {
+  start_ptr: end ptr;
+}
+
+.\[start_sample\:end_sample\] {
+  start_sample: end sample;
+}
+
+.\[startptr\:endptr\] {
+  startptr: endptr;
+}
+
+.\[subgraph_start_idx\:subgraph_end_idx\] {
+  subgraph_start_idx: subgraph end idx;
+}
+
+.\[sum_indices\:sum_indices\+b\.indices\.size\] {
+  sum_indices: sum indices+b.indices.size;
+}
+
+.\[t_eval_i\:t_eval_i_new\] {
+  t_eval_i: t eval i new;
+}
+
+.\[t_eval_i_new\:t_eval_i\] {
+  t_eval_i_new: t eval i;
+}
+
+.\[tangents_start_idx\:tangents_end_idx\] {
+  tangents_start_idx: tangents end idx;
+}
+
+.\[tb\:len\(az\)-te\] {
+  tb: len(az)-te;
+}
+
+.\[tensor_insert_point\:tensor_insert_point\] {
+  tensor_insert_point: tensor insert point;
 }
 
 .\[ticket\:10782\] {
@@ -8913,6 +9591,10 @@ html:has(.drawer-open.drawer-open) {
   top: bottom;
 }
 
+.\[total_length\:padded_total_length\] {
+  total_length: padded total length;
+}
+
 .\[trail_start\:middle_semicolon_index\] {
   trail_start: middle semicolon index;
 }
@@ -8927,6 +9609,34 @@ html:has(.drawer-open.drawer-open) {
 
 .\[user\:passwd\@\] {
   user: passwd@;
+}
+
+.\[val1\:val2\] {
+  val1: val2;
+}
+
+.\[value_index\:next_value_index\] {
+  value_index: next value index;
+}
+
+.\[value_start_pos\:pos\] {
+  value_start_pos: pos;
+}
+
+.\[window_start\:window_end\] {
+  window_start: window end;
+}
+
+.\[word_start\:word_end\] {
+  word_start: word end;
+}
+
+.\[x_ndim\:x_ndim\+self\.axis\] {
+  x_ndim: x ndim+self.axis;
+}
+
+.\[xmin\:xmax\] {
+  xmin: xmax;
 }
 
 @media (hover:hover) {

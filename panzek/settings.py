@@ -20,7 +20,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEVELOPMENT', False) == 'True'
 
-ALLOWED_HOSTS = ['panzeksolutions.com', 'www.panzeksolutions.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['panzeksolutions.com', 'www.panzeksolutions.com', 'mail.panzeksolutions.com', 'localhost', '127.0.0.1']
 
 # Session engine
 SESSION_ENGINE = 'django.contrib.sessions.backends.db'
@@ -64,6 +64,7 @@ INSTALLED_APPS = [
     'storages',
     'django_recaptcha',
     'django_ckeditor_5',
+    'debug_toolbar',
 
     'contact',
     'home',
@@ -81,6 +82,7 @@ TAILWIND_APP_NAME = 'theme'
 
 INTERNAL_IPS = [
     "127.0.0.1",
+    "localhost",
 ]
 
 # setup for NPM path
@@ -105,6 +107,7 @@ SILENCED_SYSTEM_CHECKS = [
 ]
 
 MIDDLEWARE = [
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -257,6 +260,13 @@ EMAIL_SUBJECT_PREFIX = '[Django Error] '
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Use DEBUG_TOOLBAR_CONFIG to force panels
+DEBUG_TOOLBAR_CONFIG = {
+    "SHOW_TOOLBAR_CALLBACK": lambda request: DEBUG,
+    "RENDER_PANELS": True, # render panels without JS (fallback)
+}
+
 
 # Define CKEditor toolbar presets
 customColorPalette = [
