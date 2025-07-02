@@ -9851,18 +9851,6 @@ html:has(.drawer-open.drawer-open) {
 }
 
 @media (min-width: 768px) {
-  .md\:h-10 {
-    height: 2.5rem;
-  }
-
-  .md\:h-24 {
-    height: 6rem;
-  }
-
-  .md\:h-12 {
-    height: 3rem;
-  }
-
   .md\:w-full {
     width: 100%;
   }

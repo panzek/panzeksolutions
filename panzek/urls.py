@@ -22,6 +22,7 @@ urlpatterns = [
     path('contact/', include('contact.urls')),
     path('portfolios/', include('portfolio.urls')),
     path('solutions/', include('solutions.urls')),
+    path('chats/', include('chatbot.urls')),
     path('ckeditor5/', include('django_ckeditor_5.urls')),
     path('robots.txt', TemplateView.as_view(template_name="robots.txt", content_type='text/plain')),
     path(

@@ -9,7 +9,7 @@ def chatbot_response(request):
     user_messages = request.GET.get('messages', '')
 
     responses = {
-        "Hello": "Hi there, how can I help you?",
+        "Hello": "Hi, I'm Bessie, an AI assistant to help you find things.",
         "What are your office hours": "Our office is open 9am to 6pm, Monday to Friday",
         "Your services": "We build awesome applications; 'Web Development', 'eCommerce Website', 'Website Maintenance', 'CMS Integration','Site Optimization','Server Management', 'Web Hosting', 'Chatbot'",
         "Bye": "Goodbye, and have a nice day!",
