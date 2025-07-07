@@ -6,53 +6,44 @@
 
 {% block content %}
 
-<style>
-    #chatbox {
-        width: 300px;
-        height: 400px;
-        border: 1px solid #d1d5db; /* Gray-300 */
-        border-radius: 0.375rem; /* Rounded-md */
-        padding: 1rem;
-        overflow-y: auto;
-        background-color: #0f0f8b; /* Gray-50 */
-    }
-    .message {
-        margin: 5px 0;
-    }
-    .message.user {
-        font-weight: bold;
-    }
-    .message.bot {
-        font-weight: normal;
-        color: #16a34a; /* Green-600 */
-    }
-</style>
+<!-- Floating chat button -->
+<button id="openChatBtn" class="fixed bottom-6 right-6 text-green-500 z-50">
+    <i class="fa-solid fa-comment-dots fa-4x" aria-hidden="true" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);"></i>
+    <span class="sr-only">Chat button</span>
+</button>
 
+<!-- Chat overlay window -->
 <div class="hero">
-    <div class="hero-content flex-col lg:flex-row items-stretch">
+    <div id="chatWindow" class="hero-content bottom-20 right-6 z-50 flex flex-col items-stretch mt-6">
+        <!-- Header -->
         <div class="card bg-base-100 w-full max-w-md shadow-2xl">
             <figure>
                 <img src="{{ MEDIA_URL }}panzek_hero.webp" alt="Hero Image">
             </figure>
+            <div class="bg-primary text-white p-4 rounded-t-xl flex justify-between items-center">
+                <h2 class="card-title text-lg font-semibold">Customer Support</h2>
+                <button id="closeChatBtn" class="btn btn-sm btn-circle text-content-primary">X</button>
+            </div>
             <div class="p-6">
-                <div class="card-actions justify-center">
-                <h2 class="card-title font-bold text-green-800">Chats</h2>
-                <p class="text-center">Chat with our AI-powered chatbot for quick answers to your questions.</p>
+                <!-- Messages -->
+                <div id="chatMessages" class="card-actions flex-1 p-4 overflow-y-auto space-y-3 bg-base-100">
+                    <!-- Main chat Messages will dynamically be added here. Chat Messages text below is hard-coded for testing -->
+                    Chat Messages
                 </div>
-                <div class="card-actions justify-center py-2"></div>
-                
-                <div class="flex flex-col justify-center items-center mt-2">
-                <input type="text" id="message" placeholder="Type your message..." autocomplete="off" />
-                <div id="chatbot">Message Here</div>
-                <p>
-                    <button class="btn btn-success gap-2 mt-6">Start Chat</button>
-                </p>
-                </div>
+                <!-- Chat form -->
+                 <form id="chatform" class="p-4 border-t border-base-200 bg-white">
+                    <div class="flex items-center gap-2">
+                        <input type="text" id="messageInput" class="input input-bordered w-full" placeholder="Type your message..." autocomplete="off" />
+                        <label for="fileInput" class="btn btn-outline btn-sm">
+                            <i class="fa-solid fa-paperclip fa-xl"></i>
+                        </label>
+                        <input type="file" id="fileInput" class="hidden" />
+                        <buton type="submit" class="btn btn-primary btn-sm">Send</buton>
+                    </div>
+                 </form>
             </div>
         </div>
     </div>
 </div>
-
-
 
 {% endblock %}

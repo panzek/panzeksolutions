@@ -4834,6 +4834,10 @@ details.collapse summary::-webkit-details-marker {
   line-height: 1em;
 }
 
+.input-bordered {
+  border-color: var(--fallback-bc,oklch(var(--bc)/0.2));
+}
+
 .input:focus,
   .input:focus-within {
   box-shadow: none;
@@ -7080,12 +7084,24 @@ html:has(.drawer-open.drawer-open) {
   bottom: 0px;
 }
 
+.bottom-20 {
+  bottom: 5rem;
+}
+
+.bottom-6 {
+  bottom: 1.5rem;
+}
+
 .end-1 {
   inset-inline-end: 0.25rem;
 }
 
 .right-0 {
   right: 0px;
+}
+
+.right-6 {
+  right: 1.5rem;
 }
 
 .start-1 {
@@ -7114,6 +7130,10 @@ html:has(.drawer-open.drawer-open) {
 
 .z-0 {
   z-index: 0;
+}
+
+.z-50 {
+  z-index: 50;
 }
 
 .order-1 {
@@ -7830,6 +7850,12 @@ html:has(.drawer-open.drawer-open) {
   row-gap: 16rem;
 }
 
+.space-y-3 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(0.75rem * var(--tw-space-y-reverse));
+}
+
 .space-y-4 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-y-reverse: 0;
   margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
@@ -7866,6 +7892,10 @@ html:has(.drawer-open.drawer-open) {
 
 .overflow-hidden {
   overflow: hidden;
+}
+
+.overflow-y-auto {
+  overflow-y: auto;
 }
 
 .truncate {
@@ -7952,6 +7982,11 @@ html:has(.drawer-open.drawer-open) {
   border-top-right-radius: 0px;
 }
 
+.rounded-t-xl {
+  border-top-left-radius: 0.75rem;
+  border-top-right-radius: 0.75rem;
+}
+
 .border {
   border-width: 1px;
 }
@@ -7966,6 +8001,16 @@ html:has(.drawer-open.drawer-open) {
 
 .border-t {
   border-top-width: 1px;
+}
+
+.border-base-200 {
+  --tw-border-opacity: 1;
+  border-color: var(--fallback-b2,oklch(var(--b2)/var(--tw-border-opacity)));
+}
+
+.border-base-300 {
+  --tw-border-opacity: 1;
+  border-color: var(--fallback-b3,oklch(var(--b3)/var(--tw-border-opacity)));
 }
 
 .border-blue-500 {
