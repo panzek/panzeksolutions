@@ -14,7 +14,7 @@
 
 <!-- Chat overlay window -->
 <div class="hero">
-    <div id="chatWindow" class="hero-content bottom-20 right-6 z-50 flex flex-col items-stretch mt-6">
+    <div id="chatWindow" class="hero-content bottom-20 right-6 z-50 hidden flex flex-col items-stretch mt-6">
         <!-- Header -->
         <div class="card bg-base-100 w-full max-w-md shadow-2xl">
             <figure>
@@ -45,5 +45,5 @@
         </div>
     </div>
 </div>
-
+<script src="{% static 'chatbot/js/chats.js' %}"></script>
 {% endblock %}
