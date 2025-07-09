@@ -7,14 +7,14 @@
 {% block content %}
 
 <!-- Floating chat button -->
-<button id="openChatBtn" class="fixed bottom-6 right-6 text-green-500 z-50">
+<button id="openChatBtn" class="fixed bottom-56 right-6 text-green-500 z-50">
     <i class="fa-solid fa-comment-dots fa-4x" aria-hidden="true" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);"></i>
     <span class="sr-only">Chat button</span>
 </button>
 
 <!-- Chat overlay window -->
-<div class="hero">
-    <div id="chatWindow" class="hero-content bottom-20 right-6 z-50 hidden flex flex-col items-stretch mt-6">
+<!-- <div class="hero"> -->
+    <div id="chatWindow" class="fixed bottom-56 right-6 z-50 hidden flex flex-col items-stretch mt-6">
         <!-- Header -->
         <div class="card bg-base-100 w-full max-w-md shadow-2xl">
             <figure>
@@ -44,6 +44,6 @@
             </div>
         </div>
     </div>
-</div>
+<!-- </div> -->
 <script src="{% static 'chatbot/js/chats.js' %}"></script>
 {% endblock %}

@@ -7084,8 +7084,20 @@ html:has(.drawer-open.drawer-open) {
   bottom: 0px;
 }
 
+.bottom-16 {
+  bottom: 4rem;
+}
+
 .bottom-20 {
   bottom: 5rem;
+}
+
+.bottom-36 {
+  bottom: 9rem;
+}
+
+.bottom-56 {
+  bottom: 14rem;
 }
 
 .bottom-6 {
@@ -7779,6 +7791,10 @@ html:has(.drawer-open.drawer-open) {
 
 .content-start {
   align-content: flex-start;
+}
+
+.items-end {
+  align-items: flex-end;
 }
 
 .items-center {
