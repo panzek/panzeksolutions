@@ -2,7 +2,7 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', views.chats, name='chats'),
-    path('chatbot_response/', views.chatbot_response, name="chatbot_response"),
+    path('', views.chatbot, name='chatbot'), # renders chats.html
+    path('chat/', views.chat_api, name="chat_api"), # POST API endpoint for frontend fetch
 ]
 

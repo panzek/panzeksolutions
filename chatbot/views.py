@@ -1,7 +1,9 @@
 from django.http import JsonResponse
 from django.shortcuts import render
+from django.views.decorators.csrf import csrf_exempt;
+import json
 
-def chatbot_response(request):
+def get_response(request):
     '''
     A view to return a json formatted data 
     '''
@@ -19,8 +21,18 @@ def chatbot_response(request):
 
     return JsonResponse({'response': response})
 
+@csrf_exempt
+def chat_api(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        message = data.get('message', '')
 
-def chats(request):
+        response_text = f"Echo: {message}"
+
+        return JsonResponse({'response': response_text})
+
+
+def chatbot(request):
     '''
     A view to render the chatbot page
     '''
