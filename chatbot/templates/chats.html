@@ -32,6 +32,7 @@
                 <!-- Chat form -->
                  <form id="chatform" class="p-4 border-t border-base-200 bg-white">
                     <div class="flex items-center gap-2">
+                        {% csrf_token %}
                         <input type="text" id="messageInput" class="input input-bordered w-full" placeholder="Type your message..." autocomplete="off" />
                         <label for="fileInput" class="btn btn-outline btn-sm">
                             <i class="fa-solid fa-paperclip fa-xl"></i>

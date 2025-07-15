@@ -14,7 +14,6 @@ closeChatBtn?.addEventListener('click', () => {
 })
 
 function appendMessage(sender, message){
-// const appendMessage = (sender, message) => {
     // create new div
     const msgDiv = document.createElement("div");
     // and give it some content
@@ -40,16 +39,24 @@ chatForm.onsubmit = async (e) => {
     appendMessage("user", message);
     messageInput.value = "";
 
+    // let option = {
+    //     method: "POST",
+    //     headers: {
+    //         "Content-Type": "application/json",
+    //         "X-CSRFToken": getCookie("csrftoken"),
+    //     },
+    //     body: JSON.stringify({ message })
+    // }
+    
     try{
-        const response = await fetch("/bot/chat/", 
-        {
+        const response = await fetch("/bot/api/chat/", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
                 "X-CSRFToken": getCookie("csrftoken"),
             },
             body: JSON.stringify({ message })
-        })
+    })
         
         const data = await response.json();
         console.log("Data:", data)
