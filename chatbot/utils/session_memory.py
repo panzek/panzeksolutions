@@ -7,7 +7,7 @@ class DjangoSessionMessageHistory(BaseChatMessageHistory):
     """
     Creates or retrieves a session-based chat history object
     """
-    
+
     # Initialiser
     def __init__(self, session, key="chat_history"):
         self.session = session
@@ -26,6 +26,7 @@ class DjangoSessionMessageHistory(BaseChatMessageHistory):
                 messages.append(HumanMessage(content=msg["content"]))
             elif msg["type"] == "ai":
                 messages.append(AIMessage(content=msg["content"]))
+            print("Django Session Message History:", messages)
         return messages
 
 
@@ -52,6 +53,7 @@ class DjangoSessionMessageHistory(BaseChatMessageHistory):
     # Remove all messages from the seesion
     def clear(self) -> None:
         self.session[self.key] = []
+        self.session.modified = True
 
     def _append(self, message: Dict[str, Any]) -> None:
         history = self.session.get(self.key, [])

@@ -18,26 +18,31 @@ def chatbot(request):
     return render(request, 'chats.html')
 
 
-def get_session_history(session):
+def get_session_history_factory(session):
     """
     A view to create or retrieve a session-based chat history object
     """
 
-    return DjangoSessionMessageHistory(session, key="chat_history")
+    def get_history(session_id):
+        return DjangoSessionMessageHistory(session, key=session_id)
+    return get_history
 
 
 def chat_api(request):
     if request.method == 'POST':
         data = json.loads(request.body)
-        print("data:", data)
+        print("Incoming POST:", data)
         user_input = data.get('message', '').strip()
+        print("User Input:", user_input)
 
         session = request.session
         session_id = session.session_key or session._get_or_create_session_key()
+        print("Session ID:", session_id)
 
         llm = ChatDeepSeek(
             model="deepseek-chat",
-            temperature=0.6,
+            temperature=1.3,
+            # max_tokens=100,
             api_key=settings.DEEPSEEK_API_KEY
         )
 
@@ -45,22 +50,30 @@ def chat_api(request):
 
         system_prompt = (
             f"You are a helpful assistant called Cecilia Eleke. "
-            "Offer assistance politely. "
-            "Use the following context if provided. If you don't know the answer, "
-            "just say so. Keep responses concise (3 sentences max). "
+            "You must remember the user's previous inputs from the chat history. "
+            "Use the provided chat history to recall facts like their name or prior questions, "
+            "Keep responses concise (3 sentences max). "
         )
 
-        prompt = ChatPromptTemplate([
+        prompt = ChatPromptTemplate(messages=[
             ("system", system_prompt),
+            ("placeholder", "{history}"),
             ("human", "{input}"),
         ])
 
         chain = prompt | llm
 
         # Set up memory handler via LangChain 
+        memory_provider = get_session_history_factory(session)
+        history = memory_provider(session_id)
+
+        print("\n>>> Previous Chat History:")
+        for msg in history.messages:
+            print(f"{msg.type.upper()}: {msg.content}")
+
         runnable = RunnableWithMessageHistory(
             chain,
-            lambda session_id: DjangoSessionMessageHistory(request.session, key="chat_history"),
+            memory_provider,
             input_messages_key="input",
             history_messages_key="history",
         )
@@ -72,6 +85,12 @@ def chat_api(request):
             )
 
             final_response = response.content if hasattr(response, 'content') else str(response)
+
+            print("\n>>> Final Response:", final_response)
+
+            print("\n>>> Updated Chat History:")
+            for msg in history.messages:
+                print(f"{msg.type.upper()}: {msg.content}")
         
         except Exception as e:
             print("Error from DeepSeek:", repr(e))
