@@ -25,10 +25,25 @@ function appendMessage(sender, message){
     `;
     // add the newly created div and its content to the DOM
     chatMessages.appendChild(msgDiv);
-    // Scroll this chat container all the way to the bottom so the latest message is visible 
-    // when a message is added for smooth user experience
+    // Scroll chat container to the bottom so the latest message is visible 
     chatMessages.scrollTop = chatMessages.scrollHeight;
 } 
+
+// Scrollbar trigger logic on user input
+let scrollbarTriggered = false;
+
+messageInput?.addEventListener("input", () => {
+    if (scrollbarTriggered) {
+        const dummyDiv = document.createElement("div");
+        dummyDiv.style.height = "320px";
+        dummyDiv.style.visibility = "hidden";
+        chatMessages.appendChild(dummyDiv);
+
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+
+        scrollbarTriggered = true;
+    }
+});
 
 chatForm.onsubmit = async (e) => {
     e.preventDefault();

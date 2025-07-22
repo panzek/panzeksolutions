@@ -26,7 +26,6 @@ class DjangoSessionMessageHistory(BaseChatMessageHistory):
                 messages.append(HumanMessage(content=msg["content"]))
             elif msg["type"] == "ai":
                 messages.append(AIMessage(content=msg["content"]))
-            print("Django Session Message History:", messages)
         return messages
 
 

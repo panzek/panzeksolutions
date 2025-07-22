@@ -31,27 +31,21 @@ def get_session_history_factory(session):
 def chat_api(request):
     if request.method == 'POST':
         data = json.loads(request.body)
-        print("Incoming POST:", data)
         user_input = data.get('message', '').strip()
-        print("User Input:", user_input)
 
         session = request.session
         session_id = session.session_key or session._get_or_create_session_key()
-        print("Session ID:", session_id)
 
         llm = ChatDeepSeek(
             model="deepseek-chat",
             temperature=1.3,
-            # max_tokens=100,
             api_key=settings.DEEPSEEK_API_KEY
         )
 
         # first_name = request.user.first_name if request.user.is_authenticated else "there"
 
         system_prompt = (
-            f"You are a helpful assistant called Cecilia Eleke. "
-            "You must remember the user's previous inputs from the chat history. "
-            "Use the provided chat history to recall facts like their name or prior questions, "
+            "You are a helpful assistant called Cecilia Eleke. "
             "Keep responses concise (3 sentences max). "
         )
 
@@ -65,11 +59,6 @@ def chat_api(request):
 
         # Set up memory handler via LangChain 
         memory_provider = get_session_history_factory(session)
-        history = memory_provider(session_id)
-
-        print("\n>>> Previous Chat History:")
-        for msg in history.messages:
-            print(f"{msg.type.upper()}: {msg.content}")
 
         runnable = RunnableWithMessageHistory(
             chain,
@@ -85,12 +74,6 @@ def chat_api(request):
             )
 
             final_response = response.content if hasattr(response, 'content') else str(response)
-
-            print("\n>>> Final Response:", final_response)
-
-            print("\n>>> Updated Chat History:")
-            for msg in history.messages:
-                print(f"{msg.type.upper()}: {msg.content}")
         
         except Exception as e:
             print("Error from DeepSeek:", repr(e))

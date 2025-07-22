@@ -7650,8 +7650,16 @@ html:has(.drawer-open.drawer-open) {
   max-height: 2rem;
 }
 
+.max-h-\[300px\] {
+  max-height: 300px;
+}
+
 .max-h-full {
   max-height: 100%;
+}
+
+.max-h-\[600px\] {
+  max-height: 600px;
 }
 
 .min-h-full {
@@ -8441,6 +8449,10 @@ html:has(.drawer-open.drawer-open) {
 
 .pb-6 {
   padding-bottom: 1.5rem;
+}
+
+.pr-2 {
+  padding-right: 0.5rem;
 }
 
 .text-left {
