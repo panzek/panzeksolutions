@@ -122,9 +122,12 @@
 				{% include 'includes/mobile_nav.html' %}
 			</div>
 		</div>
-	<!-- Load Alpine and Custom scripts -->
-    <script src="{% static 'js/animations.js' %}"></script>
+	<!-- Open Chat button -->
+	{% include 'chatbot/chat_widget.html' %}
 	<!-- Footer -->
 	{% include 'includes/footer.html' %}
+	<!-- Load Alpine and Custom scripts -->
+    <script src="{% static 'js/animations.js' %}"></script>
+    <script src="{% static 'chatbot/js/chats.js' %}"></script>
 	</body>
 </html>
