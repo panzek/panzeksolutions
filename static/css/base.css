@@ -8034,6 +8034,10 @@ html:has(.drawer-open.drawer-open) {
   gap: 2rem;
 }
 
+.gap-3 {
+  gap: 0.75rem;
+}
+
 .gap-x-8 {
   -moz-column-gap: 2rem;
        column-gap: 2rem;
@@ -8041,6 +8045,10 @@ html:has(.drawer-open.drawer-open) {
 
 .gap-y-64 {
   row-gap: 16rem;
+}
+
+.gap-y-3 {
+  row-gap: 0.75rem;
 }
 
 .space-y-3 > :not([hidden]) ~ :not([hidden]) {
