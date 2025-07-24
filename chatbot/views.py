@@ -10,14 +10,6 @@ from langchain_core.prompts import ChatPromptTemplate
 from .utils.session_memory import DjangoSessionMessageHistory
 
 
-def chatbot(request):
-    '''
-    A view to render the chatbot page
-    '''
-
-    return render(request, 'chats.html')
-
-
 def get_session_history_factory(session):
     """
     A view to create or retrieve a session-based chat history object

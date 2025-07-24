@@ -7245,6 +7245,10 @@ html:has(.drawer-open.drawer-open) {
   right: 2.5rem;
 }
 
+.right-4 {
+  right: 1rem;
+}
+
 .right-6 {
   right: 1.5rem;
 }
@@ -7271,22 +7275,6 @@ html:has(.drawer-open.drawer-open) {
 
 .top-px {
   top: 1px;
-}
-
-.right-\[1\.75rem\] {
-  right: 1.75rem;
-}
-
-.left-\[-4px\] {
-  left: -4px;
-}
-
-.top-\[-4px\] {
-  top: -4px;
-}
-
-.right-4 {
-  right: 1rem;
 }
 
 .isolate {
@@ -7800,10 +7788,6 @@ html:has(.drawer-open.drawer-open) {
 
 .w-full {
   width: 100%;
-}
-
-.w-\[5rem\] {
-  width: 5rem;
 }
 
 .min-w-0 {
