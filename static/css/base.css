@@ -7197,6 +7197,10 @@ html:has(.drawer-open.drawer-open) {
   bottom: 0px;
 }
 
+.-top-5 {
+  top: -1.25rem;
+}
+
 .bottom-0 {
   bottom: 0px;
 }
@@ -7243,6 +7247,10 @@ html:has(.drawer-open.drawer-open) {
 
 .right-10 {
   right: 2.5rem;
+}
+
+.right-20 {
+  right: 5rem;
 }
 
 .right-4 {
@@ -8022,6 +8030,10 @@ html:has(.drawer-open.drawer-open) {
   gap: 0.5rem;
 }
 
+.gap-3 {
+  gap: 0.75rem;
+}
+
 .gap-4 {
   gap: 1rem;
 }
@@ -8034,21 +8046,17 @@ html:has(.drawer-open.drawer-open) {
   gap: 2rem;
 }
 
-.gap-3 {
-  gap: 0.75rem;
-}
-
 .gap-x-8 {
   -moz-column-gap: 2rem;
        column-gap: 2rem;
 }
 
-.gap-y-64 {
-  row-gap: 16rem;
-}
-
 .gap-y-3 {
   row-gap: 0.75rem;
+}
+
+.gap-y-64 {
+  row-gap: 16rem;
 }
 
 .space-y-3 > :not([hidden]) ~ :not([hidden]) {
