@@ -3,7 +3,8 @@ const chatWindow = document.getElementById("chatWindow");
 const closeChatBtn = document.getElementById("closeChatBtn");
 const chatMessages = document.getElementById("chatMessages");
 const chatForm = document.getElementById("chatform");
-const messageInput = document.getElementById("messageInput")
+const messageInput = document.getElementById("messageInput");
+const fileInput = document.getElementById("fileInput");
 
 openChatBtn?.addEventListener('click', () => {
     chatWindow?.classList.remove("hidden");
@@ -45,6 +46,7 @@ messageInput?.addEventListener("input", () => {
     }
 });
 
+// Handle chat form submission (JSON to chat API) 
 chatForm.onsubmit = async (e) => {
     e.preventDefault();
     const message = messageInput.value.trim();
@@ -74,6 +76,39 @@ chatForm.onsubmit = async (e) => {
         appendMessage("bot", "Failed to respond.");
     }
 };
+
+// Handle file upload (FormData to upload API)
+fileInput.addEventListener("change", async function() {
+    const file = this.file[0];
+    if (file) return;
+
+    const formData = new FormData();
+    formData.append("file", file);
+
+    try {
+        const res = await fetch("/bot/api/upload", {
+            method: "POST",
+            headers: {
+                "X-CSRFToken": getCookie("csrftoken"),
+            },
+            body: formData,
+        });
+
+        const data = await res.json();
+
+        if (data.status === "success") {
+            appendMessage("bot", `File uploaded: ${file.name}`);
+        } else {
+            appendMessage("bot", `Upload failed: ${data.message || "Unknown error"}`);
+            console.error("Upload error:", error);
+        } 
+    } catch (error) {
+        appendMessage("bot", "Upload error");
+        console.error("Upload error:", error);
+    } finally {
+        fileInput.value = "";
+    }
+})
 
 function getCookie(name) {
     let cookieValue = null;
