@@ -9227,6 +9227,10 @@ html:has(.drawer-open.drawer-open) {
   i: k;
 }
 
+.\[i\:pos\] {
+  i: pos;
+}
+
 .\[iframe\:\<src\>\] {
   iframe: <src>;
 }
