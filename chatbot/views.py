@@ -6,8 +6,11 @@ from django.conf import settings
 from langchain_core.runnables import RunnableWithMessageHistory
 from langchain_deepseek.chat_models import ChatDeepSeek
 from langchain_core.prompts import ChatPromptTemplate
+from langchain.chains.combine_documents import create_stuff_documents_chain
+from langchain.chains import create_retrieval_chain
 
 from .utils.session_memory import DjangoSessionMessageHistory
+from .views_upload import RAG_VECTORSTORE, build_vectorstore
 
 
 def get_session_history_factory(session):
@@ -28,6 +31,10 @@ def chat_api(request):
         session = request.session
         session_id = session.session_key or session._get_or_create_session_key()
 
+        global RAG_VECTORSTORE
+        if RAG_VECTORSTORE is None:
+            RAG_VECTORSTORE = build_vectorstore()
+
         llm = ChatDeepSeek(
             model="deepseek-chat",
             temperature=1.3,
@@ -47,13 +54,17 @@ def chat_api(request):
             ("human", "{input}"),
         ])
 
-        chain = prompt | llm
+        # Create document chain (stuff type)
+        document_chain = create_stuff_documents_chain(llm, prompt)
+        # Retrieve from vectorstore
+        retriever = RAG_VECTORSTORE.as_retriever(search_kwargs={"k":4})
+        rag_chain = create_retrieval_chain(retriever, document_chain)
 
         # Set up memory handler via LangChain 
         memory_provider = get_session_history_factory(session)
 
         runnable = RunnableWithMessageHistory(
-            chain,
+            rag_chain,
             memory_provider,
             input_messages_key="input",
             history_messages_key="history",
@@ -65,13 +76,13 @@ def chat_api(request):
                 config={"configurable": {"session_id": session_id}}
             )
 
-            final_response = response.content if hasattr(response, 'content') else str(response)
+            response_text = response.content if hasattr(response, 'content') else str(response)
         
         except Exception as e:
             print("Error from DeepSeek:", repr(e))
-            final_response = "Sorry, I couldn't process that"
+            response_text = "Sorry, I couldn't process that"
 
-        return JsonResponse({'response': final_response})
+        return JsonResponse({'response': response_text})
     
     return JsonResponse({'error':'Invalid Resquest'}, status=400)
 
