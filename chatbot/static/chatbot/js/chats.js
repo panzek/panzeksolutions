@@ -5,7 +5,7 @@ const chatMessages = document.getElementById("chatMessages");
 const chatForm = document.getElementById("chatform");
 const messageInput = document.getElementById("messageInput");
 const fileInput = document.getElementById("fileInput");
-
+ 
 openChatBtn?.addEventListener('click', () => {
     chatWindow?.classList.remove("hidden");
 }) ;  

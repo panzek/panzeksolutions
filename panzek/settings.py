@@ -251,6 +251,10 @@ RECAPTCHA_PRIVATE_KEY = os.environ.get('RECAPTCHA_PRIVATE_KEY')
 # bypass security check that prevent test keys from being used unknowingly
 SILENCED_SYSTEM_CHECKS = ['captcha.recaptcha_test_key_error']
 
+# RAG Chunking configs
+RAG_CHUNK_SIZE = 500
+RAG_CHUNK_OVERLAP = 50
+
 # Enable Error Reporting for Email
 ADMINS = [('Panzek', 'panzek@yahoo.co.uk')]
 SERVER_EMAIL = 'info@panzeksolutions.com'
