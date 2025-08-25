@@ -49,7 +49,7 @@ def chat_api(request):
         )
 
         prompt = ChatPromptTemplate(messages=[
-            ("system", system_prompt),
+            ("system", system_prompt + "\nUse the following context to answer questions:\n{context}"),
             ("placeholder", "{history}"),
             ("human", "{input}"),
         ])
@@ -71,12 +71,12 @@ def chat_api(request):
         )
 
         try:
-            response = runnable.invoke(
+            result = runnable.invoke(
                 {"input": user_input},
                 config={"configurable": {"session_id": session_id}}
             )
 
-            response_text = response.content if hasattr(response, 'content') else str(response)
+            response_text = result.get("answer", "I couldn't generate an answer.") 
         
         except Exception as e:
             print("Error from DeepSeek:", repr(e))

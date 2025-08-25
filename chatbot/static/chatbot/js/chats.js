@@ -78,37 +78,31 @@ chatForm.onsubmit = async (e) => {
 };
 
 // Handle file upload (FormData to upload API)
-fileInput.addEventListener("change", async function() {
-    const file = this.file[0];
-    if (file) return;
+if (fileInput) {
+    fileInput?.addEventListener("change", async function() {
+        const file = fileInput.files[0];
+        if (!file) return;
 
-    const formData = new FormData();
-    formData.append("file", file);
+        const formData = new FormData();
+        formData.append("file", file);
 
-    try {
-        const res = await fetch("/bot/api/upload", {
-            method: "POST",
-            headers: {
-                "X-CSRFToken": getCookie("csrftoken"),
-            },
-            body: formData,
-        });
+        try {
+            const res = await fetch("/bot/api/upload/", {
+                method: "POST",
+                headers: {
+                    "X-CSRFToken": getCookie("csrftoken"),
+                },
+                body: formData,
+            });
 
-        const data = await res.json();
+            const data = await res.json();
+            console.log("Upload response:", data)
 
-        if (data.status === "success") {
-            appendMessage("bot", `File uploaded: ${file.name}`);
-        } else {
-            appendMessage("bot", `Upload failed: ${data.message || "Unknown error"}`);
+        } catch (error) {
             console.error("Upload error:", error);
-        } 
-    } catch (error) {
-        appendMessage("bot", "Upload error");
-        console.error("Upload error:", error);
-    } finally {
-        fileInput.value = "";
-    }
-})
+        }
+    });
+}
 
 function getCookie(name) {
     let cookieValue = null;

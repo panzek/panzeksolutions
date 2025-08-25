@@ -33,6 +33,8 @@ module.exports = {
          * JS: If you use Tailwind CSS in JavaScript, uncomment the following lines and make sure
          * patterns match your project structure.
          */
+        /* JS 1: Ignore any JavaScript in venv folder. */
+        '!../../**/venv',
         /* JS 1: Ignore any JavaScript in node_modules folder. */
         '!../../**/node_modules',
         /* JS 2: Process all JavaScript files in the project. */
