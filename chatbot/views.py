@@ -9,6 +9,7 @@ from langchain_deepseek.chat_models import ChatDeepSeek
 from langchain_core.prompts import ChatPromptTemplate
 from langchain.chains.combine_documents import create_stuff_documents_chain
 from langchain.chains import create_retrieval_chain
+from langchain.schema.runnable import RunnableLambda
 
 from .utils.session_memory import DjangoSessionMessageHistory
 from .views_upload import RAG_VECTORSTORE, build_vectorstore
@@ -72,7 +73,7 @@ def chat_api(request):
         document_chain = create_stuff_documents_chain(llm, prompt)
         # Retrieve from vectorstore
         retriever = RAG_VECTORSTORE.as_retriever(search_kwargs={"k":4})
-        rag_chain = create_retrieval_chain(retriever, document_chain)
+        rag_chain = create_retrieval_chain(retriever, document_chain) | RunnableLambda(lambda result: {"output": result["answer"], **result})
 
         print("Number of docs in DB:", len(RAG_VECTORSTORE.get(['ids'])))
 
@@ -92,7 +93,8 @@ def chat_api(request):
                 config={"configurable": {"session_id": session_id}}
             )
 
-            response_text = result.get("answer", "I couldn't generate an answer.") 
+            # Ensure 'output' exists for Langchain callbacks
+            response_text = result["output"] 
         
         except Exception as e:
             logger.error("Error from DeepSeek:%s", repr(e))
