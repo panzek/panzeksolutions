@@ -1,4 +1,5 @@
 import json
+import logging
 from django.http import JsonResponse
 from django.shortcuts import render
 from django.conf import settings
@@ -12,6 +13,7 @@ from langchain.chains import create_retrieval_chain
 from .utils.session_memory import DjangoSessionMessageHistory
 from .views_upload import RAG_VECTORSTORE, build_vectorstore
 
+logger = logging.getLogger(__name__)
 
 def get_session_history_factory(session):
     """
@@ -35,6 +37,17 @@ def chat_api(request):
         if RAG_VECTORSTORE is None:
             RAG_VECTORSTORE = build_vectorstore()
 
+        # Debug: Show DB info
+        db_info = RAG_VECTORSTORE.get()
+        logger.info(f"Number of docs in DB: {len(db_info.get('ids', []))}")
+        logger.info(f"RAG_CHUNK_SIZE={settings.RAG_CHUNK_SIZE}, RAG_CHUNK_OVERLAP={settings.RAG_CHUNK_OVERLAP}")
+
+        # Debug: Log retrieved context
+        test_docs = RAG_VECTORSTORE.similarity_search(user_input, k=4)
+        logger.info(f"Retrieved {len(test_docs)} chunks for query '{user_input}'") 
+        for idx, doc in enumerate(test_docs): 
+            logger.info(f"Chunk {idx+1}:{doc.page_content[:200]}...")
+
         llm = ChatDeepSeek(
             model="deepseek-chat",
             temperature=1.3,
@@ -46,10 +59,11 @@ def chat_api(request):
         system_prompt = (
             "You are a helpful assistant called Cecilia Eleke. "
             "Keep responses concise (3 sentences max). "
+            "Use the following context to answer questions:\n{context}"
         )
 
         prompt = ChatPromptTemplate(messages=[
-            ("system", system_prompt + "\nUse the following context to answer questions:\n{context}"),
+            ("system", system_prompt),
             ("placeholder", "{history}"),
             ("human", "{input}"),
         ])
@@ -59,6 +73,8 @@ def chat_api(request):
         # Retrieve from vectorstore
         retriever = RAG_VECTORSTORE.as_retriever(search_kwargs={"k":4})
         rag_chain = create_retrieval_chain(retriever, document_chain)
+
+        print("Number of docs in DB:", len(RAG_VECTORSTORE.get(['ids'])))
 
         # Set up memory handler via LangChain 
         memory_provider = get_session_history_factory(session)
@@ -79,7 +95,7 @@ def chat_api(request):
             response_text = result.get("answer", "I couldn't generate an answer.") 
         
         except Exception as e:
-            print("Error from DeepSeek:", repr(e))
+            logger.error("Error from DeepSeek:%s", repr(e))
             response_text = "Sorry, I couldn't process that"
 
         return JsonResponse({'response': response_text})

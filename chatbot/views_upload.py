@@ -1,4 +1,5 @@
 import os
+import logging
 import tempfile 
 from django.http import JsonResponse
 from django.conf import settings
@@ -9,6 +10,8 @@ from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_chroma import Chroma
 from langchain_community.document_loaders import PyPDFLoader, TextLoader, UnstructuredWordDocumentLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
+
+logger = logging.getLogger(__name__)
 
 # Global Rag Vectorstore
 RAG_VECTORSTORE = None
@@ -49,12 +52,18 @@ def upload_document(request):
 def build_vectorstore():
     """
     A view to always pull documents from S3, rebuild embeddings, and persist Chroma to disk
+    Logs:
+        - Number of raw docs loaded
+        - Number of chunks created
     """
+    logger.info("Starting build_vectorstore()...")
 
     # Embed and update Chroma
-    CHROMA_DIR = os.path.join(settings.BASE_DIR, "vectorestore", "chroma_db")
+    CHROMA_DIR = os.path.join(settings.BASE_DIR, "vectorstore", "chroma_db")
     os.makedirs(CHROMA_DIR, exist_ok=True)
-    embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
+
+    # Initialize embedding model
+    embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
 
     documents = []
     s3_prefix = "upload_docs/"
@@ -62,11 +71,11 @@ def build_vectorstore():
     try:
         _, s3_files = default_storage.listdir(s3_prefix)
     except Exception as e:
-        print("Error listing from S3:", e)
+        logger.info("Error listing from S3:", e)
         return Chroma(persist_directory=CHROMA_DIR, embedding_function=embeddings)
     
     for filename in s3_files:
-        if not (filename.lower().endswith(".pdf") or filename.lower().endswith(".txt") or filename.lower().endswith(".docx")):
+        if not filename.lower().endswith((".pdf,.txt,.docx")):
             continue
 
         # Download from Amazon S3 to a temporary file
@@ -85,24 +94,35 @@ def build_vectorstore():
                 elif suffix == ".docx":
                     loader = UnstructuredWordDocumentLoader(temp.name)
                 else:
+                    logger.warning(f"Skipped unsupported file: {filename}")
                     continue
 
                 documents.extend(loader.load())
+    
+    logger.info(f"Loaded {len(documents)} raw documents from S3")
 
     # Split into chunks and embed documents
-    if documents:
-        splitter = RecursiveCharacterTextSplitter(
-            chunk_size=settings.RAG_CHUNK_SIZE, 
-            chunk_overlap=settings.RAG_CHUNK_OVERLAP,
-            )
-        chunks = splitter.split_documents(documents)
+    if not documents:
+        logger.warning("No documents found in S3. Returning empty Chroma DB.")
+        return Chroma(persist_directory=CHROMA_DIR, embedding_function=embeddings)
 
-        vectorestore = Chroma.from_documents(
-            chunks,
-            embeddings,
-            persist_directory=CHROMA_DIR
+    # Split into chunks and embed documents
+    splitter = RecursiveCharacterTextSplitter(
+        chunk_size=settings.RAG_CHUNK_SIZE, 
+        chunk_overlap=settings.RAG_CHUNK_OVERLAP,
         )
-        vectorestore.persist()
-        return vectorestore
-    
-    return Chroma(persist_directory=CHROMA_DIR, embedding_function=embeddings)
+    chunks = splitter.split_documents(documents)
+    logger.info(f"Split documents into {len(chunks)} chunks (Chunk Size: {settings.RAG_CHUNK_SIZE}, Overlap: {settings.RAG_CHUNK_OVERLAP}).")
+
+    # Build and persist Chroma DB
+    vectorstore = Chroma.from_documents(
+        chunks,
+        embeddings,
+        persist_directory=CHROMA_DIR
+    )
+    vectorstore.persist()
+    vector_count = len(vectorstore.get()['ids'])
+    logger.info(f"Chroma DB built successfully with {vector_count} vectors stored.")
+
+    return vectorstore
+

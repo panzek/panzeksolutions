@@ -251,6 +251,10 @@ RECAPTCHA_PRIVATE_KEY = os.environ.get('RECAPTCHA_PRIVATE_KEY')
 # bypass security check that prevent test keys from being used unknowingly
 SILENCED_SYSTEM_CHECKS = ['captcha.recaptcha_test_key_error']
 
+# Logging
+LOGS_DIR = BASE_DIR / "logs"
+LOGS_DIR.mkdir(parents=True, exist_ok=True)
+
 # RAG Chunking configs
 RAG_CHUNK_SIZE = 500
 RAG_CHUNK_OVERLAP = 50
@@ -271,6 +275,47 @@ DEBUG_TOOLBAR_CONFIG = {
     "RENDER_PANELS": True, # render panels without JS (fallback)
 }
 
+# Logging configs
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+
+    'formatters': {
+        'verbose': {
+            'format': '{levelname} {asctime} {module} {message}',
+            'style': '{',
+        },
+        'simple': {
+            'format': '{levelname} {message}',
+            'style': '{',
+        },
+    },
+
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+            'formatter': 'verbose',  # or 'simple'
+        },
+    },
+
+    'root': {
+        'handlers': ['console'],
+        'level': 'INFO',  # show info and above
+    },
+
+    'loggers': {
+        'django': {
+            'handlers': ['console'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+        'chatbot': {  # your app's logger
+            'handlers': ['console'],
+            'level': 'DEBUG',
+            'propagate': False,
+        },
+    },
+}
 
 # Define CKEditor toolbar presets
 customColorPalette = [
