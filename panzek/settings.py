@@ -256,8 +256,8 @@ LOGS_DIR = BASE_DIR / "logs"
 LOGS_DIR.mkdir(parents=True, exist_ok=True)
 
 # RAG Chunking configs
-RAG_CHUNK_SIZE = 500
-RAG_CHUNK_OVERLAP = 50
+RAG_CHUNK_SIZE = 1000
+RAG_CHUNK_OVERLAP = 200
 
 # Enable Error Reporting for Email
 ADMINS = [('Panzek', 'panzek@yahoo.co.uk')]

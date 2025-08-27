@@ -30,7 +30,6 @@ def chat_api(request):
     if request.method == 'POST':
         data = json.loads(request.body)
         user_input = data.get('message', '').strip()
-
         session = request.session
         session_id = session.session_key or session._get_or_create_session_key()
 
@@ -43,11 +42,11 @@ def chat_api(request):
         logger.info(f"Number of docs in DB: {len(db_info.get('ids', []))}")
         logger.info(f"RAG_CHUNK_SIZE={settings.RAG_CHUNK_SIZE}, RAG_CHUNK_OVERLAP={settings.RAG_CHUNK_OVERLAP}")
 
-        # Debug: Log retrieved context
-        test_docs = RAG_VECTORSTORE.similarity_search(user_input, k=4)
+        # Debug: Log retrieved context with scores
+        test_docs = RAG_VECTORSTORE.similarity_search_with_score(user_input, k=10)
         logger.info(f"Retrieved {len(test_docs)} chunks for query '{user_input}'") 
-        for idx, doc in enumerate(test_docs): 
-            logger.info(f"Chunk {idx+1}:{doc.page_content[:200]}...")
+        for idx, (doc, score) in enumerate(test_docs): 
+            logger.info(f"Chunk {idx+1} (score: {score: 4f}): {doc.page_content[:200]}...")
 
         llm = ChatDeepSeek(
             model="deepseek-chat",
@@ -72,7 +71,7 @@ def chat_api(request):
         # Create document chain (stuff type)
         document_chain = create_stuff_documents_chain(llm, prompt)
         # Retrieve from vectorstore
-        retriever = RAG_VECTORSTORE.as_retriever(search_kwargs={"k":4})
+        retriever = RAG_VECTORSTORE.as_retriever(search_kwargs={"k": 10})
         rag_chain = create_retrieval_chain(retriever, document_chain) | RunnableLambda(lambda result: {"output": result["answer"], **result})
 
         print("Number of docs in DB:", len(RAG_VECTORSTORE.get(['ids'])))
