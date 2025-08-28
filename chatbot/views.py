@@ -30,6 +30,7 @@ def chat_api(request):
     if request.method == 'POST':
         data = json.loads(request.body)
         user_input = data.get('message', '').strip()
+        
         session = request.session
         session_id = session.session_key or session._get_or_create_session_key()
 
@@ -46,15 +47,15 @@ def chat_api(request):
         test_docs = RAG_VECTORSTORE.similarity_search_with_score(user_input, k=10)
         logger.info(f"Retrieved {len(test_docs)} chunks for query '{user_input}'") 
         for idx, (doc, score) in enumerate(test_docs): 
-            logger.info(f"Chunk {idx+1} (score: {score: 4f}): {doc.page_content[:200]}...")
+            logger.info(f"Chunk {idx+1} (score: {score: .4f}): {doc.page_content[:200]}...")
+        if not test_docs:
+            logger.warning(f"No chunks retrieved. Possible issues: missing documents, query mismatch, or embedding model limitations")
 
         llm = ChatDeepSeek(
             model="deepseek-chat",
             temperature=1.3,
             api_key=settings.DEEPSEEK_API_KEY
         )
-
-        # first_name = request.user.first_name if request.user.is_authenticated else "there"
 
         system_prompt = (
             "You are a helpful assistant called Cecilia Eleke. "
@@ -73,8 +74,6 @@ def chat_api(request):
         # Retrieve from vectorstore
         retriever = RAG_VECTORSTORE.as_retriever(search_kwargs={"k": 10})
         rag_chain = create_retrieval_chain(retriever, document_chain) | RunnableLambda(lambda result: {"output": result["answer"], **result})
-
-        print("Number of docs in DB:", len(RAG_VECTORSTORE.get(['ids'])))
 
         # Set up memory handler via LangChain 
         memory_provider = get_session_history_factory(session)
@@ -96,7 +95,7 @@ def chat_api(request):
             response_text = result["output"] 
         
         except Exception as e:
-            logger.error("Error from DeepSeek:%s", repr(e))
+            logger.error("Error from DeepSeek: %s", repr(e))
             response_text = "Sorry, I couldn't process that"
 
         return JsonResponse({'response': response_text})

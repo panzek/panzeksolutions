@@ -1,8 +1,6 @@
 import os
 import logging
 import tempfile 
-import boto3
-import shutil
 
 from django.http import JsonResponse
 from django.conf import settings
@@ -14,7 +12,6 @@ from langchain_chroma import Chroma
 from langchain_community.document_loaders import UnstructuredPDFLoader, TextLoader, UnstructuredWordDocumentLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 
-from botocore.exceptions import ClientError
 from storages.backends.s3boto3 import S3Boto3Storage
 
 logger = logging.getLogger(__name__)
@@ -39,7 +36,7 @@ def upload_document(request):
     
     try:
         # Save to S3
-        s3_path = f"uploaded_docs/{uploaded_file.name}"
+        s3_path = f"media/uploaded_docs/{uploaded_file.name}"
         file_name = default_storage.save(s3_path, ContentFile(uploaded_file.read()))
         file_url = default_storage.url(file_name)
 
@@ -72,35 +69,7 @@ def build_vectorstore():
     # Embed and update Chroma
     CHROMA_DIR = os.path.join(settings.BASE_DIR, "vectorstore", "chroma_db")
     logger.info(f"Using CHROMA_DIR: {CHROMA_DIR}")
-
-    try:
-
-        #Clear conflicting directories
-        conflicting_dirs = [
-            os.path.join(settings.BASE_DIR, "chroma_db"), 
-            os.path.join(settings.BASE_DIR, "vectorstore"),
-            os.path.join(settings.BASE_DIR, "vectorstore", "chroma.sqlite3")
-        ]
-
-        for dir_path in conflicting_dirs:
-            if os.path.exists(dir_path):
-                if os.path.isdir(dir_path):
-                    shutil.rmtree(dir_path)
-                    logger.info(f"Cleared conflicting directory: {dir_path}")
-                else:
-                    os.remove(dir_path)
-                    logger.info(f"Cleared conflicting file: {dir_path}")
-
-
-        if os.path.exists(CHROMA_DIR):
-            shutil.rmtree(CHROMA_DIR)
-            logger.info(f"Clear Chroma directory: {CHROMA_DIR}")
-            os.makedirs(CHROMA_DIR, exist_ok=True)
-            logger.info(f"Created Chroma directory: {CHROMA_DIR}")
-
-    except Exception as e:
-        logger.error(f"Error clearing/creating Chroma directory: {e}")
-        raise
+    os.makedirs(CHROMA_DIR, exist_ok=True)
             
     # Initialize embedding model
     embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-mpnet-base-v2")
@@ -109,20 +78,9 @@ def build_vectorstore():
     documents = []
     s3_prefix = "uploaded_docs/"
 
-    # Use boto3 to list all files recursively
-    s3_client = boto3.client('s3')
-    bucket_name = default_storage.bucket_name
-
     try:
-        paginator = s3_client.get_paginator('list_objects_v2')
-        pages = paginator.paginate(Bucket=bucket_name, Prefix=s3_prefix)
-        s3_files = []
-        for page in pages:
-            for obj in page.get('Contents', []):
-                s3_files.append(obj['Key'])
-        if not s3_files:
-            logger.warning(f"No files found in S3 bucket under {s3_prefix}")
-    except ClientError as e:
+        _, s3_files = default_storage.listdir(s3_prefix)
+    except Exception as e:
         logger.error(f"Error listing from S3: {e}")
         return Chroma(persist_directory=CHROMA_DIR, embedding_function=embeddings)
     
@@ -169,8 +127,6 @@ def build_vectorstore():
     if chunks:
         logger.info(f"Sample chunk: {chunks[0].page_content[:200]}...")
         logger.info(f"Split documents into {len(chunks)} chunks (Chunk Size: 1000, Overlap: 200).")
-    # for i, chunk in enumerate(chunks[:3]):
-    #     logger.debug(f"Sample chunk {i+1}: {chunk.page_content[:200]}")
 
     # Build and persist Chroma DB
     try:
