@@ -45,7 +45,6 @@ def upload_document(request):
         
         # Save to S3
         file_name = default_storage.save(s3_path, uploaded_file)
-        # file_name = default_storage.save(s3_path, ContentFile(uploaded_file.read()))
         file_url = default_storage.url(file_name)
 
         # Debug: List files in S3
@@ -93,7 +92,6 @@ def build_vectorstore():
             
     # Initialize embedding model
     embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-mpnet-base-v2")
-    # embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
 
     documents = []
     s3_prefix = "media/uploaded_docs/"
@@ -168,7 +166,7 @@ def build_vectorstore():
 
     if chunks:
         logger.info(f"Sample chunk: {chunks[0].page_content[:200]}...")
-        # logger.info(f"Split documents into {len(chunks)} chunks (Chunk Size: 1000, Overlap: 200).")
+        logger.info(f"Split documents into {len(chunks)} chunks (Chunk Size: 1000, Overlap: 200).")
 
     # Build and persist Chroma DB
     try:

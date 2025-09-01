@@ -15,5 +15,4 @@ setup_env.sh
 *$py.class
 /node_modules/
 /.github/
-vectorstore/
 cloudinary_python.txt
