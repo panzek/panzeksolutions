@@ -1,6 +1,7 @@
 import os
 import logging
 import tempfile 
+import shutil
 
 from django.http import JsonResponse
 from django.conf import settings
@@ -35,16 +36,35 @@ def upload_document(request):
         return JsonResponse({"error": f"Only {allowed_exts} are supported."}, status=400)
     
     try:
-        # Save to S3
+        # Save to S3 with the correct path
         s3_path = f"media/uploaded_docs/{uploaded_file.name}"
-        file_name = default_storage.save(s3_path, ContentFile(uploaded_file.read()))
+
+        # Ensures the file is read from the beginning
+        if hasattr(uploaded_file, 'seek') and hasattr(uploaded_file, 'read'):
+            uploaded_file.seek(0)
+        
+        # Save to S3
+        file_name = default_storage.save(s3_path, uploaded_file)
+        # file_name = default_storage.save(s3_path, ContentFile(uploaded_file.read()))
         file_url = default_storage.url(file_name)
 
-        # Rebuild vectorstore from files in S3
+        # Debug: List files in S3
+        try:
+            _, s3_files = default_storage.listdir("media/uploaded_docs/")
+            logger.info(f"Files in s3 after upload: {s3_files}")
+        except Exception as e:
+            logger.error(f"Error listing S3 files: {e}")
+
+        # Force rebuild vectorstore from files in S3
         global RAG_VECTORSTORE
-        RAG_VECTORSTORE = None # force rebuild for debugging
-        if RAG_VECTORSTORE is None:
-            logger.info("Rebuilding RAG_VECTORSTORE...")
+        RAG_VECTORSTORE = None 
+        # Rebuild vectorstore
+        RAG_VECTORSTORE = build_vectorstore()
+
+        # Verify the vectorstore was updated
+        if RAG_VECTORSTORE:
+            db_info = RAG_VECTORSTORE.get()
+            logger.info(f"Vectorstore now has {len(db_info.get('ids', []))} documents")
             RAG_VECTORSTORE = build_vectorstore()
 
         return JsonResponse({
@@ -76,39 +96,60 @@ def build_vectorstore():
     # embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
 
     documents = []
-    s3_prefix = "uploaded_docs/"
+    s3_prefix = "media/uploaded_docs/"
 
     try:
-        _, s3_files = default_storage.listdir(s3_prefix)
+        dir, s3_files = default_storage.listdir(s3_prefix)
+        logger.info(f"Found {len(s3_files)} files in S3: {s3_files}")
     except Exception as e:
         logger.error(f"Error listing from S3: {e}")
         return Chroma(persist_directory=CHROMA_DIR, embedding_function=embeddings)
     
-    for file_path in s3_files:
-        if not file_path.lower().endswith((".pdf,.txt,.docx")):
+    for file_name in s3_files:
+        if not file_name.lower().endswith((".pdf",".txt",".docx")):
+            logger.info(f"Skipping non-document file: {file_name}")
             continue
 
-        # Download from Amazon S3 to a temporary file
-        with default_storage.open(file_path, "rb") as f:
-            suffix = os.path.splitext(file_path)[1].lower()
-            with tempfile.NamedTemporaryFile(suffix=suffix, delete=True) as temp:
-                temp.write(f.read())
-                temp.flush()
-                # Choose a loader based on extension
-                if suffix == ".pdf":
-                    loader = UnstructuredPDFLoader(temp.name)
-                elif suffix == ".txt":
-                    loader = TextLoader(temp.name)
-                elif suffix == ".docx":
-                    loader = UnstructuredWordDocumentLoader(temp.name)
-                else:
-                    logger.warning(f"Skipped unsupported file: {file_path}")
-                    continue
-                docs = loader.load()
-                for doc in docs:
-                    logger.info(f"Loaded document {file_path} content )(full): {doc.page_content[:1000]}...")
-                documents.extend(docs)
-                # logger.info(f"Loaded document {file_path}: {docs[0].page_content[:200]}...")
+        file_path = os.path.join(s3_prefix, file_name)
+
+        try:
+
+            # Download from Amazon S3 to a temporary file
+            with default_storage.open(file_path, "rb") as f:
+                suffix = os.path.splitext(file_path)[1].lower()
+                with tempfile.NamedTemporaryFile(suffix=suffix, delete=False) as temp:
+                    temp.write(f.read())
+                    temp.flush()
+
+                    try:
+                         # Choose a loader based on extension
+                        if suffix == ".pdf":
+                            loader = UnstructuredPDFLoader(temp.name)
+                        elif suffix == ".txt":
+                            loader = TextLoader(temp.name)
+                        elif suffix == ".docx":
+                            loader = UnstructuredWordDocumentLoader(temp.name)
+                        else:
+                            # logger.warning(f"Skipped unsupported file: {file_path}")
+                            continue
+
+                        docs = loader.load()
+                        logger.info(f"Loaded {len(docs)} documents from {file_name}")
+
+                        for doc in docs:
+                            # Clean up document content
+                            doc.page_content = doc.page_content.replace('\n', '').strip()
+                            if len(doc.page_content) > 100:
+                                logger.info(f"Document content sample: {doc.page_content[:100]}...")
+                        documents.extend(docs)
+                    except Exception as e:
+                        logger.error(f"Error loading {file_name}: {e}")
+                    finally:
+                        # clean up temp file
+                        os.unlink(temp.name)
+
+        except Exception as e:
+            logger.error(f"Error processing {file_path}: {e}")                
     
     logger.info(f"Loaded {len(documents)} raw documents from S3")
 
@@ -124,23 +165,34 @@ def build_vectorstore():
     chunks = splitter.split_documents(documents)
     logger.info(f"Split documents into {len(chunks)} chunks (Chunk Size: {settings.RAG_CHUNK_SIZE}, Overlap: {settings.RAG_CHUNK_OVERLAP}).")
     logger.info(f"Created {len(chunks)} chunks")
+
     if chunks:
         logger.info(f"Sample chunk: {chunks[0].page_content[:200]}...")
-        logger.info(f"Split documents into {len(chunks)} chunks (Chunk Size: 1000, Overlap: 200).")
+        # logger.info(f"Split documents into {len(chunks)} chunks (Chunk Size: 1000, Overlap: 200).")
 
     # Build and persist Chroma DB
     try:
+        # clear existing database
+        if os.path.exists(CHROMA_DIR):
+            shutil.rmtree(CHROMA_DIR)
+
         vectorstore = Chroma.from_documents(
-        chunks,
-        embeddings,
+        documents=chunks,
+        embedding=embeddings,
         persist_directory=CHROMA_DIR
         )
         vectorstore.persist()
+
+        # Verify the database was created correctly
+        db_info = vectorstore.get()
+        vector_count = len(db_info['ids'])
+        logger.info(f"Chroma DB built successfully with {vector_count} vectors stored.")
+
+        return vectorstore
+    
     except Exception as e:
         logger.error(f"Error building/persisting Chroma DB: {e}")
-        raise 
-    vector_count = len(vectorstore.get()['ids'])
-    logger.info(f"Chroma DB built successfully with {vector_count} vectors stored.")
-
-    return vectorstore
+        # Return a new empty vectorstore on error 
+        return Chroma(persist_directory=CHROMA_DIR, embedding_function=embeddings) 
+    
 
