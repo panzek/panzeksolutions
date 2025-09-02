@@ -1,5 +1,6 @@
 import json
 import logging
+import os
 from django.http import JsonResponse
 from django.conf import settings
 
@@ -9,6 +10,8 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain.chains.combine_documents import create_stuff_documents_chain
 from langchain.chains import create_retrieval_chain
 from langchain.schema.runnable import RunnableLambda
+from langchain_huggingface import HuggingFaceEmbeddings
+from langchain_chroma import Chroma
 
 from .utils.session_memory import DjangoSessionMessageHistory
 from .views_upload import RAG_VECTORSTORE, build_vectorstore
@@ -24,6 +27,10 @@ def get_session_history_factory(session):
         return DjangoSessionMessageHistory(session, key=session_id)
     return get_history
 
+def load_vectorstore():
+    CHROMA_DIR = os.path.join(settings.BASE_DIR, "vectorstore", "chroma_db")
+    embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-mpnet-base-v2")
+    return Chroma(persist_directory=CHROMA_DIR, embedding_function=embeddings)
 
 def chat_api(request):
     if request.method == 'POST':
@@ -35,7 +42,7 @@ def chat_api(request):
 
         global RAG_VECTORSTORE
         if RAG_VECTORSTORE is None:
-            RAG_VECTORSTORE = build_vectorstore()
+            RAG_VECTORSTORE = load_vectorstore()
 
         # Debug: Show DB info
         db_info = RAG_VECTORSTORE.get()

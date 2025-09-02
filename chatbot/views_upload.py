@@ -54,18 +54,6 @@ def upload_document(request):
         except Exception as e:
             logger.error(f"Error listing S3 files: {e}")
 
-        # Force rebuild vectorstore from files in S3
-        global RAG_VECTORSTORE
-        RAG_VECTORSTORE = None 
-        # Rebuild vectorstore
-        RAG_VECTORSTORE = build_vectorstore()
-
-        # Verify the vectorstore was updated
-        if RAG_VECTORSTORE:
-            db_info = RAG_VECTORSTORE.get()
-            logger.info(f"Vectorstore now has {len(db_info.get('ids', []))} documents")
-            RAG_VECTORSTORE = build_vectorstore()
-
         return JsonResponse({
             "Message": f"{uploaded_file.name} uploaded and indexed successfully.",
             "url": file_url
