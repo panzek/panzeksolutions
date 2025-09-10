@@ -85,7 +85,7 @@ def build_vectorstore():
     s3_prefix = "media/uploaded_docs/"
 
     try:
-        dir, s3_files = default_storage.listdir(s3_prefix)
+        _, s3_files = default_storage.listdir(s3_prefix)
         logger.info(f"Found {len(s3_files)} files in S3: {s3_files}")
     except Exception as e:
         logger.error(f"Error listing from S3: {e}")
