@@ -5,7 +5,7 @@ from django.http import JsonResponse
 from django.conf import settings
 
 from langchain_core.runnables import RunnableWithMessageHistory
-from langchain_deepseek.chat_models import ChatDeepSeek
+from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.prompts import ChatPromptTemplate
 from langchain.chains.combine_documents import create_stuff_documents_chain
 from langchain.chains import create_retrieval_chain
@@ -57,10 +57,11 @@ def chat_api(request):
         if not test_docs:
             logger.warning(f"No chunks retrieved. Possible issues: missing documents, query mismatch, or embedding model limitations")
 
-        llm = ChatDeepSeek(
-            model="deepseek-chat",
-            temperature=1.3,
-            api_key=settings.DEEPSEEK_API_KEY
+        # LLM using Gemini
+        llm = ChatGoogleGenerativeAI(
+            model="gemini-2.5-flash",
+            temperature=1.0,
+            api_key=settings.GEMINI_API_KEY
         )
 
         system_prompt = (

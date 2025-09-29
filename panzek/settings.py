@@ -243,8 +243,8 @@ else:
     EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
     DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')
 
-# DeepSeek 
-DEEPSEEK_API_KEY = os.environ.get('DEEPSEEK_API_KEY')
+# Google Gemini 
+GEMINI_API_KEY = os.environ.get('GEMINI_API_KEY')
 # Google reCAPTCHA set up
 RECAPTCHA_PUBLIC_KEY = os.environ.get('RECAPTCHA_PUBLIC_KEY')
 RECAPTCHA_PRIVATE_KEY = os.environ.get('RECAPTCHA_PRIVATE_KEY')
