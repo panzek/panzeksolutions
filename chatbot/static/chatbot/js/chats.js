@@ -21,8 +21,11 @@ function appendMessage(sender, message){
     msgDiv.className = sender === "user"? "text-right" : "text-left";
     // add style to the newly created div
     msgDiv.innerHTML = `
-        <span class="badge ${sender === "user" ? "badge-primary" : "badge-accent"}">${sender}</span>
-        <div class="chat-bubble">${message}</div>
+        <div class="chat-bubble ${sender === "user" 
+            ? "bg-white text-black border border-gray-300" 
+            : "bg-black text-white"}">
+            ${message}
+        </div>
     `;
     // add the newly created div and its content to the DOM
     chatMessages.appendChild(msgDiv);
