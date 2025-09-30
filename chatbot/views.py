@@ -5,12 +5,11 @@ from django.http import JsonResponse
 from django.conf import settings
 
 from langchain_core.runnables import RunnableWithMessageHistory
-from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain_google_genai import ChatGoogleGenerativeAI, GoogleGenerativeAIEmbeddings
 from langchain_core.prompts import ChatPromptTemplate
 from langchain.chains.combine_documents import create_stuff_documents_chain
 from langchain.chains import create_retrieval_chain
 from langchain.schema.runnable import RunnableLambda
-from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_chroma import Chroma
 
 from .utils.session_memory import DjangoSessionMessageHistory
@@ -29,7 +28,10 @@ def get_session_history_factory(session):
 
 def load_vectorstore():
     CHROMA_DIR = os.path.join(settings.BASE_DIR, "vectorstore", "chroma_db")
-    embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-mpnet-base-v2")
+    embeddings = GoogleGenerativeAIEmbeddings(
+        model="models/embedding-001",
+        google_api_key=settings.GEMINI_API_KEY
+    )
     return Chroma(persist_directory=CHROMA_DIR, embedding_function=embeddings)
 
 def chat_api(request):
@@ -57,11 +59,11 @@ def chat_api(request):
         if not test_docs:
             logger.warning(f"No chunks retrieved. Possible issues: missing documents, query mismatch, or embedding model limitations")
 
-        # LLM using Gemini
+        # LLM using Google's Gemini
         llm = ChatGoogleGenerativeAI(
-            model="gemini-2.5-flash",
+            model="gemini-2.5-flash-lite",
             temperature=1.0,
-            api_key=settings.GEMINI_API_KEY
+            google_api_key=settings.GEMINI_API_KEY
         )
 
         system_prompt = (
