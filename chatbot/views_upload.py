@@ -81,7 +81,7 @@ def build_vectorstore():
             
     # Initialize embedding model
     embeddings = GoogleGenerativeAIEmbeddings(
-        model="models/embedding-001",
+        model="gemini-embedding-001",
         google_api_key=settings.GEMINI_API_KEY
     )
     # embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-mpnet-base-v2")

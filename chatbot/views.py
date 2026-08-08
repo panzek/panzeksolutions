@@ -29,7 +29,7 @@ def get_session_history_factory(session):
 def load_vectorstore():
     CHROMA_DIR = os.path.join(settings.BASE_DIR, "vectorstore", "chroma_db")
     embeddings = GoogleGenerativeAIEmbeddings(
-        model="models/embedding-001",
+        model="gemini-embedding-001",
         google_api_key=settings.GEMINI_API_KEY
     )
     return Chroma(persist_directory=CHROMA_DIR, embedding_function=embeddings)
@@ -45,19 +45,6 @@ def chat_api(request):
         global RAG_VECTORSTORE
         if RAG_VECTORSTORE is None:
             RAG_VECTORSTORE = load_vectorstore()
-
-        # Debug: Show DB info
-        db_info = RAG_VECTORSTORE.get()
-        logger.info(f"Number of docs in DB: {len(db_info.get('ids', []))}")
-        logger.info(f"RAG_CHUNK_SIZE={settings.RAG_CHUNK_SIZE}, RAG_CHUNK_OVERLAP={settings.RAG_CHUNK_OVERLAP}")
-
-        # Debug: Log retrieved context with scores
-        test_docs = RAG_VECTORSTORE.similarity_search_with_score(user_input, k=10)
-        logger.info(f"Retrieved {len(test_docs)} chunks for query '{user_input}'") 
-        for idx, (doc, score) in enumerate(test_docs): 
-            logger.info(f"Chunk {idx+1} (score: {score: .4f}): {doc.page_content[:200]}...")
-        if not test_docs:
-            logger.warning(f"No chunks retrieved. Possible issues: missing documents, query mismatch, or embedding model limitations")
 
         # LLM using Google's Gemini
         llm = ChatGoogleGenerativeAI(
