@@ -6,6 +6,7 @@ core.python*
 .env
 .venv/
 venv/
+vectorstore/
 .python-version
 setup_env.sh
 /staticfiles/
